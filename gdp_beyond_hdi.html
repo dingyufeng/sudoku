@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <!-- 引入 MathJax 库 -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GDP 之外：用 HDI 重新丈量发展</title>
@@ -362,7 +364,8 @@ footer .source { color: var(--text); font-weight: 600; }
         </div>
       </div>
       <div class="formula-card fade-in">
-        <div class="formula">HDI = ³√(I<sub>健康</sub> × I<sub>教育</sub> × I<sub>收入</sub>)</div>
+        <!-- <div class="formula">HDI = ³√(I<sub>健康</sub> × I<sub>教育</sub> × I<sub>收入</sub>)</div> -->
+		<div class="formula">$$ HDI = \sqrt[3]{I_{健康} \times I_{教育} \times I_{收入}} $$</div>
         <div class="formula-note"><strong>几何平均的深意</strong>：三个维度中任何一个拉低，整体都会明显受损。高收入无法完全替代健康或教育的缺失。</div>
       </div>
     </section>
