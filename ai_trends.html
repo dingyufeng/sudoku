@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 发展趋势 · 2025-2026 最新趋势分析</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Design Tokens  (从设计稿 fills 的 0~1 浮点色值换算)
+   ============================================================ */
+:root{
+  --bg-deep:#06080C;   /* r .024 g .031 b .047 */
+  --bg-alt:#080B11;   /* r .031 g .043 b .067 */
+  --bg-foot:#05070A;
+  --nav:#0A0E14;      /* r .039 g .055 b .078 */
+
+  --surface:#0C121A;  /* r .047 g .071 b .102 */
+  --surface-2:#101720;
+  --surface-3:#131B26;
+  --surface-4:#10151E;
+  --band:#0B1017;
+  --track:#16202C;
+  --track-2:#131B26;
+
+  --border:#1B2531;
+  --border-2:#1E2836;
+  --border-3:#26313F;
+  --border-nav:#1A222E;
+
+  --text-1:#EDF2FA;   /* r .929 g .949 b .980 */
+  --text-2:#93A1B5;   /* r .576 g .631 b .710 */
+  --text-3:#7B8CA3;   /* r .482 g .549 b .639 */
+  --text-4:#5C6B80;   /* r .361 g .420 b .502 */
+  --text-5:#C4CFDE;   /* r .769 g .812 b .871 */
+
+  --cyan:#2FE3C8;
+  --violet:#7B6BFF;
+  --amber:#FFB454;
+  --coral:#FF6F5E;
+  --green:#45D98A;
+  --pink:#FF6FD8;
+
+  --ink:#04120F;
+
+  --f-sc:'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --f-sora:'Sora', 'Noto Sans SC', sans-serif;
+  --f-mono:'IBM Plex Mono', ui-monospace, monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg-deep);
+  color:var(--text-1);
+  font-family:var(--f-sc);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 等比缩放外壳：保留 1440px 原始画布 */
+.fit-wrap{width:100%;overflow:hidden;position:relative;}
+.canvas{
+  width:1440px;
+  margin:0 auto;
+  transform-origin:top center;
+  background:var(--bg-deep);
+}
+
+/* ============================================================
+   Nav
+   ============================================================ */
+.nav{
+  display:flex;flex-direction:row;
+  align-items:center;justify-content:space-between;
+  height:72px;
+  padding:0 120px;
+  background:var(--nav);
+  border-bottom:1px solid var(--border-nav);
+}
+.brand{display:flex;flex-direction:row;align-items:center;gap:10px;}
+.brand-mark{
+  width:26px;height:26px;border-radius:7px;
+  background:linear-gradient(135deg,#2FE3C8 0%,#7B6BFF 100%);
+}
+.brand-name{font-family:var(--f-sora);font-weight:700;font-size:15px;color:var(--text-1);}
+.brand-year{font-family:var(--f-mono);font-weight:500;font-size:14px;color:var(--cyan);}
+.nav-links{display:flex;flex-direction:row;align-items:center;gap:30px;}
+.nav-links a{
+  font-size:13px;font-weight:500;color:var(--text-2);
+  text-decoration:none;transition:color .18s ease;
+}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{
+  display:inline-flex;align-items:center;
+  padding:11px 20px;border-radius:8px;
+  background:var(--cyan);
+  font-size:13px;font-weight:600;color:var(--ink);
+  text-decoration:none;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{
+  display:flex;flex-direction:column;gap:52px;
+  padding:92px 120px 84px;
+  background:var(--bg-deep);
+}
+.hero-main{display:flex;flex-direction:row;align-items:center;gap:60px;}
+.hero-copy{display:flex;flex-direction:column;gap:24px;flex:1;min-width:0;}
+
+.badge{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  padding:7px 14px;border-radius:100px;
+  background:#0E2A28;border:1px solid #1F5F55;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);}
+.badge-text{font-family:var(--f-mono);font-weight:500;font-size:12px;color:var(--cyan);}
+
+.h1-row{display:flex;flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap;}
+.h1-a{font-size:56px;font-weight:800;line-height:66px;color:var(--text-1);}
+.h1-dot{font-family:var(--f-sora);font-size:44px;font-weight:400;color:#2A3546;}
+.h1-b{font-family:var(--f-sora);font-size:54px;font-weight:700;line-height:66px;color:var(--cyan);}
+.subtitle{font-size:17px;font-weight:400;line-height:30px;color:var(--text-2);}
+
+.btn-row{display:flex;flex-direction:row;align-items:center;gap:14px;}
+.btn-primary{
+  display:inline-flex;align-items:center;
+  padding:16px 30px;border-radius:10px;background:var(--cyan);
+  font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;
+}
+.btn-ghost{
+  display:inline-flex;align-items:center;
+  padding:16px 26px;border-radius:10px;
+  background:var(--surface-4);border:1px solid var(--border-3);
+  font-size:15px;font-weight:500;color:var(--text-5);text-decoration:none;
+}
+.source-line{font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--text-4);}
+
+.hero-panel{
+  width:460px;flex:none;
+  display:flex;flex-direction:column;gap:18px;
+  padding:26px 24px;border-radius:18px;
+  background:var(--surface);border:1px solid var(--border-2);
+  box-shadow:0 0 60px rgba(47,227,200,.12), 0 24px 40px -10px rgba(0,0,0,.4);
+}
+.panel-head{display:flex;flex-direction:row;align-items:center;justify-content:space-between;}
+.panel-label{font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--text-4);}
+.chip{
+  display:inline-flex;align-items:center;
+  padding:4px 9px;border-radius:5px;background:var(--surface-3);
+  font-family:var(--f-mono);font-weight:500;font-size:10px;color:var(--text-3);
+}
+.big-row{display:flex;flex-direction:row;align-items:baseline;gap:10px;}
+.big-num{font-family:var(--f-sora);font-size:52px;font-weight:700;line-height:56px;color:var(--cyan);}
+.big-unit{font-size:13px;font-weight:400;color:var(--text-3);}
+.panel-note{font-size:13px;font-weight:400;line-height:24px;color:var(--text-2);}
+.divider{height:1px;background:var(--border);width:100%;}
+
+.bar-row{display:flex;flex-direction:row;align-items:center;gap:12px;}
+.bar-year{font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--text-3);width:50px;flex:none;}
+.bar-track{width:292px;height:10px;border-radius:5px;background:var(--track);overflow:hidden;flex:none;}
+.bar-fill{height:100%;border-radius:5px;}
+.bar-val{font-family:var(--f-mono);font-weight:600;font-size:12px;width:46px;text-align:right;flex:none;}
+.panel-foot{font-size:11px;font-weight:400;line-height:19px;color:var(--text-4);}
+
+.hero-strip{
+  display:flex;flex-direction:row;
+  border-radius:16px;overflow:hidden;
+  background:var(--band);border:1px solid var(--border);
+}
+.metric-block{
+  display:flex;flex-direction:column;gap:9px;
+  padding:24px 28px;flex:1;min-width:0;
+}
+.metric-label{font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--text-4);}
+.metric-value{font-family:var(--f-sora);font-weight:700;font-size:30px;}
+.metric-note{font-size:12px;font-weight:400;color:var(--text-3);}
+.strip-div{width:1px;background:var(--border);flex:none;}
+
+/* ============================================================
+   Section 通用
+   ============================================================ */
+.section{display:flex;flex-direction:column;gap:40px;padding:96px 120px;}
+.section-alt{background:var(--bg-alt);}
+.section-deep{background:var(--bg-deep);}
+.sec-head{display:flex;flex-direction:column;gap:14px;}
+.sec-eyebrow{font-family:var(--f-mono);font-weight:500;font-size:12px;color:var(--cyan);}
+.sec-title{font-size:38px;font-weight:700;line-height:48px;color:var(--text-1);}
+.sec-desc{font-size:15px;font-weight:400;line-height:28px;color:var(--text-2);}
+
+/* ============================================================
+   Section 01 · 六大核心切片
+   ============================================================ */
+.card-row{display:flex;flex-direction:row;gap:20px;align-items:flex-start;}
+.card{
+  display:flex;flex-direction:column;gap:16px;
+  padding:28px;border-radius:16px;
+  background:var(--surface);border:1px solid var(--border);
+  min-width:0;
+}
+.card-icon{
+  width:40px;height:40px;border-radius:11px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.card-title{font-size:22px;font-weight:700;color:var(--text-1);}
+.card-desc{font-size:14px;font-weight:400;line-height:26px;color:var(--text-2);}
+.tag-row{display:flex;flex-wrap:wrap;gap:10px;}
+.tag{
+  display:inline-flex;align-items:center;
+  padding:6px 11px;border-radius:6px;background:var(--surface-3);
+  font-family:var(--f-mono);font-weight:500;font-size:11px;
+}
+
+.card-wide-content{display:flex;flex-direction:row;gap:40px;align-items:flex-start;}
+.card-wide-left{display:flex;flex-direction:column;gap:16px;flex:1;min-width:0;}
+.clock-panel{
+  width:330px;flex:none;
+  display:flex;flex-direction:column;gap:12px;
+  padding:18px 20px;border-radius:12px;
+  background:var(--surface-2);border:1px solid var(--border);
+}
+.clock-label{font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--text-4);}
+.clock-row{display:flex;flex-direction:row;gap:12px;align-items:flex-start;}
+.clock-date{font-family:var(--f-mono);font-weight:500;font-size:11px;width:52px;flex:none;}
+.clock-text{font-size:12px;font-weight:400;line-height:20px;}
+
+/* ============================================================
+   Section 02 · 关键数据
+   ============================================================ */
+.data-body{display:flex;flex-direction:row;gap:32px;align-items:flex-start;}
+.data-left{display:flex;flex-direction:column;gap:16px;flex:1;min-width:0;}
+.kpi{
+  display:flex;flex-direction:column;gap:10px;
+  padding:28px;border-radius:16px;
+  background:var(--surface);border:1px solid var(--border);
+}
+.kpi-label{font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--text-4);}
+.kpi-value{font-family:var(--f-sora);font-weight:700;line-height:48px;}
+.kpi-note{font-size:14px;font-weight:400;line-height:24px;color:var(--text-2);}
+
+.funnel-panel{
+  display:flex;flex-direction:column;gap:24px;
+  padding:28px;border-radius:18px;flex:1;min-width:0;
+  background:var(--surface);border:1px solid var(--border);
+}
+.funnel-head{display:flex;flex-direction:row;align-items:center;justify-content:space-between;}
+.funnel-row{display:flex;flex-direction:row;align-items:center;gap:14px;}
+.funnel-name{font-size:11px;font-weight:500;color:var(--text-3);width:120px;flex:none;}
+.funnel-track{width:300px;height:10px;border-radius:5px;background:var(--track-2);overflow:hidden;flex:none;}
+.funnel-fill{height:100%;border-radius:5px;}
+.funnel-val{font-family:var(--f-mono);font-weight:600;font-size:13px;width:50px;text-align:right;flex:none;}
+
+/* ============================================================
+   Section 03 · 三极格局
+   ============================================================ */
+.triad-body{display:flex;flex-direction:row;gap:32px;align-items:flex-start;}
+.triad-map{
+  width:560px;flex:none;
+  display:flex;flex-direction:column;gap:20px;
+  padding:28px;border-radius:18px;
+  background:var(--surface);border:1px solid var(--border);
+}
+.map-canvas{position:relative;height:300px;width:100%;}
+.map-tri{position:absolute;left:70px;top:30px;width:400px;height:240px;}
+.tri-node{
+  position:absolute;width:120px;height:120px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  text-align:center;
+}
+.tri-node.us{left:210px;top:30px;background:#0D2222;border:1.5px solid var(--cyan);box-shadow:0 0 30px rgba(47,227,200,.22);}
+.tri-node.cn{left:90px;top:170px;background:#1A1632;border:1.5px solid var(--violet);box-shadow:0 0 30px rgba(123,107,255,.22);}
+.tri-node.eu{left:330px;top:170px;background:#261B12;border:1.5px solid var(--amber);box-shadow:0 0 30px rgba(255,180,84,.22);}
+.tri-label{font-size:13px;font-weight:500;color:var(--text-5);}
+.tri-label-sm{font-size:11px;font-weight:500;color:var(--text-5);}
+.tri-value{font-family:var(--f-sora);font-weight:700;font-size:17px;}
+.tri-value-sm{font-family:var(--f-sora);font-weight:700;font-size:16px;}
+.tri-share{font-family:var(--f-mono);font-weight:500;font-size:10px;color:var(--text-4);}
+
+.triad-detail{display:flex;flex-direction:column;gap:16px;flex:1;min-width:0;}
+.tri-card{
+  display:flex;flex-direction:column;gap:10px;
+  padding:24px;border-radius:16px;
+  background:var(--surface);border:1px solid var(--border);
+}
+.tri-head{display:flex;flex-direction:row;align-items:center;justify-content:space-between;}
+.tri-head-left{display:flex;flex-direction:row;align-items:center;gap:10px;}
+.tri-dot{width:8px;height:8px;border-radius:2px;flex:none;}
+.tri-name{font-size:18px;font-weight:700;color:var(--text-1);}
+.tri-money{font-family:var(--f-sora);font-weight:700;font-size:17px;}
+.tri-line{font-size:13px;font-weight:400;line-height:22px;color:var(--text-2);}
+
+/* ============================================================
+   Section 04 · 时间轴
+   ============================================================ */
+.timeline{display:flex;flex-direction:row;align-items:center;gap:0;}
+.tl-node{
+  width:170px;flex:none;
+  display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;
+}
+.tl-dot{width:10px;height:10px;border-radius:50%;flex:none;}
+.tl-year{font-family:var(--f-mono);font-weight:600;font-size:12px;}
+.tl-title{font-size:14px;font-weight:700;color:var(--text-1);}
+.tl-desc{font-size:12px;font-weight:400;color:var(--text-2);}
+.tl-line{width:25px;height:1px;background:var(--border);flex:none;}
+
+/* ============================================================
+   Section 05 · 五条预测
+   ============================================================ */
+.pred-list{display:flex;flex-direction:column;gap:16px;}
+.pred{
+  display:flex;flex-direction:row;gap:22px;align-items:flex-start;
+  padding:28px;border-radius:16px;
+  background:var(--surface);border:1px solid var(--border);
+}
+.pred-badge{
+  width:70px;flex:none;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.pred-dot{width:8px;height:8px;border-radius:2px;}
+.pred-conf{font-size:13px;font-weight:700;}
+.pred-right{display:flex;flex-direction:column;gap:10px;flex:1;min-width:0;}
+.pred-title{font-size:18px;font-weight:700;color:var(--text-1);}
+.pred-desc{font-size:14px;font-weight:400;line-height:24px;color:var(--text-2);}
+.src-chip{
+  display:inline-flex;align-items:center;align-self:flex-start;
+  padding:5px 9px;border-radius:5px;background:var(--surface-3);
+  font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--text-4);
+}
+
+/* ============================================================
+   Section 06 · FAQ
+   ============================================================ */
+.faq{
+  display:flex;flex-direction:column;gap:14px;
+  padding:24px;border-radius:16px;
+  background:var(--surface);border:1px solid var(--border);
+}
+.faq-q{display:flex;flex-direction:row;gap:12px;align-items:flex-start;}
+.faq-badge{
+  width:22px;height:22px;border-radius:4px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-sora);font-weight:700;font-size:11px;color:var(--ink);
+}
+.faq-question{font-size:16px;font-weight:600;color:var(--text-1);}
+.faq-answer{font-size:14px;font-weight:400;line-height:24px;color:var(--text-2);}
+
+/* ============================================================
+   Section 07 · 订阅 CTA
+   ============================================================ */
+.cta-section{display:flex;flex-direction:column;gap:24px;padding:80px 120px;background:var(--bg-deep);}
+.cta-panel{
+  display:flex;flex-direction:column;gap:22px;
+  padding:54px 48px;border-radius:20px;
+  background:var(--surface);border:1px solid var(--border);
+  box-shadow:0 0 80px rgba(47,227,200,.08);
+}
+.cta-title{font-size:30px;font-weight:700;line-height:40px;color:var(--text-1);text-align:center;}
+.cta-desc{font-size:15px;font-weight:400;line-height:26px;color:var(--text-2);text-align:center;width:540px;align-self:center;}
+.cta-form{display:flex;flex-direction:row;align-items:center;gap:12px;align-self:center;}
+.cta-input{
+  display:flex;align-items:center;
+  width:320px;height:52px;padding:0 20px;border-radius:10px;
+  background:var(--surface-4);border:1px solid var(--border-3);
+  font-family:var(--f-sc);font-size:14px;color:var(--text-4);
+  outline:none;
+}
+.cta-input::placeholder{color:var(--text-4);}
+.cta-input:focus{border-color:var(--cyan);}
+.cta-btn{
+  display:inline-flex;align-items:center;
+  padding:16px 28px;border-radius:10px;background:var(--cyan);
+  border:none;cursor:pointer;
+  font-family:var(--f-sc);font-size:15px;font-weight:600;color:var(--ink);
+}
+.cta-note{font-size:12px;font-weight:400;color:var(--text-4);text-align:center;}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer{display:flex;flex-direction:column;gap:40px;padding:64px 120px 40px;background:var(--bg-foot);}
+.footer-top{display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start;}
+.footer-brand{display:flex;flex-direction:column;gap:12px;flex:1;min-width:0;}
+.footer-mark{display:flex;flex-direction:row;align-items:center;gap:10px;}
+.footer-mark-icon{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#2FE3C8 0%,#7B6BFF 100%);}
+.footer-brand-name{font-family:var(--f-sora);font-weight:700;font-size:15px;color:var(--text-1);}
+.footer-tag{font-size:13px;font-weight:400;line-height:22px;color:var(--text-4);width:360px;white-space:pre-line;}
+.footer-sources{width:420px;flex:none;display:flex;flex-direction:column;gap:12px;}
+.footer-src-title{font-family:var(--f-mono);font-weight:600;font-size:12px;color:var(--text-1);}
+.footer-src-list{font-family:var(--f-mono);font-weight:400;font-size:12px;line-height:21px;color:var(--text-4);white-space:pre-line;}
+.footer-bottom{display:flex;flex-direction:row;align-items:center;justify-content:space-between;}
+.footer-copy{font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--text-4);}
+.footer-links{font-size:12px;font-weight:400;color:var(--text-4);}
+</style>
+</head>
+<body>
+
+<div class="fit-wrap" id="fitWrap">
+<div class="canvas" id="canvas">
+
+  <!-- ========== NAV ========== -->
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <span class="brand-name">AI TRENDS</span>
+      <span class="brand-year">2026</span>
+    </div>
+    <div class="nav-links">
+      <a href="#shifts">六大切片</a>
+      <a href="#numbers">关键数据</a>
+      <a href="#triad">三极格局</a>
+      <a href="#predictions">2026 预测</a>
+      <a href="#timeline">演进时间轴</a>
+      <a href="#faq">常见质疑</a>
+    </div>
+    <a class="nav-cta" href="#cta">获取完整报告</a>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <header class="hero" id="hero">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span class="badge-text">年度报告 · 数据截至 2026 Q2</span>
+        </div>
+
+        <div class="h1-row">
+          <span class="h1-a">AI 发展趋势</span>
+          <span class="h1-dot">·</span>
+          <span class="h1-b">2025 → 2026</span>
+        </div>
+
+        <p class="subtitle">六个核心切片、一组关键数据、三极格局与五条 2026 预测 —— 用 Stanford HAI、McKinsey、a16z、Gartner、IDC 的公开口径，看清这轮 AI 周期的真实位置。</p>
+
+        <div class="btn-row">
+          <a class="btn-primary" href="#shifts">查看六大核心切片</a>
+          <a class="btn-ghost" href="#cta">下载 PDF 报告</a>
+        </div>
+
+        <p class="source-line">SOURCES:  STANFORD HAI  ·  MCKINSEY  ·  A16Z  ·  GARTNER  ·  IDC</p>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="panel-head">
+          <span class="panel-label">TOKEN PRICE / 1M</span>
+          <span class="chip">LOG SCALE</span>
+        </div>
+
+        <div class="big-row">
+          <span class="big-num">$0.07</span>
+          <span class="big-unit">/ 百万 token</span>
+        </div>
+
+        <p class="panel-note">达到 GPT-3.5 同等能力所需的推理成本：2022.11 的 $20.00 降至 2024.10 的 $0.07，18 个月下降约 280 倍。</p>
+
+        <div class="divider"></div>
+
+        <div class="bar-row">
+          <span class="bar-year">2022.11</span>
+          <div class="bar-track"><div class="bar-fill" style="width:292px;background:#2FE3C8;"></div></div>
+          <span class="bar-val" style="color:#EDF2FA;">$20.00</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-year">2024.10</span>
+          <div class="bar-track"><div class="bar-fill" style="width:98px;background:#2FE3C8;"></div></div>
+          <span class="bar-val" style="color:#2FE3C8;">$0.07</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-year" style="color:#7B6BFF;">2026E</span>
+          <div class="bar-track"><div class="bar-fill" style="width:24px;background:#7B6BFF;"></div></div>
+          <span class="bar-val" style="color:#7B6BFF;">≈$0.004</span>
+        </div>
+
+        <p class="panel-foot">* 2026E 为按 a16z「LLMflation」约 10×/年 的外推值，非实测报价。纵轴为对数刻度。</p>
+      </aside>
+    </div>
+
+    <div class="hero-strip">
+      <div class="metric-block">
+        <span class="metric-label">GLOBAL AI SPEND · 2026E</span>
+        <span class="metric-value" style="color:#2FE3C8;">$2.59T</span>
+        <span class="metric-note">同比 +47% · Gartner</span>
+      </div>
+      <div class="strip-div"></div>
+      <div class="metric-block">
+        <span class="metric-label">ENTERPRISE AI USE · 2025</span>
+        <span class="metric-value" style="color:#EDF2FA;">88%</span>
+        <span class="metric-note">至少一个职能常态化 · McKinsey</span>
+      </div>
+      <div class="strip-div"></div>
+      <div class="metric-block">
+        <span class="metric-label">FULLY SCALED · 2025</span>
+        <span class="metric-value" style="color:#FFB454;">7%</span>
+        <span class="metric-note">真正全企业级铺开 · McKinsey</span>
+      </div>
+      <div class="strip-div"></div>
+      <div class="metric-block">
+        <span class="metric-label">PRIVATE AI INVEST · 2025</span>
+        <span class="metric-value" style="color:#7B6BFF;">$581.7B</span>
+        <span class="metric-note">同比 +130% · Stanford HAI</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== SECTION 01 · 六大核心切片 ========== -->
+  <section class="section section-alt" id="shifts">
+    <div class="sec-head">
+      <span class="sec-eyebrow">SECTION 01  /  SIX CORE SHIFTS</span>
+      <h2 class="sec-title">六个正在同时发生的转折</h2>
+      <p class="sec-desc">它们不是并列的功能清单，而是同一轮技术周期里互相咬合的六个齿轮：成本崩塌让 Agent 变得划算，Agent 把负载推到端侧，端侧与多模态又反过来把 AI 压进具体行业，最终撞上治理这堵墙。</p>
+    </div>
+
+    <div class="card-row">
+      <article class="card" style="flex:2;">
+        <div class="card-icon" style="background:rgba(47,227,200,.12);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="4" width="7" height="6" rx="2" stroke="#2FE3C8" stroke-width="1.8"/>
+            <rect x="14" y="14" width="7" height="6" rx="2" stroke="#2FE3C8" stroke-width="1.8"/>
+            <circle cx="6.5" cy="17" r="2.4" stroke="#2FE3C8" stroke-width="1.6"/>
+            <circle cx="17.5" cy="7" r="2.4" stroke="#2FE3C8" stroke-width="1.6"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Agent 化跃迁</h3>
+        <p class="card-desc">AI 正从「被调用的工具」变成「可交付结果的执行者」。62% 的组织已开始试验 AI Agent，但落到任一具体业务职能、真正实现规模化的不足 10% —— 热情与落地之间，横着一条组织重构的鸿沟。</p>
+        <div class="tag-row">
+          <span class="tag" style="color:#2FE3C8;">62% 已试验 Agent · McKinsey</span>
+          <span class="tag" style="color:#7B8CA3;">23% 已规模化 · McKinsey</span>
+        </div>
+      </article>
+
+      <article class="card" style="flex:1;">
+        <div class="card-icon" style="background:rgba(123,107,255,.14);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7B6BFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 17 13.5 8.5 8.5 13.5 2 7"/>
+            <path d="M16 17h6v-6"/>
+          </svg>
+        </div>
+        <h3 class="card-title">推理成本崩塌</h3>
+        <p class="card-desc">固定能力口径下，LLM 推理价格每年下降 9 至 900 倍；a16z 称之为「LLMflation」，约每 12 个月降一个数量级。云的稀缺性被稀释，竞争优势正从「谁有卡」转向「谁会路由」。</p>
+        <div class="tag-row">
+          <span class="tag" style="color:#7B6BFF;">280× / 18 个月 · Stanford HAI</span>
+          <span class="tag" style="color:#7B8CA3;">≈10× / 年 · a16z</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="card-row">
+      <article class="card" style="flex:1;">
+        <div class="card-icon" style="background:rgba(255,111,216,.12);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="9" height="9" rx="2" stroke="#FF6FD8" stroke-width="1.8"/>
+            <rect x="12" y="12" width="9" height="9" rx="2" stroke="#FF6FD8" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <h3 class="card-title">多模态融合</h3>
+        <p class="card-desc">a16z 把 2026 定义为「AI 真正多模态的一年」：给模型任意形态的参考内容，与之协作创作或改写已有场景。视频正从被动观看的对象，变成可进入、可交互、可用来训练智能体的空间。</p>
+        <div class="tag-row">
+          <span class="tag" style="color:#FF6FD8;">2026 = 多模态元年 · a16z</span>
+          <span class="tag" style="color:#7B8CA3;">世界模型 → 新训练场</span>
+        </div>
+      </article>
+
+      <article class="card" style="flex:1;">
+        <div class="card-icon" style="background:rgba(255,180,84,.12);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="7" width="10" height="10" rx="2" stroke="#FFB454" stroke-width="1.8"/>
+            <rect x="10.5" y="10.5" width="3" height="3" rx="1" fill="#FFB454"/>
+          </svg>
+        </div>
+        <h3 class="card-title">端侧智能爆发</h3>
+        <p class="card-desc">云推理的成本与时延压力，把负载推向终端。2026 年中国 AI 手机出货预计 1.47 亿台、渗透率首破 53%；全球 GenAI 手机渗透率约 45%。端侧的主角是 3B–7B 小模型与 NPU，不是万亿参数。</p>
+        <div class="tag-row">
+          <span class="tag" style="color:#FFB454;">53% 中国 AI 手机渗透 · IDC</span>
+          <span class="tag" style="color:#7B8CA3;">45% 全球渗透 · Counterpoint</span>
+        </div>
+      </article>
+
+      <article class="card" style="flex:1;">
+        <div class="card-icon" style="background:rgba(69,217,138,.12);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="8" stroke="#45D98A" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="3.2" stroke="#45D98A" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <h3 class="card-title">垂直行业深耕</h3>
+        <p class="card-desc">垂直 AI 的路径是「信息检索 → 推理 → 2026 的多人模式」：智能体跨角色、跨组织协同，而非各自为战。医疗、法律、住房类公司已在数年内做到 1 亿美元以上年化收入。</p>
+        <div class="tag-row">
+          <span class="tag" style="color:#45D98A;">$100M+ 垂直 AI ARR · a16z</span>
+          <span class="tag" style="color:#7B8CA3;">2026 = 多人模式</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="card-row">
+      <article class="card" style="flex:1;border-color:#1F2836;">
+        <div class="card-wide-content">
+          <div class="card-wide-left">
+            <div class="card-icon" style="background:rgba(255,111,94,.12);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3 5 6v5.5c0 4.2 2.9 7.6 7 8.5 4.1-.9 7-4.3 7-8.5V6l-7-3Z" stroke="#FF6F5E" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="card-title">治理与对齐</h3>
+            <p class="card-desc">欧盟 AI 法案 2026 年 8 月 2 日进入实质执法期，高风险义务经 Omnibus 简化后分阶段推迟。Gartner 判断到 2027 年底超 40% 的 Agentic AI 项目会被取消 —— 原因并非模型能力，而是成本失控、价值不清与风控不足。</p>
+            <div class="tag-row">
+              <span class="tag" style="color:#FF6F5E;">40%+ 项目取消风险 · Gartner</span>
+              <span class="tag" style="color:#7B8CA3;">2026.08 EU 执法启动</span>
+            </div>
+          </div>
+
+          <div class="clock-panel">
+            <span class="clock-label">EU AI ACT · 执法时钟</span>
+            <div class="clock-row">
+              <span class="clock-date" style="color:#4A5A70;">2025.02</span>
+              <span class="clock-text" style="color:#6C7C92;">禁止性 AI 实践 + AI 素养义务</span>
+            </div>
+            <div class="clock-row">
+              <span class="clock-date" style="color:#FF6F5E;font-weight:600;">2026.08</span>
+              <span class="clock-text" style="color:#EDF2FA;font-weight:500;">透明度义务生效 · 执法正式启动</span>
+            </div>
+            <div class="clock-row">
+              <span class="clock-date" style="color:#FFB454;">2027.12</span>
+              <span class="clock-text" style="color:#93A1B5;">Annex III 高风险系统义务</span>
+            </div>
+            <div class="clock-row">
+              <span class="clock-date" style="color:#7B6BFF;">2028.08</span>
+              <span class="clock-text" style="color:#93A1B5;">嵌入式产品高风险义务 · 全面落地</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 02 · 关键数据 ========== -->
+  <section class="section section-alt" id="numbers">
+    <div class="sec-head">
+      <span class="sec-eyebrow">SECTION 02  /  KEY NUMBERS</span>
+      <h2 class="sec-title">关键数据：看清基本面</h2>
+      <p class="sec-desc">热情被渗透率验证，但价值兑现仍集中在少数高绩效企业；成本坍塌让试错变便宜，却不自动等于 ROI。</p>
+    </div>
+
+    <div class="data-body">
+      <div class="data-left">
+        <div class="kpi">
+          <span class="kpi-label">GLOBAL AI MARKET SIZE · 2026E</span>
+          <span class="kpi-value" style="font-size:40px;color:#2FE3C8;">$2.59T</span>
+          <p class="kpi-note">Gartner 预测 2026 年全球 AI 总支出，同比增长约 +47%。其中基础设施占 45% 以上。</p>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">ENTERPRISE PENETRATION · 2025</span>
+          <span class="kpi-value" style="font-size:40px;color:#EDF2FA;">88%</span>
+          <p class="kpi-note">企业至少在一个业务职能中常态化使用 AI · McKinsey。但仅有 7% 的企业实现全公司级规模化，39% 报告 EBIT 层面的实质影响。</p>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">TOKEN DEFLATION · FIXED CAPABILITY</span>
+          <span class="kpi-value" style="font-size:38px;color:#7B6BFF;">9–900×</span>
+          <p class="kpi-note">LLM 推理价格年降幅区间 · Stanford HAI / Epoch。固定能力口径下，2022.11 至 2024.10 降幅约 280 倍；a16z 观察到约 10×/年的「LLMflation」。</p>
+        </div>
+      </div>
+
+      <div class="funnel-panel">
+        <div class="funnel-head">
+          <span class="panel-label">ENTERPRISE AI MATURITY FUNNEL</span>
+          <span class="chip">McKinsey 2025</span>
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-name">至少一职能常态化使用 AI</span>
+          <div class="funnel-track"><div class="funnel-fill" style="width:264px;background:#2FE3C8;"></div></div>
+          <span class="funnel-val" style="color:#2FE3C8;">88%</span>
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-name">已开始试验 AI Agent</span>
+          <div class="funnel-track"><div class="funnel-fill" style="width:186px;background:#7B6BFF;"></div></div>
+          <span class="funnel-val" style="color:#7B6BFF;">62%</span>
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-name">已进入规模化阶段</span>
+          <div class="funnel-track"><div class="funnel-fill" style="width:93px;background:#FFB454;"></div></div>
+          <span class="funnel-val" style="color:#FFB454;">31%</span>
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-name">全企业级铺开</span>
+          <div class="funnel-track"><div class="funnel-fill" style="width:21px;background:#FF6F5E;"></div></div>
+          <span class="funnel-val" style="color:#FF6F5E;">7%</span>
+        </div>
+        <div class="funnel-row">
+          <span class="funnel-name">EBIT 显著增长（高绩效）</span>
+          <div class="funnel-track"><div class="funnel-fill" style="width:18px;background:#45D98A;"></div></div>
+          <span class="funnel-val" style="color:#45D98A;">6%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 03 · 三极格局 ========== -->
+  <section class="section section-deep" id="triad">
+    <div class="sec-head">
+      <span class="sec-eyebrow">SECTION 03  /  GLOBAL TRIAD</span>
+      <h2 class="sec-title">中美欧三极格局</h2>
+      <p class="sec-desc">资本、模型与应用的三重分布，决定了这轮 AI 周期的权力结构：美国在资金与基础模型上绝对领先，中国在应用与工程密度上追赶，欧洲则在规则与标准上设定了全球议程。</p>
+    </div>
+
+    <div class="triad-body">
+      <div class="triad-map">
+        <span class="panel-label">PRIVATE AI INVESTMENT 2025 · STANFORD HAI</span>
+        <div class="map-canvas">
+          <svg class="map-tri" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M200 60 L80 200 L320 200 Z" stroke="#1A2838" stroke-width="1.5" stroke-dasharray="6 6"/>
+          </svg>
+          <div class="tri-node us">
+            <span class="tri-label">美国</span>
+            <span class="tri-value" style="color:#2FE3C8;">$285.9B</span>
+            <span class="tri-share">49% 份额</span>
+          </div>
+          <div class="tri-node cn">
+            <span class="tri-label">中国</span>
+            <span class="tri-value" style="color:#7B6BFF;">$12.4B</span>
+            <span class="tri-share">2.1% 份额</span>
+          </div>
+          <div class="tri-node eu">
+            <span class="tri-label-sm">欧洲（含英国）</span>
+            <span class="tri-value-sm" style="color:#FFB454;">≈$45B</span>
+            <span class="tri-share">约 7.7% 份额</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="triad-detail">
+        <div class="tri-card">
+          <div class="tri-head">
+            <div class="tri-head-left">
+              <span class="tri-dot" style="background:#2FE3C8;"></span>
+              <span class="tri-name">美国</span>
+            </div>
+            <span class="tri-money" style="color:#2FE3C8;">$285.9B</span>
+          </div>
+          <p class="tri-line">优势：资本密度、基础模型、算力底座、平台生态</p>
+          <p class="tri-line">短板：治理碎片化、出口管制反噬、社会信任度偏低</p>
+        </div>
+        <div class="tri-card">
+          <div class="tri-head">
+            <div class="tri-head-left">
+              <span class="tri-dot" style="background:#7B6BFF;"></span>
+              <span class="tri-name">中国</span>
+            </div>
+            <span class="tri-money" style="color:#7B6BFF;">$12.4B</span>
+          </div>
+          <p class="tri-line">优势：应用渗透、工程成本、工业场景、机器人密度</p>
+          <p class="tri-line">短板：高端芯片、前沿模型原创、出海合规</p>
+        </div>
+        <div class="tri-card">
+          <div class="tri-head">
+            <div class="tri-head-left">
+              <span class="tri-dot" style="background:#FFB454;"></span>
+              <span class="tri-name">欧洲</span>
+            </div>
+            <span class="tri-money" style="color:#FFB454;">≈$45B</span>
+          </div>
+          <p class="tri-line">优势：监管先行、工业基础、隐私与标准、多语言数据</p>
+          <p class="tri-line">短板：私营投资不足、平台型企业稀缺</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 04 · 演进时间轴 ========== -->
+  <section class="section section-alt" id="timeline">
+    <div class="sec-head">
+      <span class="sec-eyebrow">SECTION 04  /  TIMELINE</span>
+      <h2 class="sec-title">从 GPT-4 到 2026：关键节点</h2>
+      <p class="sec-desc">这条轴不是「技术突破」编年史，而是让商业模式与政府规则相继松动的连锁反应。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-node">
+        <span class="tl-dot" style="background:#2FE3C8;"></span>
+        <span class="tl-year" style="color:#2FE3C8;">2023.03</span>
+        <span class="tl-title">GPT-4 发布</span>
+        <span class="tl-desc">开启生成式 AI 周期</span>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <span class="tl-dot" style="background:#7B6BFF;"></span>
+        <span class="tl-year" style="color:#7B6BFF;">2023.11</span>
+        <span class="tl-title">ChatGPT 破亿用户</span>
+        <span class="tl-desc">企业开始入场</span>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <span class="tl-dot" style="background:#FFB454;"></span>
+        <span class="tl-year" style="color:#FFB454;">2024.10</span>
+        <span class="tl-title">推理成本 280× 下降</span>
+        <span class="tl-desc">小模型开始可商用</span>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <span class="tl-dot" style="background:#FF6F5E;"></span>
+        <span class="tl-year" style="color:#FF6F5E;">2025.01</span>
+        <span class="tl-title">DeepSeek 效率冲击</span>
+        <span class="tl-desc">训练成本信仰松动</span>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <span class="tl-dot" style="background:#45D98A;"></span>
+        <span class="tl-year" style="color:#45D98A;">2025.06</span>
+        <span class="tl-title">Agent 试验达 62%</span>
+        <span class="tl-desc">McKinsey 企业调查</span>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <span class="tl-dot" style="background:#2FE3C8;"></span>
+        <span class="tl-year" style="color:#2FE3C8;">2026.08</span>
+        <span class="tl-title">EU AI Act 执法启动</span>
+        <span class="tl-desc">透明度与执法落地</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 05 · 2026 五条预测 ========== -->
+  <section class="section section-deep" id="predictions">
+    <div class="sec-head">
+      <span class="sec-eyebrow">SECTION 05  /  2026 PREDICTIONS</span>
+      <h2 class="sec-title">2026 五条关键预测</h2>
+      <p class="sec-desc">每条预测都标注了信度。高信度来自数据惯性，中信度来自产业条件已具备但时间不确定，低信度则是对政策与组织行为的猜测。</p>
+    </div>
+
+    <div class="pred-list">
+      <article class="pred">
+        <div class="pred-badge">
+          <span class="pred-dot" style="background:#45D98A;"></span>
+          <span class="pred-conf" style="color:#45D98A;">高信度</span>
+        </div>
+        <div class="pred-right">
+          <h3 class="pred-title">推理成本继续以数量级下降</h3>
+          <p class="pred-desc">固定能力口径下，LLM 推理成本每年下降 9–900 倍；a16z 观察到约 10×/年的「LLMflation」。成本坍塌不是一次性事件，而是持续性结构变化。</p>
+          <span class="src-chip">Stanford HAI / a16z</span>
+        </div>
+      </article>
+
+      <article class="pred">
+        <div class="pred-badge">
+          <span class="pred-dot" style="background:#45D98A;"></span>
+          <span class="pred-conf" style="color:#45D98A;">高信度</span>
+        </div>
+        <div class="pred-right">
+          <h3 class="pred-title">Agent 从小工具变成「数字员工」</h3>
+          <p class="pred-desc">2026 年企业关注的核心不再是「Agent 能不能用」，而是「Agent 有没有工号、预算和审计日志」。权限、花费上限、失败回退成为采购清单的必选项。</p>
+          <span class="src-chip">a16z / McKinsey / Gartner</span>
+        </div>
+      </article>
+
+      <article class="pred">
+        <div class="pred-badge">
+          <span class="pred-dot" style="background:#FFB454;"></span>
+          <span class="pred-conf" style="color:#FFB454;">中信度</span>
+        </div>
+        <div class="pred-right">
+          <h3 class="pred-title">端侧 AI 在中国渗透率过半，但全球仍看旗舰机</h3>
+          <p class="pred-desc">IDC 预计 2026 年中国 AI 手机出货 1.47 亿台、渗透率 53%；全球 GenAI 手机渗透率约 45%。但用户实际 AI 功能使用率仍不足 10%，认知与体验缺口是最大变量。</p>
+          <span class="src-chip">IDC / Counterpoint</span>
+        </div>
+      </article>
+
+      <article class="pred">
+        <div class="pred-badge">
+          <span class="pred-dot" style="background:#FFB454;"></span>
+          <span class="pred-conf" style="color:#FFB454;">中信度</span>
+        </div>
+        <div class="pred-right">
+          <h3 class="pred-title">AI 原生工业基础开始重建制造业</h3>
+          <p class="pred-desc">a16z 预言「电-工业堆栈」将软件与物理世界连接：能源、采矿、建筑、制造从「旧产业现代化」变成「为 AI 原生设计」。美国工厂的复兴进入验证期。</p>
+          <span class="src-chip">a16z Big Ideas 2026</span>
+        </div>
+      </article>
+
+      <article class="pred">
+        <div class="pred-badge">
+          <span class="pred-dot" style="background:#FF6F5E;"></span>
+          <span class="pred-conf" style="color:#FF6F5E;">低信度</span>
+        </div>
+        <div class="pred-right">
+          <h3 class="pred-title">超过 40% 的 Agentic AI 项目将被取消</h3>
+          <p class="pred-desc">Gartner 预测到 2027 年底，超过 40% 的 Agentic AI 项目会被取消 —— 主因是成本失控、价值不清与风控不足，而非模型能力。这提醒我们：模型能力高，不等于项目能活下来。</p>
+          <span class="src-chip">Gartner 2026 预测</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 06 · 常见质疑 ========== -->
+  <section class="section section-alt" id="faq">
+    <div class="sec-head">
+      <span class="sec-eyebrow">SECTION 06  /  FAQ</span>
+      <h2 class="sec-title">常见质疑</h2>
+      <p class="sec-desc">所有回答基于公开报告口径，不是投资或法律建议。</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">
+        <span class="faq-badge" style="background:#2FE3C8;">Q</span>
+        <span class="faq-question">AI 是不是泡沫？企业真的赚到钱了吗？</span>
+      </div>
+      <p class="faq-answer">不是纯粹泡沫，但价值兑现极不均衡：88% 的企业至少在一个职能使用 AI，仅 6% 实现 EBIT 层面显著增长。当前更像基础设施投资期，利润高度集中在少数高绩效企业。</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">
+        <span class="faq-badge" style="background:#7B6BFF;">Q</span>
+        <span class="faq-question">Agent 会取代大量工作吗？</span>
+      </div>
+      <p class="faq-answer">短期更多是工作流重构，而非简单替代。McKinsey 调查显示：43% 受访者预计未来一年员工总数不变，32% 预计减少 3% 以上，13% 预计增加。角色正从执行转向审核、异常处理与意图校准。</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">
+        <span class="faq-badge" style="background:#FFB454;">Q</span>
+        <span class="faq-question">中国在这场竞赛中落后多少？</span>
+      </div>
+      <p class="faq-answer">私营投资上美国是 23 倍领先，但中国在应用渗透、工业场景、机器人密度与模型工程化上追赶极快。高端芯片与基础模型原创仍是主要差距。</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">
+        <span class="faq-badge" style="background:#45D98A;">Q</span>
+        <span class="faq-question">EU AI Act 会不会拖慢欧洲创新？</span>
+      </div>
+      <p class="faq-answer">高风险义务推迟到 2027–2028 年，给企业缓冲。真正影响是合规成本前置：需要在设计阶段就积累风险管理、数据治理与上市后监控证据，而不是临时补材料。</p>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 07 · 订阅 CTA ========== -->
+  <section class="cta-section" id="cta">
+    <div class="cta-panel">
+      <h2 class="cta-title">获取完整报告 · 每周趋势简报</h2>
+      <p class="cta-desc">订阅后获得完整 PDF 报告与数据包更新。不群发，每周只发一条关键变化摘要。</p>
+      <form class="cta-form" id="subForm">
+        <input class="cta-input" type="email" placeholder="输入邮箱地址" aria-label="邮箱地址">
+        <button class="cta-btn" type="submit">订阅</button>
+      </form>
+      <p class="cta-note">也可直接下载 2025–2026 年度报告 PDF</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-mark">
+          <span class="footer-mark-icon"></span>
+          <span class="footer-brand-name">AI TRENDS 2026</span>
+        </div>
+        <p class="footer-tag">一份面向产品与技术决策者的 AI 趋势速查。
+所有数据均来自公开报告，仅供研究与讨论。</p>
+      </div>
+      <div class="footer-sources">
+        <span class="footer-src-title">数据来源</span>
+        <p class="footer-src-list">Stanford HAI — AI Index Report 2025 / 2026
+McKinsey — The State of AI in 2025
+Andreessen Horowitz (a16z) — Big Ideas 2026
+Gartner — Worldwide AI Spending Forecast, 2026
+IDC — AI Phone / Edge AI Market Outlook, 2026
+EU AI Act — Implementation Timeline &amp; Omnibus, 2026</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">2026 AI Trends Report. Data compiled for research and discussion.</span>
+      <span class="footer-links">关于报告 · 数据下载 · 联系我们</span>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+(function(){
+  var wrap   = document.getElementById('fitWrap');
+  var canvas = document.getElementById('canvas');
+
+  /* 保留 1440px 原始画布，按窗口宽度等比缩放 */
+  function fit(){
+    var s = Math.min(1, window.innerWidth / 1440);
+    canvas.style.transform = 'scale(' + s + ')';
+    wrap.style.height = (canvas.offsetHeight * s) + 'px';
+  }
+
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fit);
+  }
+  fit();
+
+  /* 锚点跳转需补偿缩放后的偏移量 */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      var s = Math.min(1, window.innerWidth / 1440);
+      var top = target.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: top * s, behavior: 'smooth' });
+    });
+  });
+
+  /* 订阅表单 */
+  var form = document.getElementById('subForm');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var input = form.querySelector('.cta-input');
+      var btn = form.querySelector('.cta-btn');
+      if (!input.value) { input.focus(); return; }
+      btn.textContent = '已订阅';
+      input.value = '';
+      setTimeout(function(){ btn.textContent = '订阅'; }, 2200);
+    });
+  }
+})();
+</script>
+</body>
+</html>
