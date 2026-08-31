@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据图志 · DATA ATLAS</title>
+  <meta name="description" content="数据图志：一个入口，直达全部页面。收录 4 篇数据研究报告与 1 个在线工具。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F6F3EC;
+      --card: #FFFFFF;
+      --ink: #17211F;
+      --ink-secondary: #5F6A66;
+      --ink-tertiary: #8C948F;
+      --hairline: #E6E1D6;
+      --hero-dark: #0C1715;
+      --hero-mid: #1B3630;
+      --accent-01: #B4762A;
+      --accent-02: #1F5C4E;
+      --accent-03: #2A4B7C;
+      --accent-04: #6A4B93;
+      --accent-05: #A3463A;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .serif {
+      font-family: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: radial-gradient(circle at 50% 0%, var(--hero-mid) 0%, var(--hero-dark) 70%);
+      color: #F4F2EA;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at 50% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+      -webkit-mask-image: radial-gradient(circle at 50% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(1080px, 100% - 40px);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-latin {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #7C8B84;
+      text-transform: uppercase;
+    }
+
+    .gh-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #9FADA6;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .gh-link:hover { color: #F4F2EA; }
+
+    .gh-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 56px 0 88px;
+      gap: 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #2C3D38;
+      background: rgba(24, 42, 37, 0.6);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.6px;
+      color: #8FA79E;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #5FA38D;
+    }
+
+    h1 {
+      font-size: clamp(40px, 5.5vw, 62px);
+      font-weight: 600;
+      line-height: 1.22;
+      margin: 0;
+      color: #F6F4EC;
+    }
+
+    .subheadline {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #A6B3AC;
+      max-width: 700px;
+      margin: 0;
+    }
+
+    .url-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #2D443D;
+      background: #1A2E28;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #E9EFEA;
+    }
+
+    .url-pill span {
+      font-size: 12px;
+      font-weight: 500;
+      color: #7C8B84;
+    }
+
+    .url-pill .divider {
+      width: 1px;
+      height: 16px;
+      background: #33463F;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding-top: 18px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat .value {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 30px;
+      font-weight: 600;
+      color: #F4F2EA;
+      line-height: 1;
+    }
+
+    .stat .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      color: #7C8B84;
+      margin-top: 6px;
+    }
+
+    /* Main */
+    .main {
+      padding: 84px 0 96px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .section-meta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--ink-tertiary);
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-row-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-row-3 {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-row-2, .grid-row-3 {
+        grid-template-columns: 1fr;
+      }
+      .grid-row-3 { margin-top: 0; }
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid var(--hairline);
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(14, 22, 20, 0.07);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(14, 22, 20, 0.11);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-number {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+    }
+
+    .card-number::before {
+      content: '';
+      width: 3px;
+      height: 16px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.04);
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.72;
+      color: var(--ink-secondary);
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+    }
+
+    .card-path {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: var(--ink-tertiary);
+    }
+
+    .card-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--paper);
+      display: grid;
+      place-items: center;
+      color: #5F6A66;
+    }
+
+    .card-arrow svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+    }
+
+    .accent-01 { color: var(--accent-01); }
+    .accent-02 { color: var(--accent-02); }
+    .accent-03 { color: var(--accent-03); }
+    .accent-04 { color: var(--accent-04); }
+    .accent-05 { color: var(--accent-05); }
+
+    .tag-01 { background: #F8EFDF; color: #8E5C1C; }
+    .tag-02 { background: #E7F0EB; color: #1B5245; }
+    .tag-03 { background: #E8EDF5; color: #24406B; }
+    .tag-04 { background: #F0E9F6; color: #5A3F7E; }
+    .tag-05 { background: #F7E9E6; color: #8A3A30; }
+
+    /* Footer */
+    footer {
+      background: var(--hero-dark);
+      color: #93A09A;
+      padding: 56px 0;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #F4F2EA;
+    }
+
+    .footer-brand-latin {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #6E7C75;
+      text-transform: uppercase;
+    }
+
+    .footer-meta {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 13px;
+    }
+
+    .footer-meta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #93A09A;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-meta a:hover { color: #F4F2EA; }
+
+    .footer-divider {
+      height: 1px;
+      background: #1E2E2A;
+      margin: 28px 0;
+    }
+
+    .footer-bottom {
+      font-size: 12px;
+      color: #6E7C75;
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 20px 0; }
+      .hero-content { padding: 42px 0 64px; }
+      .stats { gap: 32px; }
+      .section-head { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+      .footer-meta { flex-wrap: wrap; gap: 16px; }
+      .card { padding: 22px; }
+      .card-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="container">
+      <header>
+        <div class="brand">
+          <span class="brand-name serif">数据图志</span>
+          <span class="brand-latin">Data Atlas</span>
+        </div>
+        <a class="gh-link" href="https://github.com/dingyufeng" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </header>
+
+      <div class="hero-content">
+        <div class="eyebrow">GITHUB PAGES · 站点入口</div>
+        <h1 class="serif">一个地址，访问全部页面</h1>
+        <p class="subheadline">本站收录 4 篇数据研究报告与 1 个在线工具。书签只需保存这一个地址，其余页面随取随用。</p>
+        <div class="url-pill"><span>收藏地址</span><div class="divider"></div>dingyufeng.github.io/sudoku/</div>
+        <div class="stats">
+          <div class="stat"><div class="value">5</div><div class="label">页面总数</div></div>
+          <div class="stat"><div class="value">4</div><div class="label">数据报告</div></div>
+          <div class="stat"><div class="value">1</div><div class="label">在线工具</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title serif">页面索引</h2>
+        <span class="section-meta">INDEX · 05 ENTRIES</span>
+      </div>
+
+      <div class="grid grid-row-2">
+        <a class="card" href="https://dingyufeng.github.io/sudoku/index.html">
+          <div class="card-top">
+            <div class="card-number accent-01">01</div>
+            <span class="card-tag tag-01">在线工具</span>
+          </div>
+          <h3 class="card-title serif">数独游戏</h3>
+          <p class="card-desc">支持初级、中级、高级三档难度，含笔记模式、撤销、提示与错误计时。打开即玩，成绩与进度全部留在本地浏览器。</p>
+          <div class="card-footer">
+            <span class="card-path">/sudoku/index.html</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          </div>
+        </a>
+
+        <a class="card" href="https://dingyufeng.github.io/sudoku/2025_cepar.html">
+          <div class="card-top">
+            <div class="card-number accent-02">02</div>
+            <span class="card-tag tag-02">年度报告</span>
+          </div>
+          <h3 class="card-title serif">中国就业景气年度报告</h3>
+          <p class="card-desc">总量稳、结构分。城镇新增就业与失业率保持平稳的同时，青年失业、技能错配与区域分化等结构性矛盾仍然突出。</p>
+          <div class="card-footer">
+            <span class="card-path">/sudoku/2025_cepar.html</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="grid grid-row-3">
+        <a class="card" href="https://dingyufeng.github.io/sudoku/population_infographic.html">
+          <div class="card-top">
+            <div class="card-number accent-03">03</div>
+            <span class="card-tag tag-03">数据信息图</span>
+          </div>
+          <h3 class="card-title serif">全球人口结构与趋势</h3>
+          <p class="card-desc">基于联合国 WPP 2024 中等变量预测，拆解人口达峰、生育率下行、老龄化反转与印度超越中国的区域分化。</p>
+          <div class="card-footer">
+            <span class="card-path">/sudoku/population_infographic.html</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          </div>
+        </a>
+
+        <a class="card" href="https://dingyufeng.github.io/sudoku/ai_trends.html">
+          <div class="card-top">
+            <div class="card-number accent-04">04</div>
+            <span class="card-tag tag-04">趋势分析</span>
+          </div>
+          <h3 class="card-title serif">AI 发展趋势</h3>
+          <p class="card-desc">六个核心切片、一组关键数据与五条 2026 预测，用 Stanford HAI、McKinsey、a16z 与 Gartner 的公开口径定位这轮周期。</p>
+          <div class="card-footer">
+            <span class="card-path">/sudoku/ai_trends.html</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          </div>
+        </a>
+
+        <a class="card" href="https://dingyufeng.github.io/sudoku/gdp_beyond_hdi.html">
+          <div class="card-top">
+            <div class="card-number accent-05">05</div>
+            <span class="card-tag tag-05">指标解读</span>
+          </div>
+          <h3 class="card-title serif">GDP 之外：用 HDI 丈量发展</h3>
+          <p class="card-desc">借助 UNDP 人类发展报告，从健康、教育、生活水平三维比较各国 HDI 位次，高收入不等于高人类发展。</p>
+          <div class="card-footer">
+            <span class="card-path">/sudoku/gdp_beyond_hdi.html</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-brand-name serif">数据图志</span>
+          <span class="footer-brand-latin">Data Atlas</span>
+        </div>
+        <div class="footer-meta">
+          <span>共 5 个页面</span>
+          <span>托管于 GitHub Pages</span>
+          <a href="https://github.com/dingyufeng" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;stroke:currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            dingyufeng
+          </a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">2026 数据图志 · 所有数据均来自公开报告，仅供研究与讨论</div>
+    </div>
+  </footer>
+
+</body>
+</html>
