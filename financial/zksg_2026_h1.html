@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中科曙光（603019）2026年半年报分析与下半年业绩·股票走势预判</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --muted:#6b7585;
+    --brand:#163e8c; --brand2:#1e6fb8; --accent:#0e9f6e; --warn:#d97706; --down:#c0392b;
+    --line:#e4e8f0; --soft:#f0f3f9;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+  header{background:linear-gradient(135deg,#0c2c66,#1e6fb8);color:#fff;padding:42px 0 34px;margin-bottom:26px}
+  header .in{max-width:1080px;margin:0 auto;padding:0 20px}
+  header h1{margin:0 0 6px;font-size:28px;font-weight:800;letter-spacing:.5px}
+  header .sub{opacity:.9;font-size:15px}
+  header .meta{margin-top:14px;font-size:13px;opacity:.82}
+  .tag{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:3px 10px;border-radius:20px;font-size:12px;margin:8px 8px 0 0}
+  h2{font-size:20px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--brand);color:var(--brand)}
+  h3{font-size:16px;margin:22px 0 10px;color:var(--ink)}
+  p{margin:10px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0;
+    box-shadow:0 2px 10px rgba(20,40,90,.04)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px;
+    box-shadow:0 2px 10px rgba(20,40,90,.04);position:relative;overflow:hidden}
+  .kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brand2)}
+  .kpi .k{font-size:12px;color:var(--muted)}
+  .kpi .v{font-size:24px;font-weight:800;margin:6px 0 2px;color:var(--ink)}
+  .kpi .d{font-size:12.5px;font-weight:700}
+  .up{color:var(--accent)} .down{color:var(--down)}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:right}
+  th{background:var(--soft);color:var(--brand);font-weight:700;text-align:center}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbfe}
+  .note{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .bar-row{display:flex;align-items:center;margin:9px 0;font-size:13.5px}
+  .bar-row .lbl{width:140px;flex:0 0 140px;color:var(--muted)}
+  .bar-track{flex:1;background:var(--soft);border-radius:8px;height:24px;position:relative;overflow:hidden}
+  .bar-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#1e6fb8,#3aa0e6);
+    display:flex;align-items:center;justify-content:flex-end;color:#fff;font-size:12px;font-weight:700;padding-right:8px}
+  .bar-fill.b2{background:linear-gradient(90deg,#163e8c,#2b6fd6)}
+  .bar-fill.b3{background:linear-gradient(90deg,#0e9f6e,#34c98f)}
+  .bar-fill.g2{background:linear-gradient(90deg,#7a879b,#a7b2c4)}
+  .chart-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .pill{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:700}
+  .pill.g{background:#e7f7ef;color:var(--accent)} .pill.w{background:#fdf3e3;color:var(--warn)}
+  .pill.r{background:#fdecea;color:var(--down)}
+  .timeline{position:relative;padding-left:22px;margin:10px 0}
+  .timeline::before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line)}
+  .tl-item{position:relative;margin:0 0 16px}
+  .tl-item::before{content:"";position:absolute;left:-19px;top:6px;width:10px;height:10px;border-radius:50%;
+    background:var(--brand2);border:2px solid #fff;box-shadow:0 0 0 2px var(--brand2)}
+  .tl-date{font-size:12.5px;color:var(--brand);font-weight:700}
+  .tl-title{font-weight:700;margin:2px 0}
+  .tl-desc{font-size:13.5px;color:#3a4456}
+  .scn{font-weight:800} .scn.c{color:var(--muted)} .scn.n{color:var(--brand)} .scn.o{color:var(--accent)}
+  .disc{background:#fff8ef;border:1px solid #f3d9a8;border-radius:12px;padding:14px 18px;font-size:12.5px;color:#8a6d3b;margin:30px 0 0}
+  .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  ul{margin:8px 0;padding-left:20px} li{margin:6px 0}
+  .src{font-size:12px;color:var(--muted);font-style:italic}
+  @media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.bar-row .lbl{width:96px;flex-basis:96px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="in">
+    <h1>中科曙光（603019.SH）2026 年半年报分析</h1>
+    <div class="sub">暨下半年业绩预判与股票走势情景分析</div>
+    <div class="meta">报告日期：2026-09-01 ｜ 数据来源：公司 2026 年半年度报告（cninfo 披露）、公开资讯检索</div>
+    <div>
+      <span class="tag">国产算力核心标的</span>
+      <span class="tag">AI 服务器 / 高性能计算</span>
+      <span class="tag">海光信息重要股东</span>
+      <span class="tag">本报告不构成投资建议</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1. 核心业绩速览 -->
+  <h2>一、核心业绩速览（2026 年上半年）</h2>
+  <div class="kpis">
+    <div class="kpi"><div class="k">营业收入</div><div class="v">74.66<span style="font-size:14px">亿</span></div><div class="d up">▲ 同比 +27.62%</div></div>
+    <div class="kpi"><div class="k">归母净利润</div><div class="v">9.71<span style="font-size:14px">亿</span></div><div class="d up">▲ 同比 +33.31%</div></div>
+    <div class="kpi"><div class="k">扣非归母净利润</div><div class="v">8.44<span style="font-size:14px">亿</span></div><div class="d up">▲ 同比 +48.45%</div></div>
+    <div class="kpi"><div class="k">基本每股收益</div><div class="v">0.664<span style="font-size:14px">元</span></div><div class="d up">▲ 同比 +32.80%</div></div>
+    <div class="kpi"><div class="k">利润总额</div><div class="v">11.23<span style="font-size:14px">亿</span></div><div class="d up">▲ 同比 +38.76%</div></div>
+    <div class="kpi"><div class="k">加权 ROE</div><div class="v">4.28<span style="font-size:14px">%</span></div><div class="d up">▲ 提升 0.76pct</div></div>
+    <div class="kpi"><div class="k">销售毛利率</div><div class="v">27.23<span style="font-size:14px">%</span></div><div class="d">净利率 13.01%</div></div>
+    <div class="kpi"><div class="k">经营现金流净额</div><div class="v">-1.87<span style="font-size:14px">亿</span></div><div class="d up">▲ 同比大幅改善（去年 -13.81亿）</div></div>
+  </div>
+  <div class="card">
+    <p><b>一句话总结：</b>2026 年上半年中科曙光延续高增长，营收与利润增速均超 27%/33%，其中<b>扣非净利润增速达 48.45%</b>，说明主业盈利质量明显提升；经营现金流同比大幅收窄亏损，资产结构稳健（总资产 432.15 亿、净资产 230.53 亿，分别 +5.52% / +3.69%）。</p>
+  </div>
+
+  <!-- 2. 关键财务指标 -->
+  <h2>二、半年报关键财务数据</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比变动</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入（元）</td><td>7,465,810,151</td><td>5,849,961,017</td><td class="up">+27.62%</td></tr>
+        <tr><td>归属于上市公司股东净利润（元）</td><td>971,389,448</td><td>728,660,817</td><td class="up">+33.31%</td></tr>
+        <tr><td>扣非归母净利润（元）</td><td>844,062,349</td><td>568,586,458</td><td class="up">+48.45%</td></tr>
+        <tr><td>利润总额（元）</td><td>1,122,976,126</td><td>809,265,865</td><td class="up">+38.76%</td></tr>
+        <tr><td>基本每股收益（元/股）</td><td>0.664</td><td>0.503</td><td class="up">+32.80%</td></tr>
+        <tr><td>加权平均净资产收益率</td><td>4.28%</td><td>3.52%</td><td class="up">+0.76pct</td></tr>
+        <tr><td>销售毛利率</td><td>27.23%</td><td>—</td><td>基本稳定</td></tr>
+        <tr><td>经营活动现金流净额（元）</td><td>-186,509,143</td><td>-1,381,335,558</td><td class="up">亏损收窄</td></tr>
+        <tr><td>总资产（元）</td><td>43,215,094,411</td><td>40,953,741,117</td><td class="up">+5.52%</td></tr>
+        <tr><td>归属净资产（元）</td><td>23,052,817,403</td><td>22,233,220,050</td><td class="up">+3.69%</td></tr>
+      </tbody>
+    </table>
+    <div class="note">注：2025 H1 数据取自公司上年同期披露；2026 H1 数据取自 2026-08-26 披露的《2026 年半年度报告》（cninfo）。</div>
+  </div>
+
+  <!-- 3. 收入结构 -->
+  <h2>三、收入结构分析</h2>
+  <div class="grid2">
+    <div class="chart-card">
+      <h3 style="margin-top:4px">按产品构成</h3>
+      <div class="bar-row"><span class="lbl">IT 设备</span>
+        <div class="bar-track"><div class="bar-fill b2" style="width:89.28%">66.66亿 · 89.28%</div></div></div>
+      <div class="bar-row"><span class="lbl">软件/集成/服务</span>
+        <div class="bar-track"><div class="bar-fill g2" style="width:10.62%">7.93亿 · 10.62%</div></div></div>
+      <div class="bar-row"><span class="lbl">其他</span>
+        <div class="bar-track"><div class="bar-fill g2" style="width:0.7%">0.07%</div></div></div>
+    </div>
+    <div class="chart-card">
+      <h3 style="margin-top:4px">按客户类型</h3>
+      <div class="bar-row"><span class="lbl">企业客户</span>
+        <div class="bar-track"><div class="bar-fill b2" style="width:61.63%">46.01亿 · 61.63%</div></div></div>
+      <div class="bar-row"><span class="lbl">公共事业</span>
+        <div class="bar-track"><div class="bar-fill" style="width:38.28%">28.58亿 · 38.28%</div></div></div>
+      <div class="bar-row"><span class="lbl">其他</span>
+        <div class="bar-track"><div class="bar-fill g2" style="width:0.7%">0.09%</div></div></div>
+    </div>
+  </div>
+  <div class="chart-card">
+    <h3 style="margin-top:4px">按地区分布</h3>
+    <div class="bar-row"><span class="lbl">北部大区</span>
+      <div class="bar-track"><div class="bar-fill b2" style="width:33.44%">24.96亿 · 33.44%</div></div></div>
+    <div class="bar-row"><span class="lbl">南部大区</span>
+      <div class="bar-track"><div class="bar-fill" style="width:32.55%">24.30亿 · 32.55%</div></div></div>
+    <div class="bar-row"><span class="lbl">东部大区</span>
+      <div class="bar-track"><div class="bar-fill" style="width:28.01%">20.91亿 · 28.01%</div></div></div>
+    <div class="bar-row"><span class="lbl">其他</span>
+      <div class="bar-track"><div class="bar-fill g2" style="width:6.01%">4.49亿 · 6.01%</div></div></div>
+    <p class="note">解读：收入以 IT 设备（服务器/存储/算力基础设施）为绝对主体（89%），客户呈企业/公共事业双轮驱动，地区分布均衡，无明显单一区域依赖。</p>
+  </div>
+
+  <!-- 4. 趋势 -->
+  <h2>四、历史趋势与季度动能</h2>
+  <div class="chart-card">
+    <h3 style="margin-top:4px">全年营业收入趋势（亿元）</h3>
+    <svg viewBox="0 0 720 260" width="100%" style="max-height:300px">
+      <line x1="60" y1="220" x2="700" y2="220" stroke="#e4e8f0"/>
+      <!-- 2022 130.08 -->
+      <rect x="80" y="96" width="90" height="124" fill="#1e6fb8" rx="4"/>
+      <text x="125" y="88" text-anchor="middle" font-size="13" fill="#1a2233">130.1</text>
+      <!-- 2023 143.53 -->
+      <rect x="210" y="73" width="90" height="147" fill="#1e6fb8" rx="4"/>
+      <text x="255" y="65" text-anchor="middle" font-size="13" fill="#1a2233">143.5</text>
+      <!-- 2024 131.48 -->
+      <rect x="340" y="92" width="90" height="128" fill="#1e6fb8" rx="4"/>
+      <text x="385" y="84" text-anchor="middle" font-size="13" fill="#1a2233">131.5</text>
+      <!-- 2025 149.64 -->
+      <rect x="470" y="62" width="90" height="158" fill="#163e8c" rx="4"/>
+      <text x="515" y="54" text-anchor="middle" font-size="13" fill="#1a2233">149.6</text>
+      <!-- 2026E(年化中枢~185) -->
+      <rect x="600" y="28" width="90" height="192" fill="#0e9f6e" rx="4" opacity=".85"/>
+      <text x="645" y="20" text-anchor="middle" font-size="13" fill="#0e9f6e">≈185*</text>
+      <text x="125" y="240" text-anchor="middle" font-size="12" fill="#6b7585">2022</text>
+      <text x="255" y="240" text-anchor="middle" font-size="12" fill="#6b7585">2023</text>
+      <text x="385" y="240" text-anchor="middle" font-size="12" fill="#6b7585">2024</text>
+      <text x="515" y="240" text-anchor="middle" font-size="12" fill="#6b7585">2025</text>
+      <text x="645" y="240" text-anchor="middle" font-size="12" fill="#6b7585">2026E*</text>
+    </svg>
+    <p class="note">*2026E 为基于上半年 74.66 亿、结合下半年季节性加权后的全年中枢预判（详见第六节），非公司指引。</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:4px">季度动能：增长逐季加速</h3>
+      <table>
+        <thead><tr><th>季度</th><th>营收(亿)</th><th>归母(亿)</th><th>营收同比</th></tr></thead>
+        <tbody>
+          <tr><td>2026 Q1</td><td>32.0</td><td>2.27</td><td class="up">+23.7%</td></tr>
+          <tr><td>2026 Q2</td><td>42.66</td><td>7.44</td><td class="up">+30.7%</td></tr>
+          <tr><td>2025 Q1</td><td>25.86</td><td>1.87</td><td>—</td></tr>
+          <tr><td>2025 Q2</td><td>32.64</td><td>5.42</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Q2 营收/利润增速（30.7%/37.1%）高于 Q1，呈逐季提速态势，反映订单与交付节奏在上半年持续放量。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:4px">历史归母净利润（亿元）</h3>
+      <svg viewBox="0 0 360 200" width="100%" style="max-height:210px">
+        <polyline points="40,150 120,120 200,112 280,86 340,60" fill="none" stroke="#0e9f6e" stroke-width="3"/>
+        <circle cx="40" cy="150" r="4" fill="#0e9f6e"/><circle cx="120" cy="120" r="4" fill="#0e9f6e"/>
+        <circle cx="200" cy="112" r="4" fill="#0e9f6e"/><circle cx="280" cy="86" r="4" fill="#0e9f6e"/>
+        <circle cx="340" cy="60" r="4" fill="#0e9f6e"/>
+        <text x="40" y="170" text-anchor="middle" font-size="11" fill="#6b7585">22</text>
+        <text x="120" y="170" text-anchor="middle" font-size="11" fill="#6b7585">23</text>
+        <text x="200" y="170" text-anchor="middle" font-size="11" fill="#6b7585">24</text>
+        <text x="280" y="170" text-anchor="middle" font-size="11" fill="#6b7585">25</text>
+        <text x="340" y="170" text-anchor="middle" font-size="11" fill="#6b7585">26H1</text>
+        <text x="40" y="142" text-anchor="middle" font-size="10" fill="#0e9f6e">15.4</text>
+        <text x="120" y="112" text-anchor="middle" font-size="10" fill="#0e9f6e">18.4</text>
+        <text x="200" y="104" text-anchor="middle" font-size="10" fill="#0e9f6e">19.1</text>
+        <text x="280" y="78" text-anchor="middle" font-size="10" fill="#0e9f6e">21.8</text>
+        <text x="340" y="52" text-anchor="middle" font-size="10" fill="#0e9f6e">9.71</text>
+      </svg>
+      <p class="note">归母净利润 2022→2025 年复合增速约 12%，2026H1 已达 9.71 亿，全年有望迈上新台阶。</p>
+    </div>
+  </div>
+
+  <!-- 5. 驱动 -->
+  <h2>五、业绩驱动因素</h2>
+  <div class="card">
+    <ul>
+      <li><b>核心主业聚焦 + 产品结构优化：</b>公司半年报明确，业绩增长主要源于聚焦智能计算领域产品布局、解决方案能力与竞争力增强，主营业务盈利能力提升。</li>
+      <li><b>参股子公司投资收益增加：</b>海光信息（国产 CPU/GPU 龙头）等参股公司经营向好，投资收益同比提升，对利润形成正向贡献。</li>
+      <li><b>ParaCache 词元加速方案落地（2026-08-28 发布）：</b>通过"以存换算"复用大模型计算结果，在约 12 万词元输入下等待时间最高降低 98.5%，高并发词元处理量最高达 27 倍；已在国内头部互联网企业在线推理落地，并在全国产十万卡 AI 超集群"曙光 8000"完成验证。</li>
+      <li><b>全国产算力底座"曙光 8000"亮相 2026 数博会：</b>中国首个全国产十万卡 AI 超集群，强化公司在国产 AI 基础设施中的领先地位。</li>
+      <li><b>业务边界拓展：</b>2026-08-28 成立含集成电路芯片业务的新公司，向芯片相关环节延伸。</li>
+      <li><b>行业景气共振：</b>AI 算力产业链高景气，液冷、光模块、AI 服务器订单爆发（据公开调研，相关厂商上半年新签订单同比高增），国产算力需求持续放量。</li>
+    </ul>
+  </div>
+
+  <!-- 6. 下半年预判 -->
+  <h2>六、2026 下半年业绩预判（情景分析）</h2>
+  <div class="card">
+    <p>中科曙光历史上 H2 营收占比高于 H1（政企采购与项目交付多集中于下半年）。以 2025 全年为基（营收 149.64 亿、归母 21.76 亿、H2 占比约 61%），结合 2026H1 已实现的 +27.6% 营收 / +33.3% 归母增速，给出三档情景：</p>
+    <table>
+      <thead><tr><th>指标</th><th>保守情景</th><th>中性情景</th><th>乐观情景</th></tr></thead>
+      <tbody>
+        <tr><td>H2 营收同比</td><td>+15%</td><td>+22%</td><td>+30%</td></tr>
+        <tr><td><b>2026 全年营收</b></td><td><b>≈179 亿</b></td><td><b>≈186 亿</b></td><td><b>≈193 亿</b></td></tr>
+        <tr><td>全年营收增速</td><td>+19.9%</td><td>+24.1%</td><td>+29.0%</td></tr>
+        <tr><td>H2 归母净利润同比</td><td>+18%</td><td>+25%</td><td>+32%</td></tr>
+        <tr><td><b>2026 全年归母净利润</b></td><td><b>≈26.8 亿</b></td><td><b>≈27.8 亿</b></td><td><b>≈28.8 亿</b></td></tr>
+        <tr><td>全年归母增速</td><td>+23.2%</td><td>+27.8%</td><td>+32.4%</td></tr>
+        <tr><td>全年扣非增速（参考 H1 +48%）</td><td colspan="3" style="text-align:center">预计维持 +35%~+45%，主业盈利弹性高于整体</td></tr>
+      </tbody>
+    </table>
+    <p class="note">关键假设：① H2 季节性权重维持历史规律；② 国产算力资本开支与政企订单节奏不出现明显放缓；③ 海光信息等参股公司投资收益保持正向。若宏观支出节奏延后，则更接近保守情景。</p>
+    <div class="grid2" style="margin-top:14px">
+      <div class="card" style="margin:0"><h3 style="margin-top:4px">支撑下半年向好的因素</h3>
+        <ul style="margin:6px 0">
+          <li>AI 算力需求持续高景气，国产替代加速</li>
+          <li>ParaCache、曙光 8000 等新产品进入放量期</li>
+          <li>H2 为传统交付与收入确认旺季</li>
+          <li>产品结构优化带动毛利率/净利率稳中有升</li>
+        </ul>
+      </div>
+      <div class="card" style="margin:0"><h3 style="margin-top:4px">需关注的下修风险</h3>
+        <ul style="margin:6px 0">
+          <li>政企预算与项目验收节奏不及预期</li>
+          <li>行业竞争加剧（华为昇腾等生态挤压）</li>
+          <li>投资收益随参股公司波动</li>
+          <li>毛利率受价格竞争与成本扰动</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. 股票走势 -->
+  <h2>七、股票走势分析（定性，非投资建议）</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:4px">向上催化</h3>
+      <ul style="margin:6px 0">
+        <li><span class="pill g">业绩</span> 中报高增 + 扣非弹性，全年预期上修</li>
+        <li><span class="pill g">产品</span> ParaCache、曙光 8000 形成新增长曲线</li>
+        <li><span class="pill g">产业链</span> 海光信息国产 CPU/GPU 放量，投资收益增厚</li>
+        <li><span class="pill g">主题</span> 国产算力 / AI 基建 / 信创政策持续加码</li>
+        <li><span class="pill g">资金</span> 机构与指数权重偏好科技蓝筹</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:4px">压制与风险</h3>
+      <ul style="margin:6px 0">
+        <li><span class="pill w">估值</span> 科技算力标的估值溢价较高，对业绩兑现敏感</li>
+        <li><span class="pill w">竞争</span> 华为昇腾等全栈生态竞争加剧</li>
+        <li><span class="pill w">节奏</span> 政企支出与订单落地存在季节性波动</li>
+        <li><span class="pill r">外部</span> 技术路线变化、供应链与贸易环境不确定性</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <p><b>走势研判（中性视角）：</b>从中长期逻辑看，公司业绩增长与"国产算力核心底座"定位匹配，AI 资本开支持续、国产替代深入，基本面支撑较强；ParaCache、曙光 8000 等创新产品有望打开第二成长曲线。<b>短期</b>股价更多受市场风格、风险偏好与估值水位影响，半年报业绩兑现后或进入"预期消化 + 催化验证"阶段，波动可能加大。整体呈"<b>基本面向上、估值高敏感</b>"特征。</p>
+    <p class="src">说明：本段为基于公开财务与资讯的定性情景描述，未给出具体点位或买卖建议。投资须结合自身风险承受能力并咨询专业顾问。</p>
+  </div>
+
+  <!-- 8. 资讯时间线 -->
+  <h2>八、近期关键资讯（公开检索摘要）</h2>
+  <div class="card">
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-date">2026-08-25</div>
+        <div class="tl-title">中科曙光：上半年净利润 9.71 亿元，同比增长 33.31%</div>
+        <div class="tl-desc">公司披露半年报，营收 74.66 亿（+27.62%），归母 9.71 亿（+33.31%），EPS 0.664 元。增长源于产品结构优化与主业盈利提升。</div></div>
+      <div class="tl-item"><div class="tl-date">2026-08-27 ~ 08-30</div>
+        <div class="tl-title">曙光亮相 2026 数博会，筑牢词元算力底座</div>
+        <div class="tl-desc">携中国首个全国产十万卡 AI 超集群"曙光 8000（登峰）"及全栈产品亮相，展示新一代算力底座能力。</div></div>
+      <div class="tl-item"><div class="tl-date">2026-08-28</div>
+        <div class="tl-title">中科曙光成立新公司，含集成电路芯片相关业务</div>
+        <div class="tl-desc">业务边界向芯片环节延伸，完善算力全产业链布局。</div></div>
+      <div class="tl-item"><div class="tl-date">2026-08-28 ~ 08-29</div>
+        <div class="tl-title">发布 ParaCache 词元加速方案</div>
+        <div class="tl-desc">"以存换算"复用大模型计算结果，12 万词元下等待时间最高降 98.5%，高并发词元处理量最高达 27 倍；已落地头部互联网并获曙光 8000 验证。</div></div>
+    </div>
+    <p class="src">资讯来源：平安证券资讯知识库、证券时报、上海证券报、中国证券网、公司半年度报告等公开渠道。资讯内容忠实于原文，未作主观演绎。</p>
+  </div>
+
+  <div class="disc">
+    <b>免责声明：</b>本报告基于中科曙光 2026 年半年度报告及公开资讯整理，部分下半年数据为基于历史规律与行业景气的<b>情景预判</b>，非公司官方指引，亦不构成任何投资建议或收益承诺。市场有风险，决策需谨慎，投资者应独立判断并自担风险。
+  </div>
+
+  <div class="footer">中科曙光（603019.SH）2026 半年报分析 ｜ 生成于 2026-09-01 ｜ 数据截至 2026 年半年度披露</div>
+</div>
+</body>
+</html>
