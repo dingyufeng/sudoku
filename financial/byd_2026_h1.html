@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>比亚迪（002594）2026年半年报分析·下半年预判·护城河评估</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1a2233; --muted:#6b7585;
+    --brand:#0b6b4f; --brand2:#0e9f6e; --accent:#1e6fb8; --warn:#d97706; --down:#c0392b;
+    --line:#e4e8f0; --soft:#f0f3f9;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+  header{background:linear-gradient(135deg,#0a4d3a,#0e9f6e);color:#fff;padding:42px 0 34px;margin-bottom:26px}
+  header .in{max-width:1080px;margin:0 auto;padding:0 20px}
+  header h1{margin:0 0 6px;font-size:28px;font-weight:800;letter-spacing:.5px}
+  header .sub{opacity:.92;font-size:15px}
+  header .meta{margin-top:14px;font-size:13px;opacity:.82}
+  .tag{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:3px 10px;border-radius:20px;font-size:12px;margin:8px 8px 0 0}
+  h2{font-size:20px;margin:38px 0 14px;padding-left:12px;border-left:5px solid var(--brand);color:var(--brand)}
+  h3{font-size:16px;margin:22px 0 10px;color:var(--ink)}
+  p{margin:10px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0;
+    box-shadow:0 2px 10px rgba(20,40,90,.04)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px;
+    box-shadow:0 2px 10px rgba(20,40,90,.04);position:relative;overflow:hidden}
+  .kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brand2)}
+  .kpi .k{font-size:12px;color:var(--muted)}
+  .kpi .v{font-size:23px;font-weight:800;margin:6px 0 2px;color:var(--ink)}
+  .kpi .d{font-size:12.5px;font-weight:700}
+  .up{color:var(--brand2)} .down{color:var(--down)} .neu{color:var(--muted)}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:right}
+  th{background:var(--soft);color:var(--brand);font-weight:700;text-align:center}
+  td:first-child,th:first-child{text-align:left}
+  tbody tr:nth-child(even){background:#fafbfe}
+  .note{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .bar-row{display:flex;align-items:center;margin:9px 0;font-size:13.5px}
+  .bar-row .lbl{width:150px;flex:0 0 150px;color:var(--muted)}
+  .bar-track{flex:1;background:var(--soft);border-radius:8px;height:24px;position:relative;overflow:hidden}
+  .bar-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#0e9f6e,#34c98f);
+    display:flex;align-items:center;justify-content:flex-end;color:#fff;font-size:12px;font-weight:700;padding-right:8px}
+  .bar-fill.b2{background:linear-gradient(90deg,#0b6b4f,#1e9c74)}
+  .bar-fill.b3{background:linear-gradient(90deg,#1e6fb8,#3aa0e6)}
+  .bar-fill.g2{background:linear-gradient(90deg,#7a879b,#a7b2c4)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .pill{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:700}
+  .pill.g{background:#e7f7ef;color:var(--brand2)} .pill.w{background:#fdf3e3;color:var(--warn)}
+  .pill.r{background:#fdecea;color:var(--down)} .pill.b{background:#e8f1fb;color:var(--accent)}
+  .timeline{position:relative;padding-left:22px;margin:10px 0}
+  .timeline::before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line)}
+  .tl-item{position:relative;margin:0 0 16px}
+  .tl-item::before{content:"";position:absolute;left:-19px;top:6px;width:10px;height:10px;border-radius:50%;
+    background:var(--brand2);border:2px solid #fff;box-shadow:0 0 0 2px var(--brand2)}
+  .tl-date{font-size:12.5px;color:var(--brand);font-weight:700}
+  .tl-title{font-weight:700;margin:2px 0}
+  .tl-desc{font-size:13.5px;color:#3a4456}
+  .moat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:14px 0}
+  .moat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:0 2px 8px rgba(20,40,90,.04)}
+  .moat .h{font-weight:800;color:var(--brand);font-size:14.5px;margin-bottom:4px}
+  .moat .n{font-size:12px;color:var(--accent);font-weight:700;margin-right:6px}
+  .disc{background:#fff8ef;border:1px solid #f3d9a8;border-radius:12px;padding:14px 18px;font-size:12.5px;color:#8a6d3b;margin:30px 0 0}
+  .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}
+  ul{margin:8px 0;padding-left:20px} li{margin:6px 0}
+  .src{font-size:12px;color:var(--muted);font-style:italic}
+  .depth-bar{display:flex;gap:4px;margin:4px 0}
+  .depth-bar i{height:10px;flex:1;border-radius:3px;background:#e4e8f0}
+  .depth-bar i.on{background:linear-gradient(90deg,#0b6b4f,#0e9f6e)}
+  @media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.moat-grid{grid-template-columns:1fr}.bar-row .lbl{width:96px;flex-basis:96px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="in">
+    <h1>比亚迪（002594.SZ / 1211.HK）2026 年半年报分析</h1>
+    <div class="sub">暨下半年业绩预判 · 护城河宽深评估 · 股票走势情景分析</div>
+    <div class="meta">报告日期：2026-09-01 ｜ 数据来源：公司 2026 年中期业绩（港交所 2026-08-28 披露）、公开资讯检索</div>
+    <div>
+      <span class="tag">全球新能源销冠</span>
+      <span class="tag">垂直整合标杆</span>
+      <span class="tag">刀片电池 / 闪充</span>
+      <span class="tag">本报告不构成投资建议</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1. 核心业绩速览 -->
+  <h2>一、核心业绩速览（2026 年上半年）</h2>
+  <div class="kpis">
+    <div class="kpi"><div class="k">营业收入</div><div class="v">3448<span style="font-size:14px">亿</span></div><div class="d down">▼ 同比 -7.13%</div></div>
+    <div class="kpi"><div class="k">归母净利润</div><div class="v">123.3<span style="font-size:14px">亿</span></div><div class="d down">▼ 同比 -20.54%</div></div>
+    <div class="kpi"><div class="k">毛利</div><div class="v">649.9<span style="font-size:14px">亿</span></div><div class="d down">▼ 同比 -2.81%</div></div>
+    <div class="kpi"><div class="k">基本每股收益</div><div class="v">1.35<span style="font-size:14px">元</span></div><div class="d down">▼ 同比 -21.05%</div></div>
+    <div class="kpi"><div class="k">研发投入</div><div class="v">289<span style="font-size:14px">亿</span></div><div class="d neu">累计超 2700 亿</div></div>
+    <div class="kpi"><div class="k">现金储备</div><div class="v">1674<span style="font-size:14px">亿</span></div><div class="d neu">流动性充裕</div></div>
+    <div class="kpi"><div class="k">NEV 销量</div><div class="v">181<span style="font-size:14px">万辆</span></div><div class="d neu">累计破 1690 万</div></div>
+    <div class="kpi"><div class="k">海外销量</div><div class="v">79<span style="font-size:14px">万辆</span></div><div class="d up">▲ 同比 +68%</div></div>
+  </div>
+  <div class="card">
+    <p><b>一句话总结：</b>2026 上半年营收与利润同比下滑（营收 -7.1%、归母 -20.5%），主因价格战、需求波动与汇兑损失；但<b>二季度强势反弹</b>——单季归母净利润同比 <b>+30%</b>、毛利率升至 <b>18.9%（近一年新高）</b>。销量结构明显优化：海外销量 +68%、高端品牌（方程豹/腾势/仰望）合计 +61%，"出海 + 高端化"正对冲国内价格压力。</p>
+  </div>
+
+  <!-- 2. 关键财务数据 -->
+  <h2>二、半年报关键财务数据</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比变动</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入（元）</td><td>344,815 百万</td><td>371,281 百万</td><td class="down">-7.13%</td></tr>
+        <tr><td>毛利（元）</td><td>64,989 百万</td><td>—</td><td class="down">-2.81%</td></tr>
+        <tr><td>营业利润（元）</td><td>约 147.44 亿</td><td>—</td><td class="down">-21.2%</td></tr>
+        <tr><td>归母净利润（元）</td><td>12,325 百万</td><td>15,511 百万</td><td class="down">-20.54%</td></tr>
+        <tr><td>基本每股收益（元）</td><td>1.35</td><td>1.71</td><td class="down">-21.05%</td></tr>
+        <tr><td>境外营业收入</td><td>约 1,813 亿（占比 &gt;50%）</td><td>—</td><td class="up">占比首超 50%</td></tr>
+        <tr><td>研发投入（元）</td><td>289 亿</td><td>约 309 亿</td><td class="down">-6.54%</td></tr>
+        <tr><td>现金储备</td><td>约 1,674 亿</td><td>—</td><td>流动性充裕</td></tr>
+      </tbody>
+    </table>
+    <div class="note">注：2026 H1 数据取自 2026-08-28 港交所披露的《2026 中期业绩公告》；2025 H1 数据取自同期披露。境外收入占比、研发投入变动取自公开资讯报道。</div>
+  </div>
+
+  <!-- 3. 业务结构 -->
+  <h2>三、业务结构与增长动能</h2>
+  <div class="grid2">
+    <div class="chart-card" style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px">
+      <h3 style="margin-top:4px">销量结构（H1）</h3>
+      <div class="bar-row"><span class="lbl">海外销量</span>
+        <div class="bar-track"><div class="bar-fill b3" style="width:43.6%">79 万辆 · +68%</div></div></div>
+      <div class="bar-row"><span class="lbl">高端品牌</span>
+        <div class="bar-track"><div class="bar-fill b2" style="width:12.6%">22.8 万辆 · +61%</div></div></div>
+      <div class="bar-row"><span class="lbl">国内大众</span>
+        <div class="bar-track"><div class="bar-fill g2" style="width:55%">约 102 万辆</div></div></div>
+      <p class="note">高端品牌中方程豹 16 万辆（+163%）、腾势 6 月首破 2 万辆（均价 36 万）、仰望为国产百万级最快破万。</p>
+    </div>
+    <div class="chart-card" style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px">
+      <h3 style="margin-top:4px">收入区域结构（H1）</h3>
+      <div class="bar-row"><span class="lbl">境外收入</span>
+        <div class="bar-track"><div class="bar-fill b3" style="width:52.6%">≈1,813 亿 · 占比 &gt;50%</div></div></div>
+      <div class="bar-row"><span class="lbl">境内收入</span>
+        <div class="bar-track"><div class="bar-fill g2" style="width:47.4%">≈1,635 亿</div></div></div>
+      <p class="note">境外收入占比历史首次突破 50%，出海成为新增长引擎；海外单车利润约 1.1 万元，为国内市场的 2.3 倍。</p>
+    </div>
+  </div>
+  <div class="card">
+    <ul>
+      <li><b>全球双冠：</b>斩获全球新能源汽车销量、储能系统出货双第一，稳居中国新能源车出口第一。</li>
+      <li><b>全球化纵深：</b>业务覆盖 120+ 国家和地区，在英国、巴西、泰国等核心市场登顶新能源品牌销冠，海外本地化产能加速释放。</li>
+      <li><b>高端化突破：</b>方程豹/腾势/仰望三大高端品牌合计销量占比升至 12.6%，产品结构持续上移。</li>
+      <li><b>补能生态：</b>"闪充中国"战略已建成 10,000 座闪充站、覆盖 332 城，计划一年内部署海外 6,000 座。</li>
+    </ul>
+  </div>
+
+  <!-- 4. 趋势与季度 -->
+  <h2>四、历史趋势与季度动能</h2>
+  <div class="chart-card" style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px">
+    <h3 style="margin-top:4px">全年营业收入趋势（亿元）</h3>
+    <svg viewBox="0 0 720 260" width="100%" style="max-height:300px">
+      <line x1="60" y1="220" x2="700" y2="220" stroke="#e4e8f0"/>
+      <rect x="70" y="150" width="90" height="70" fill="#0e9f6e" rx="4"/>
+      <text x="115" y="142" text-anchor="middle" font-size="12" fill="#1a2233">4241</text>
+      <rect x="195" y="108" width="90" height="112" fill="#0e9f6e" rx="4"/>
+      <text x="240" y="100" text-anchor="middle" font-size="12" fill="#1a2233">6023</text>
+      <rect x="320" y="62" width="90" height="158" fill="#0b6b4f" rx="4"/>
+      <text x="365" y="54" text-anchor="middle" font-size="12" fill="#1a2233">7771</text>
+      <rect x="445" y="54" width="90" height="166" fill="#0b6b4f" rx="4"/>
+      <text x="490" y="46" text-anchor="middle" font-size="12" fill="#1a2233">8040</text>
+      <rect x="570" y="118" width="90" height="102" fill="#1e6fb8" rx="4" opacity=".85"/>
+      <text x="615" y="110" text-anchor="middle" font-size="12" fill="#1e6fb8">≈3448*</text>
+      <text x="115" y="240" text-anchor="middle" font-size="11" fill="#6b7585">2022</text>
+      <text x="240" y="240" text-anchor="middle" font-size="11" fill="#6b7585">2023</text>
+      <text x="365" y="240" text-anchor="middle" font-size="11" fill="#6b7585">2024</text>
+      <text x="490" y="240" text-anchor="middle" font-size="11" fill="#6b7585">2025</text>
+      <text x="615" y="240" text-anchor="middle" font-size="11" fill="#6b7585">26H1*</text>
+    </svg>
+    <p class="note">*2026H1 为上半年单期营收（3448 亿）；2024 年归母净利达 402.5 亿为近年峰值，2025 年回落至 326.2 亿。</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:4px">季度动能：Q1 承压、Q2 强势反转</h3>
+      <table>
+        <thead><tr><th>季度</th><th>营收(亿)</th><th>归母(亿)</th><th>归母同比</th></tr></thead>
+        <tbody>
+          <tr><td>2026 Q1</td><td>1502.3</td><td>40.85</td><td class="down">-55.4%</td></tr>
+          <tr><td>2026 Q2</td><td>1945.9</td><td>82.4</td><td class="up">+30%</td></tr>
+          <tr><td>2025 Q1</td><td>≈1704</td><td>≈91.7</td><td>—</td></tr>
+          <tr><td>2025 Q2</td><td>≈2009</td><td>≈63.4</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Q1 受价格战、需求与汇兑损失拖累（归母 -55%）；Q2 在出海 + 高端 + 二代刀片电池/闪充拉动下净利 +30%、毛利率 18.9% 创近一年新高，盈利质量修复。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:4px">历史归母净利润（亿元）</h3>
+      <svg viewBox="0 0 360 200" width="100%" style="max-height:210px">
+        <polyline points="40,170 120,120 200,70 280,108 340,150" fill="none" stroke="#0b6b4f" stroke-width="3"/>
+        <circle cx="40" cy="170" r="4" fill="#0b6b4f"/><circle cx="120" cy="120" r="4" fill="#0b6b4f"/>
+        <circle cx="200" cy="70" r="4" fill="#0b6b4f"/><circle cx="280" cy="108" r="4" fill="#0b6b4f"/>
+        <circle cx="340" cy="150" r="4" fill="#1e6fb8"/>
+        <text x="40" y="190" text-anchor="middle" font-size="10" fill="#6b7585">22</text>
+        <text x="120" y="190" text-anchor="middle" font-size="10" fill="#6b7585">23</text>
+        <text x="200" y="190" text-anchor="middle" font-size="10" fill="#6b7585">24</text>
+        <text x="280" y="190" text-anchor="middle" font-size="10" fill="#6b7585">25</text>
+        <text x="340" y="190" text-anchor="middle" font-size="10" fill="#6b7585">26H1</text>
+        <text x="200" y="60" text-anchor="middle" font-size="10" fill="#0b6b4f">402.5</text>
+        <text x="340" y="142" text-anchor="middle" font-size="10" fill="#1e6fb8">123.3</text>
+      </svg>
+      <p class="note">利润自 2024 年峰值（402.5 亿）连续回落，2026H1 为 123.3 亿；下半年修复力度决定全年能否企稳。</p>
+    </div>
+  </div>
+
+  <!-- 5. 护城河 -->
+  <h2>五、护城河评估：有多宽、有多深</h2>
+  <div class="card">
+    <p>比亚迪的护城河并非单一技术，而是一套<b>"技术突破 → 垂直整合降本 → 规模摊薄 → 价格/产品优势"</b>的自增强闭环，且<b>绝大多数环节自主可控</b>。以下从七个维度拆解：</p>
+    <div class="moat-grid">
+      <div class="moat"><div class="h"><span class="n">①</span>全产业链垂直整合</div>
+        70%–85% 零部件自研自产（电池、电机、电控、IGBT 芯片、车灯、座椅、底盘、空调），全球唯一掌握"电池+电机+电控+芯片+整车"全链条的车企。自产电池成本较外购低约 25%，整车制造成本较合资品牌低 20%–30%。</div>
+      <div class="moat"><div class="h"><span class="n">②</span>电池与补能（刀片电池 / 闪充）</div>
+        全球动力电池装机量第二（2025 年 1–11 月 175.2GWh，与宁德合计占全球近 55%）。二代刀片电池能量密度突破 200Wh/kg，10%→70% 充电 5 分钟、10%→97% 约 9 分钟、零下 30℃ 仅多 3 分钟；电池外供一汽/丰田/起亚，由成本中心转为利润中心。</div>
+      <div class="moat"><div class="h"><span class="n">③</span>芯片自主（IGBT / 车规级）</div>
+        芯片研发团队超 7,000 人、累计投入超千亿，拥有 4 大研发基地、5 座晶圆厂，是全球唯一具备芯片全流程制造能力的车企。福特 CEO 评价：比亚迪电池成本比福特外购低约 30%。</div>
+      <div class="moat"><div class="h"><span class="n">④</span>规模效应</div>
+        销量从 2022 年 186 万辆增至 2025 年 460 万辆，2026H1 再销 181 万辆、累计破 1,690 万台。庞大规模摊薄三电研发与制造成本，海量车主数据反哺混动/闪充/智驾迭代。</div>
+      <div class="moat"><div class="h"><span class="n">⑤</span>研发强度与人才</div>
+        2025 年研发 634 亿、2026H1 289 亿（蝉联 A 股"研发之王"），累计超 2,700 亿；11 大研究院、超 12 万研发工程师。刀片电池、DM-i、e 平台 3.0、易四方、云辇、五代 DM、二代刀片电池等技术密集落地。</div>
+      <div class="moat"><div class="h"><span class="n">⑥</span>多品牌矩阵</div>
+        比亚迪 / 腾势 / 方程豹 / 仰望四大品牌，覆盖 7 万至百万元级全价格带，高端化提升均价与盈利韧性。</div>
+      <div class="moat"><div class="h"><span class="n">⑦</span>全球化 + 补能网络</div>
+        海外覆盖 120+ 国家、单车利润约为国内 2.3 倍；"闪充中国"已建 1 万座闪充站（覆盖 332 城），计划海外再部署 6,000 座——重资产补能网络是竞品短期难以复制的壁垒。</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:4px">护城河之"宽"</h3>
+      <p>横向覆盖 <b>电池 / 芯片 / 电机电控 / 整车 / 储能 / 补能网络</b> 全链条，纵向贯穿 <b>7 万–百万级</b> 全价格带与多品牌，并叠加 <b>研发—制造—规模—渠道—补能</b> 多重壁垒。单一竞争对手通常只在其中 1–2 环占优，难以在全局复制。</p>
+      <div class="depth-bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      <p class="note">宽度：★★★★★★★★（近满）</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:4px">护城河之"深"</h3>
+      <p>深度来自 <b>电池技术壁垒 + 芯片自制 + 十年研发积累 + 千亿现金流（1674 亿）+ 全球最大产销规模</b>。福特、零跑等均公开承认其成本/整合优势难以短期追平。</p>
+      <div class="depth-bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+      <p class="note">深度：★★★★★★★☆（极深，但非不可逾越）</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:4px">护城河的"裂缝"：边际递减与再投资压力</h3>
+    <ul>
+      <li><b>成本优势边际递减：</b>规模效应逼近上限时，自制未必持续优于外采；产业链成熟后对手可找到替代供应商。</li>
+      <li><b>混动差距被抹平：</b>吉利 2025 年市占率升至 11%、与比亚迪仅差 3.7pct，并曾以微弱优势拿下季度销冠；银河 L6 EM-i 等参数已超同级。</li>
+      <li><b>智能化短板：</b>"全民智驾"投入未达预期回报，软件基因与数据闭环弱于新势力，高端化受智能化体验制约。</li>
+      <li><b>价格工具受约束：</b>"反内卷"政策下高频调价/促销受限，市场灵活性下降。</li>
+      <li><b>二代刀片壁垒有限：</b>行业已有数家友商可做到相当水平的高倍率磷酸铁锂电池，红利期或被快速追赶。</li>
+      <li><b>补能投入重：</b>单座闪充站总投入或超 500 万元，2 万座目标对现金流与投资效率形成压力。</li>
+    </ul>
+    <p><b>综合判断：</b>比亚迪护城河<b>又宽又深</b>——宽度行业独一档、深度由"垂直整合+规模+研发"三重驱动；但其红利正从"独享"走向"被追赶"，未来胜负取决于能否在<b>闪充补能、高端化、智能化</b>上持续创造用户愿意付费的新差异。</p>
+  </div>
+
+  <!-- 6. 下半年预判 -->
+  <h2>六、2026 下半年业绩预判（情景分析）</h2>
+  <div class="card">
+    <p>以 2025 全年（营收 8,039.65 亿、归母 326.19 亿）与 2025H2（营收约 4,327 亿、归母约 171 亿）为基，结合 2026H1 已实现数据与 Q2 修复态势，给出三档情景：</p>
+    <table>
+      <thead><tr><th>指标</th><th>保守情景</th><th>中性情景</th><th>乐观情景</th></tr></thead>
+      <tbody>
+        <tr><td>H2 营收同比</td><td>-5%</td><td>+3%</td><td>+10%</td></tr>
+        <tr><td><b>2026 全年营收</b></td><td><b>≈7,548 亿</b></td><td><b>≈7,905 亿</b></td><td><b>≈8,208 亿</b></td></tr>
+        <tr><td>全年营收增速</td><td>-6.1%</td><td>-1.7%</td><td>+2.1%</td></tr>
+        <tr><td>H2 归母净利润同比</td><td>+5%</td><td>+15%</td><td>+25%</td></tr>
+        <tr><td><b>2026 全年归母净利润</b></td><td><b>≈303 亿</b></td><td><b>≈320 亿</b></td><td><b>≈337 亿</b></td></tr>
+        <tr><td>全年归母增速</td><td>-7.1%</td><td>-1.9%</td><td>+3.4%</td></tr>
+      </tbody>
+    </table>
+    <p class="note">关键假设：① Q2 修复延续（出海+高端+二代刀片/闪充放量）；② 国内价格战温和、反内卷政策不进一步压制；③ 汇兑损失环比收敛；④ 闪充站capex 对利润扰动可控。若价格战恶化或需求疲软，则更接近保守情景。</p>
+    <div class="grid2" style="margin-top:14px">
+      <div class="card" style="margin:0"><h3 style="margin-top:4px">支撑 H2 向好的因素</h3>
+        <ul style="margin:6px 0">
+          <li>Q2 毛利率 18.9% 近一年新高，盈利质量修复</li>
+          <li>二代刀片/闪充车型（15 万–百万级 10 款）进入放量</li>
+          <li>海外本地化产能释放，出海延续高增</li>
+          <li>高端品牌占比提升改善均价</li>
+        </ul>
+      </div>
+      <div class="card" style="margin:0"><h3 style="margin-top:4px">需关注的下修风险</h3>
+        <ul style="margin:6px 0">
+          <li>国内价格战与反内卷政策约束</li>
+          <li>吉利等对手市占率逼近、混动差距收窄</li>
+          <li>智驾短板影响高端突破</li>
+          <li>汇兑波动、闪充 capex 现金流压力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. 股票走势 -->
+  <h2>七、股票走势分析（定性，非投资建议）</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:4px">向上催化</h3>
+      <ul style="margin:6px 0">
+        <li><span class="pill g">业绩</span> Q2 反转+毛利率新高，全年预期有望企稳</li>
+        <li><span class="pill g">技术</span> 二代刀片/闪充重构补能体验，新车周期开启</li>
+        <li><span class="pill b">出海</span> 境外收入占比破 50%，海外利润弹性大</li>
+        <li><span class="pill g">壁垒</span> 垂直整合+规模+研发构筑深护城河</li>
+        <li><span class="pill g">现金</span> 1674 亿现金储备，抗风险与再投资能力强</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:4px">压制与风险</h3>
+      <ul style="margin:6px 0">
+        <li><span class="pill w">利润</span> 归母自 2024 峰值（402 亿）连降，H1 仍承压</li>
+        <li><span class="pill w">竞争</span> 吉利等逼近、智能化不占先、价格战内卷</li>
+        <li><span class="pill w">政策</span> 反内卷限制价格工具灵活性</li>
+        <li><span class="pill r">估值</span> 规模与增速见顶预期下，估值对兑现敏感</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <p><b>走势研判（中性视角）：</b>比亚迪中长期逻辑仍坚实——全球销冠地位、深而宽的护城河、出海与高端化提供新增长极；但短期处于"<b>利润磨底、等待 H2 验证</b>"阶段：Q2 已现反转信号，若下半年出海/高端/闪充放量兑现，盈利有望同比企稳甚至转正，股价或迎来预期修复；反之若价格战恶化或智驾短板拖累高端，则估值仍承压。整体呈"<b>基本面韧性足、短期看 H2 兑现</b>"特征。</p>
+    <p class="src">说明：本段为基于公开财务与资讯的定性情景描述，未给出具体点位或买卖建议。投资须结合自身风险承受能力并咨询专业顾问。</p>
+  </div>
+
+  <!-- 8. 资讯时间线 -->
+  <h2>八、近期关键资讯（公开检索摘要）</h2>
+  <div class="card">
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-date">2026-03</div>
+        <div class="tl-title">二代刀片电池及闪充技术发布</div>
+        <div class="tl-desc">能量密度突破 200Wh/kg，10%→70% 充电 5 分钟、10%→97% 约 9 分钟，零下 30℃ 仅多 3 分钟，攻克充电慢与低温充电难。</div></div>
+      <div class="tl-item"><div class="tl-date">2026-04-10</div>
+        <div class="tl-title">界面新闻深度：比亚迪寻找新技术红利</div>
+        <div class="tl-desc">剖析垂直整合成本壁垒与边际递减，指出混动差距被抹平、智驾短板、反内卷限制价格工具，二代刀片/闪充成新希望。</div></div>
+      <div class="tl-item"><div class="tl-date">2026-08-03</div>
+        <div class="tl-title">冲进全球百强、人形机器人"上岗"</div>
+        <div class="tl-desc">截至 2026H1 累计销量破 1,690 万台；销售收益率 4.1% 领跑全球整车企业；全栈自研+规模协同优势凸显。</div></div>
+      <div class="tl-item"><div class="tl-date">2026-08-28</div>
+        <div class="tl-title">披露 2026 中期业绩：营收 3448 亿（-7.1%）、归母 123 亿（-20.5%）</div>
+        <div class="tl-desc">二季度核心指标逆势创新高：单季净利同比 +30%、毛利率 18.9% 创近一年新高；海外销量 +68%、高端品牌 +61%。</div></div>
+      <div class="tl-item"><div class="tl-date">2026-08-29</div>
+        <div class="tl-title">海外销量猛增 68%，下半年紧盯电池产能；境外收入占比首超 50%</div>
+        <div class="tl-desc">公开报道指出比亚迪上半年重要变动：境外收入占比首次突破 50%，研发投入同比 -6.54%（仍居 A 股前列）。</div></div>
+    </div>
+    <p class="src">资讯来源：平安证券资讯知识库、港交所中期业绩公告、新浪财经、界面新闻、证券时报、腾讯新闻等公开渠道。资讯内容忠实于原文，未作主观演绎。</p>
+  </div>
+
+  <div class="disc">
+    <b>免责声明：</b>本报告基于比亚迪 2026 年中期业绩公告及公开资讯整理，部分下半年数据为基于历史规律与行业景气的<b>情景预判</b>，非公司官方指引，亦不构成任何投资建议或收益承诺。市场有风险，决策需谨慎，投资者应独立判断并自担风险。
+  </div>
+
+  <div class="footer">比亚迪（002594.SZ / 1211.HK）2026 半年报分析 ｜ 生成于 2026-09-01 ｜ 数据截至 2026 年中期披露</div>
+</div>
+</body>
+</html>
