@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="zh-CN" data-page-node-id="xGXBHuwx6MH6Wq1p5tyrpM">
+<head data-page-node-id="qC3HS5czvUFaMxaMOTcCRy">
+  <meta charset="UTF-8" data-page-node-id="3CRoGvAcaKRn8X3gB7Tgbv">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="FYvGlTNeHzGMhXAjLQQkP7">
   <title>数据图志 · DATA ATLAS</title>
-  <meta name="description" content="数据图志：一个入口，直达全部页面。收录 4 篇数据研究报告与 3 个在线工具。">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="数据图志：一个入口，直达全部页面。收录 5 篇数据研究报告、2 篇财经分析与 3 个在线工具。" data-page-node-id="DExCJWDNw9bDObwvDi8iCd">
+  <link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="LNhFXiZAh8wglDAhGViP6M">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="BqHYYilgRS0Ik6cjCwigOy">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet" data-page-node-id="tKDZyWLQwzO4DZMBp2IwWp">
   <style>
     :root {
       --paper: #F6F3EC;
@@ -255,7 +255,7 @@
     }
 
     .grid-sole {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       margin-top: 20px;
     }
 
@@ -264,6 +264,18 @@
         grid-template-columns: 1fr;
       }
       .grid-row-3, .grid-sole { margin-top: 0; }
+      .card-featured {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+      }
+      .feat-right {
+        flex: 1 1 auto;
+        border-left: none;
+        border-top: 1px solid #1F352E;
+        padding-left: 0;
+        padding-top: 22px;
+      }
     }
 
     .card {
@@ -379,6 +391,70 @@
     .tag-06 { background: #E3F0ED; color: #11554E; }
     .tag-07 { background: #E9F3EC; color: #2E6B4F; }
 
+    /* 数据报告组 · 末位特色卡（跨双列，深色呼应 Hero） */
+    .card-featured {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: center;
+      gap: 44px;
+      padding: 32px 34px;
+      background: var(--hero-dark);
+      border-color: #1F352E;
+      box-shadow: 0 14px 32px rgba(12, 23, 21, 0.18);
+    }
+
+    .card-featured:hover {
+      box-shadow: 0 20px 46px rgba(12, 23, 21, 0.26);
+    }
+
+    .feat-left {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card-featured .card-title { color: #F6F4EC; }
+    .card-featured .card-desc { color: #A6B3AC; }
+    .card-featured .card-path { color: #7C8B84; }
+    .card-featured .card-arrow { background: rgba(255, 255, 255, 0.08); color: #C4CFDE; }
+    .card-featured .card-tag { background: rgba(255, 111, 94, 0.14); color: #F0A08E; }
+
+    .feat-right {
+      flex: 0 0 292px;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid #1F352E;
+      padding-left: 34px;
+    }
+
+    .feat-stat {
+      padding: 11px 0;
+      border-bottom: 1px solid #16261F;
+    }
+
+    .feat-stat:last-child { border-bottom: none; }
+
+    .feat-stat .k {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      color: #7C8B84;
+      text-transform: uppercase;
+    }
+
+    .feat-stat .v {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: #F4F2EA;
+      margin-top: 4px;
+      line-height: 1.2;
+    }
+
+    .accent-08 { color: #E8876F; }
+
     /* Footer */
     footer {
       background: var(--hero-dark);
@@ -455,161 +531,182 @@
     }
   </style>
 </head>
-<body>
+<body data-page-node-id="ofjztHAKXQBTNxP4WVRVCX">
 
-  <section class="hero">
-    <div class="container">
-      <header>
-        <div class="brand">
-          <span class="brand-name serif">数据图志</span>
-          <span class="brand-latin">Data Atlas</span>
+  <section class="hero" data-page-node-id="dC7LNByiGD1uLE7RnuuZ9g">
+    <div class="container" data-page-node-id="IozmAeFiJYZHVA86cRkbC5">
+      <header data-page-node-id="dbr0V4rDevaFWytGY5mv7p">
+        <div class="brand" data-page-node-id="HNsBm3lw6vaRYKLSUKV36p">
+          <span class="brand-name serif" data-page-node-id="ts7Osqll2zCDbBc4zu8qpc">数据图志</span>
+          <span class="brand-latin" data-page-node-id="RPRHb8z7FGUWY9Dgq5X7vc">Data Atlas</span>
         </div>
-        <a class="gh-link" href="https://github.com/dingyufeng" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <a class="gh-link" href="https://github.com/dingyufeng" target="_blank" rel="noopener" data-page-node-id="ayXG0cWivCFqeeY4XOVMDX">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="zznLqSRdG9jBq0DCzQFGw8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-page-node-id="CkPLOOW6MAfT8WGWzNTly8"/></svg>
           GitHub
         </a>
       </header>
 
-      <div class="hero-content">
-        <div class="eyebrow">GITHUB PAGES · 站点入口</div>
-        <h1 class="serif">一个地址，访问全部页面</h1>
-        <p class="subheadline">共收录 7 个页面入口：4 篇数据研究报告与 3 个在线工具。书签只需保存这一个地址，其余页面随取随用。</p>
-        <div class="url-pill"><span>收藏地址</span><div class="divider"></div>dingyufeng.github.io/sudoku/</div>
-        <div class="stats">
-          <div class="stat"><div class="value">7</div><div class="label">页面总数</div></div>
-          <div class="stat"><div class="value">4</div><div class="label">数据报告</div></div>
-          <div class="stat"><div class="value">3</div><div class="label">在线工具</div></div>
+      <div class="hero-content" data-page-node-id="61xI2IHWSOcNFqiTMbGCgS">
+        <div class="eyebrow" data-page-node-id="YCK19fbqKODH4Byw1C8kQo">GITHUB PAGES · 站点入口</div>
+        <h1 class="serif" data-page-node-id="xRFrRtGboknDg8EBPk1dTL">一个地址，访问全部页面</h1>
+        <p class="subheadline" data-page-node-id="lF1VHEMminwwh835YgY8lA">共收录 10 个页面入口：5 篇数据研究报告、2 篇财经分析与 3 个在线工具。书签只需保存这一个地址，其余页面随取随用。</p>
+        <div class="url-pill" data-page-node-id="KJ4mGw34yDdKHuOj9QHsEv"><span data-page-node-id="7JDn9QMGTNbcRcCh9w8iMG">收藏地址</span><div class="divider" data-page-node-id="qQxpQdMAN5bvPAMkJbch9F"></div>dingyufeng.github.io/sudoku/</div>
+        <div class="stats" data-page-node-id="i4BuMszAuzef4F63dEiQ7V">
+          <div class="stat" data-page-node-id="OGjCkBSFReZKGiWFifpHtC"><div class="value" data-page-node-id="sc4xoaS2UcY7ysvuJAXUNB">10</div><div class="label" data-page-node-id="HqTcFzZuzTESxSMrtJPEfF">页面总数</div></div>
+          <div class="stat" data-page-node-id="LvhDfewtuOXdEVvqYxk1IF"><div class="value" data-page-node-id="4H5NqCflLGULsHum2qE2er">5</div><div class="label" data-page-node-id="gplEA2VW637gyONsClZaqj">数据报告</div></div>
+          <div class="stat" data-page-node-id="fvZMuadsXt6jtu9qXeGqWC"><div class="value" data-page-node-id="KZqSYDBFpbBCC8nyBm4lZm">2</div><div class="label" data-page-node-id="VphYGtnUhFi0DCLsRmT3vM">财经分析</div></div>
+          <div class="stat" data-page-node-id="mFnocm6StqFwLGMUUtT4Tg"><div class="value" data-page-node-id="EZ5m6Uj6De4Dz21hBrPqAo">3</div><div class="label" data-page-node-id="ygL31SCcNUmGbtcibyLEPR">在线工具</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <main class="main">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="section-title serif">页面索引</h2>
-        <span class="section-meta">INDEX · 07 ENTRIES</span>
+  <main class="main" data-page-node-id="I44Z1DIlt7OczUvwRHebfK">
+    <div class="container" data-page-node-id="1I8qABzMYGIguNEjOiMPo2">
+      <div class="section-head" data-page-node-id="5XApBjoueY2hsuAYQl87BI">
+        <h2 class="section-title serif" data-page-node-id="Q1BVxuNlrW9R3VPkNr7KRi">页面索引</h2>
+        <span class="section-meta" data-page-node-id="PZHDGMsEWYQNnVYAgGGiCm">INDEX · 10 ENTRIES</span>
       </div>
 
-      <div class="grid grid-row-2">
-        <a class="card" href="https://dingyufeng.github.io/sudoku/index.html">
-          <div class="card-top">
-            <div class="card-number accent-01">01</div>
-            <span class="card-tag tag-01">在线工具</span>
+      <div class="grid grid-row-2" data-page-node-id="E5hEQjBpLfHjovvJoMPWUD">
+        <a class="card" href="https://dingyufeng.github.io/sudoku/index.html" data-page-node-id="opKbfsSB6OmpnqbV1tMRYO">
+          <div class="card-top" data-page-node-id="5uLY5U0FAqpcwblqt3Fd2q">
+            <div class="card-number accent-01" data-page-node-id="AYR2983aJjsMSNxtCb6ZFS">01</div>
+            <span class="card-tag tag-01" data-page-node-id="xWh1TN9G7VHDIYWYEOLK0x">在线工具</span>
           </div>
-          <h3 class="card-title serif">数独游戏</h3>
-          <p class="card-desc">支持初级、中级、高级三档难度，含笔记模式、撤销、提示与错误计时。打开即玩，成绩与进度全部留在本地浏览器。</p>
-          <div class="card-footer">
-            <span class="card-path">/sudoku/index.html</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
-          </div>
-        </a>
-
-        <a class="card" href="https://dingyufeng.github.io/sudoku/hcdxg.html">
-          <div class="card-top">
-            <div class="card-number accent-07">02</div>
-            <span class="card-tag tag-07">休闲游戏</span>
-          </div>
-          <h3 class="card-title serif">合成大西瓜</h3>
-          <p class="card-desc">经典合成玩法网页版：控制掉落水果，相同水果两两合成，一路合出大西瓜。小心别让水果堆越过红色警戒线。</p>
-          <div class="card-footer">
-            <span class="card-path">/sudoku/hcdxg.html</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
-          </div>
-        </a>
-      </div>
-
-      <div class="grid grid-row-3">
-        <a class="card" href="https://dingyufeng.github.io/sudoku/2025_cepar.html">
-          <div class="card-top">
-            <div class="card-number accent-02">03</div>
-            <span class="card-tag tag-02">年度报告</span>
-          </div>
-          <h3 class="card-title serif">中国就业景气年度报告</h3>
-          <p class="card-desc">总量稳、结构分。城镇新增就业与失业率保持平稳的同时，青年失业、技能错配与区域分化等结构性矛盾仍然突出。</p>
-          <div class="card-footer">
-            <span class="card-path">/sudoku/2025_cepar.html</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          <h3 class="card-title serif" data-page-node-id="aA8b6Oby53K5W1DF93EmZB">数独游戏</h3>
+          <p class="card-desc" data-page-node-id="SNUGFLS6WAuHGGEDIDgLRw">支持初级、中级、高级三档难度，含笔记模式、撤销、提示与错误计时。打开即玩，成绩与进度全部留在本地浏览器。</p>
+          <div class="card-footer" data-page-node-id="B8ZlIf25nOXG8O2CmwRfGM">
+            <span class="card-path" data-page-node-id="vWAlxnNcKZAvPQixfgPMFC">/sudoku/index.html</span>
+            <span class="card-arrow" data-page-node-id="L9uZTSVYdhlAPkENfaHZAk"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="vijY602lBOUDEPUa5dXiQ7"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="9yVmjw1BSm77LhIniNRdqz"/></svg></span>
           </div>
         </a>
 
-        <a class="card" href="https://dingyufeng.github.io/sudoku/population_infographic.html">
-          <div class="card-top">
-            <div class="card-number accent-03">04</div>
-            <span class="card-tag tag-03">数据信息图</span>
+        <a class="card" href="https://dingyufeng.github.io/sudoku/hcdxg.html" data-page-node-id="6BO7ooUmmM4dt2ciBX8PAs">
+          <div class="card-top" data-page-node-id="vvAbdS8QqKlc5ijsfb6Vld">
+            <div class="card-number accent-07" data-page-node-id="f7UG6QuwLlz6n69tPsttAj">02</div>
+            <span class="card-tag tag-07" data-page-node-id="cVnjmm0lqjKyxgEKpPY4tg">休闲游戏</span>
           </div>
-          <h3 class="card-title serif">全球人口结构与趋势</h3>
-          <p class="card-desc">基于联合国 WPP 2024 中等变量预测，拆解人口达峰、生育率下行、老龄化反转与印度超越中国的区域分化。</p>
-          <div class="card-footer">
-            <span class="card-path">/sudoku/population_infographic.html</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
-          </div>
-        </a>
-
-        <a class="card" href="https://dingyufeng.github.io/sudoku/ai_trends.html">
-          <div class="card-top">
-            <div class="card-number accent-04">05</div>
-            <span class="card-tag tag-04">趋势分析</span>
-          </div>
-          <h3 class="card-title serif">AI 发展趋势</h3>
-          <p class="card-desc">六个核心切片、一组关键数据与五条 2026 预测，用 Stanford HAI、McKinsey、a16z 与 Gartner 的公开口径定位这轮周期。</p>
-          <div class="card-footer">
-            <span class="card-path">/sudoku/ai_trends.html</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
-          </div>
-        </a>
-
-        <a class="card" href="https://dingyufeng.github.io/sudoku/gdp_beyond_hdi.html">
-          <div class="card-top">
-            <div class="card-number accent-05">06</div>
-            <span class="card-tag tag-05">指标解读</span>
-          </div>
-          <h3 class="card-title serif">GDP 之外：用 HDI 丈量发展</h3>
-          <p class="card-desc">借助 UNDP 人类发展报告，从健康、教育、生活水平三维比较各国 HDI 位次，高收入不等于高人类发展。</p>
-          <div class="card-footer">
-            <span class="card-path">/sudoku/gdp_beyond_hdi.html</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          <h3 class="card-title serif" data-page-node-id="2CGgWaSHoZiKWTtKamsTeK">合成大西瓜</h3>
+          <p class="card-desc" data-page-node-id="GLKizvdBrSNtb5uU5H0Jdx">经典合成玩法网页版：控制掉落水果，相同水果两两合成，一路合出大西瓜。小心别让水果堆越过红色警戒线。</p>
+          <div class="card-footer" data-page-node-id="NHsU03zZ6PIbarsoOMOZrs">
+            <span class="card-path" data-page-node-id="IIbBkXPSdaclnR7JPR7Tnq">/sudoku/hcdxg.html</span>
+            <span class="card-arrow" data-page-node-id="wQzQHpZrz0MBkiHHmK1ITs"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ljLqmIuCRc2ThyXudi1DNx"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="SHfN0bDb55SfGuYSMbMAGY"/></svg></span>
           </div>
         </a>
       </div>
 
-      <div class="grid grid-sole">
-        <a class="card" href="https://www.workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri" target="_blank" rel="noopener">
-          <div class="card-top">
-            <div class="card-number accent-06">07</div>
-            <span class="card-tag tag-06">外部入口</span>
+      <div class="grid grid-row-3" data-page-node-id="zMAZUHb7PARCDaa4YyafSx">
+        <a class="card" href="https://dingyufeng.github.io/sudoku/2025_cepar.html" data-page-node-id="x4nJNRBxKXmR644DRORbO3">
+          <div class="card-top" data-page-node-id="oTYIuFKhoSQURFCrRtfiwv">
+            <div class="card-number accent-02" data-page-node-id="rZYln1ddWF9LFWc1q0Cdys">03</div>
+            <span class="card-tag tag-02" data-page-node-id="6htCA8vpxFVXYsdwXcClWW">年度报告</span>
           </div>
-          <h3 class="card-title serif">学习目标台</h3>
-          <p class="card-desc">托管在 WorkBuddy 的学习目标管理台，跟踪学习计划与目标进度，可随时回到 WorkBuddy 继续跟进。</p>
-          <div class="card-footer">
-            <span class="card-path">workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4 11 13M18 13.5v5.5a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 19V8.5A1.5 1.5 0 0 1 5.5 7H11"/></svg></span>
+          <h3 class="card-title serif" data-page-node-id="l2ZlsRqnCCvbOYdxzOuDaM">中国就业景气年度报告</h3>
+          <p class="card-desc" data-page-node-id="9orqtWhZt7HCddg2ddkkj8">总量稳、结构分。城镇新增就业与失业率保持平稳的同时，青年失业、技能错配与区域分化等结构性矛盾仍然突出。</p>
+          <div class="card-footer" data-page-node-id="JWcRjKwDjF58uGQAdbHHqS">
+            <span class="card-path" data-page-node-id="bJh2DJJwe3kOy0jJ5KDxOC">/sudoku/2025_cepar.html</span>
+            <span class="card-arrow" data-page-node-id="vGkZGAh0WC92x3G3c56djA"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="pHmJaU5syF8taJBLj2JJkk"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="oYSMNKLIPQ8fzJBFPB7cqO"/></svg></span>
+          </div>
+        </a>
+
+        <a class="card" href="https://dingyufeng.github.io/sudoku/population_infographic.html" data-page-node-id="GXam5Ko9obJWjLGFSjBYDd">
+          <div class="card-top" data-page-node-id="148v3uTh7iPsexAx2wtqQi">
+            <div class="card-number accent-03" data-page-node-id="7pZ72KOGWlzxD7nXBzs0dS">04</div>
+            <span class="card-tag tag-03" data-page-node-id="7nDeRzsmBGPdiPwsUpJhQ3">数据信息图</span>
+          </div>
+          <h3 class="card-title serif" data-page-node-id="89oMBuHhNJb3ajn18Y9gxQ">全球人口结构与趋势</h3>
+          <p class="card-desc" data-page-node-id="RMFXlIeHPz089Xakv0lZ7H">基于联合国 WPP 2024 中等变量预测，拆解人口达峰、生育率下行、老龄化反转与印度超越中国的区域分化。</p>
+          <div class="card-footer" data-page-node-id="FPpl1PTsy84OwAvBK33Omr">
+            <span class="card-path" data-page-node-id="Z3lopDbN7EqLQu8O7j7wWr">/sudoku/population_infographic.html</span>
+            <span class="card-arrow" data-page-node-id="7fns3DJsDBhmGipPbHxPus"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="YKxbswUzQRWCXjvVJuYllm"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="TZdVCUTCYFPF6QlXzSfGRn"/></svg></span>
+          </div>
+        </a>
+
+        <a class="card" href="https://dingyufeng.github.io/sudoku/ai_trends.html" data-page-node-id="vJDKFqhrsQ71NoI9ts3hMF">
+          <div class="card-top" data-page-node-id="ekU757PAA3lF5e3pBKELtR">
+            <div class="card-number accent-04" data-page-node-id="iGgAu4340NW3E0ZcM1aQu1">05</div>
+            <span class="card-tag tag-04" data-page-node-id="98F0wNhu3nbpVyENA3VCqC">趋势分析</span>
+          </div>
+          <h3 class="card-title serif" data-page-node-id="GzQTB3ixzz85PeFEav1geo">AI 发展趋势</h3>
+          <p class="card-desc" data-page-node-id="pKipU1oJFbji4KVrNFj2zQ">六个核心切片、一组关键数据与五条 2026 预测，用 Stanford HAI、McKinsey、a16z 与 Gartner 的公开口径定位这轮周期。</p>
+          <div class="card-footer" data-page-node-id="cochidP48Aab8YBKdFf6sp">
+            <span class="card-path" data-page-node-id="w1IDHxi8iqOqDi0nU4ej5x">/sudoku/ai_trends.html</span>
+            <span class="card-arrow" data-page-node-id="76w28blZFR0Om36sZAC1Gi"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="9JJHcxeeZHeYzpfZnFlN92"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="AAEL6j7ZbdM8MxoSNMEXjf"/></svg></span>
+          </div>
+        </a>
+
+        <a class="card" href="https://dingyufeng.github.io/sudoku/gdp_beyond_hdi.html" data-page-node-id="I8iAAHKrbk2OPUEBYqPS2K">
+          <div class="card-top" data-page-node-id="QuKxU6Kgx129kA20tRoOUm">
+            <div class="card-number accent-05" data-page-node-id="n1DuWwda2DCSZOgQgPxlwG">06</div>
+            <span class="card-tag tag-05" data-page-node-id="tCuuBpl3c9XueLYe6EZWSb">指标解读</span>
+          </div>
+          <h3 class="card-title serif" data-page-node-id="XfyzYaouiKg0RChfYisNaE">GDP 之外：用 HDI 丈量发展</h3>
+          <p class="card-desc" data-page-node-id="XG9MUHlF1p1MHEKi3CDFTL">借助 UNDP 人类发展报告，从健康、教育、生活水平三维比较各国 HDI 位次，高收入不等于高人类发展。</p>
+          <div class="card-footer" data-page-node-id="mgfUmTKbLBtC0iZI726Zqr">
+            <span class="card-path" data-page-node-id="orscW4msFDammtm15lhKXF">/sudoku/gdp_beyond_hdi.html</span>
+            <span class="card-arrow" data-page-node-id="8IKk9gR4SJrlydYVtdhNTE"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="iyVXiSDofLqGkKVX5BfDnD"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="zmAuPmZxc3m2rLLiV6UZwq"/></svg></span>
+          </div>
+        </a>
+
+        <a class="card card-featured" href="https://dingyufeng.github.io/sudoku/ai_bubble_2027.html" data-page-node-id="POBesoWmTjFOsPIm8SsAHY">
+          <div class="feat-left" data-page-node-id="UOGGCBK0QXowONvrLTYq1Q">
+            <div class="card-top" data-page-node-id="g6EorJcvl1ILkAjQlYLZUN">
+              <div class="card-number accent-08" data-page-node-id="HchoZ9LzVbT2gfD8wFtTuo">07</div>
+              <span class="card-tag" data-page-node-id="olMKARCzyEHLbHan3li1Fk">风险预警</span>
+            </div>
+            <h3 class="card-title serif" data-page-node-id="zsq9Ej0rqjh7iY2pLypsrB">2027，美国 AI 泡沫会破裂吗</h3>
+            <p class="card-desc" data-page-node-id="xorPLjhrhe6pEaeljeJxbb">全球化智库（CCG）副主任高志凯多次公开预判：美国 AI 泡沫将在 2027 年上半年破裂，并触发一场波及全球的金融危机。页面梳理其预警时间线、三大导火索、关键数据与多空分歧。</p>
+            <div class="card-footer" data-page-node-id="WIeoEd62kUazSxTVwdkw1K">
+              <span class="card-path" data-page-node-id="bm4uLZJ7UCc1ytGERGAY82">/sudoku/ai_bubble_2027.html</span>
+              <span class="card-arrow" data-page-node-id="IXFusG5WRdG4pNnGeSOf1n"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="MITyh19xWWJBYeSsaqesfP"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="U5eN3rSYRwSpZkE187wBGM"/></svg></span>
+            </div>
+          </div>
+          <div class="feat-right" data-page-node-id="laaSymAjwxZ8H8H95ZJVAG">
+            <div class="feat-stat" data-page-node-id="KHfMugNAMuAVGSdB3EOAxQ"><div class="k" data-page-node-id="hhzpRlHk7puEpDJOr6iU2a">投入产出比</div><div class="v" data-page-node-id="dvlDhCB6iPVMCX0ILwyAPR">16 : 1</div></div>
+            <div class="feat-stat" data-page-node-id="pnmuFjcxhfAATEQuSFGAXp"><div class="k" data-page-node-id="G76B8FGBVUqbFkhUTb15XF">美债规模</div><div class="v" data-page-node-id="Xxpj3chO2KgnTGaAbwyReh">40 万亿美元</div></div>
+            <div class="feat-stat" data-page-node-id="kpUiCeLBybUHvNdqik84Vl"><div class="k" data-page-node-id="eKMUPUZIv6qbpGoJigXjK4">预判窗口</div><div class="v" data-page-node-id="9VrzsND4cwsBp1Mg2nidMl">2027 上半年</div></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="grid grid-sole" data-page-node-id="YkfGjN0EuGPMkCDt7VL5Tu">
+        <a class="card" href="https://www.workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri" target="_blank" rel="noopener" data-page-node-id="FbeNscjoESbJHZdltYqsKi">
+          <div class="card-top" data-page-node-id="OX7E2CGlh4mjCWYljarjdR">
+            <div class="card-number accent-06" data-page-node-id="EMAM5YQTOgaoSrvylB3hLr">08</div>
+            <span class="card-tag tag-06" data-page-node-id="CaOTZ5kEAVECyR3D0q9TAz">外部入口</span>
+          </div>
+          <h3 class="card-title serif" data-page-node-id="s8pBN79okeuisFz0cSUuMl">学习目标台</h3>
+          <p class="card-desc" data-page-node-id="NBnK7N5mUS4wKVCIvj86zb">托管在 WorkBuddy 的学习目标管理台，跟踪学习计划与目标进度，可随时回到 WorkBuddy 继续跟进。</p>
+          <div class="card-footer" data-page-node-id="EU0srXIARuc9iGTGyD7BLt">
+            <span class="card-path" data-page-node-id="IKFeW157HteXU3x0fKyWFy">workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri</span>
+            <span class="card-arrow" data-page-node-id="sb1gqNU1YtbNZXVqF4OYJ2"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="DjdcgJoijVl1wQOffUGEcg"><path d="M14 4h6v6M20 4 11 13M18 13.5v5.5a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 19V8.5A1.5 1.5 0 0 1 5.5 7H11" data-page-node-id="KaXU9lRTBMlVha9Yi6tWFk"/></svg></span>
           </div>
         </a>
 		
-		<a class="card" href="https://dingyufeng.github.io/sudoku/financial/zksg_2026_h1.html">
-          <div class="card-top">
-            <div class="card-number accent-02">08</div>
-            <span class="card-tag tag-02">财经分析</span>
+		<a class="card" href="https://dingyufeng.github.io/sudoku/financial/zksg_2026_h1.html" data-page-node-id="3hGxsBDjswqIxvNSNNOE6M">
+          <div class="card-top" data-page-node-id="OFDnLfwyMnNLgPTCQSGgFd">
+            <div class="card-number accent-02" data-page-node-id="WQtWraDmR1YGZuQIcfO21v">09</div>
+            <span class="card-tag tag-02" data-page-node-id="gaAaxOoHCZ44a1FNqae5sg">财经分析</span>
           </div>
-          <h3 class="card-title serif">首个全国产十万卡AI超集群"曙光8000"</h3>
-          <p class="card-desc">2026 年上半年中科曙光延续高增长，营收与利润增速均超 27%/33%，其中扣非净利润增速达 48.45%，说明主业盈利质量明显提升；经营现金流同比大幅收窄亏损，资产结构稳健（总资产 432.15 亿、净资产 230.53 亿，分别 +5.52% / +3.69%）。</p>
-          <div class="card-footer">
-            <span class="card-path">/sudoku/financial/zksg_2026_h1.html</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          <h3 class="card-title serif" data-page-node-id="PylyGapeXchRokUoiOrVFO">首个全国产十万卡AI超集群"曙光8000"</h3>
+          <p class="card-desc" data-page-node-id="CjVqIZWwXaTT8hrrTN2DYf">2026 年上半年中科曙光延续高增长，营收与利润增速均超 27%/33%，其中扣非净利润增速达 48.45%，说明主业盈利质量明显提升；经营现金流同比大幅收窄亏损，资产结构稳健（总资产 432.15 亿、净资产 230.53 亿，分别 +5.52% / +3.69%）。</p>
+          <div class="card-footer" data-page-node-id="uJFHT2v40NkqkvoPQDu83o">
+            <span class="card-path" data-page-node-id="OJYA2v9RG1bUczCTDeEsyr">/sudoku/financial/zksg_2026_h1.html</span>
+            <span class="card-arrow" data-page-node-id="mHymS2AakGHLXzDzOhRtwK"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="A945bZPT2jInIG7mgcxA6x"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="t8llkqkhIGpZBKge9NpC3O"/></svg></span>
           </div>
         </a>
 		
-		<a class="card" href="https://dingyufeng.github.io/sudoku/financial/byd_2026_h1.html">
-          <div class="card-top">
-            <div class="card-number accent-06">09</div>
-            <span class="card-tag tag-06">电池、芯片、整车全栈自研 Build Your Dream</span>
+		<a class="card" href="https://dingyufeng.github.io/sudoku/financial/byd_2026_h1.html" data-page-node-id="Gb40r8tnTS1WGBatgp7GYM">
+          <div class="card-top" data-page-node-id="2mM7uKjBHSHbTdLHTZBXA3">
+            <div class="card-number accent-04" data-page-node-id="WOPnGUUS1iArSlI26IwMmJ">10</div>
+            <span class="card-tag tag-04" data-page-node-id="l9ucTYYoW7lX8IE5Ghruq3">财经分析</span>
           </div>
-          <h3 class="card-title serif">以技术构筑垂直整合的巨鳄。</h3>
-          <p class="card-desc">2026年凭借第二代刀片电池实现"充电像加油一样快"的补能革命，并量产中国首款4nm车规级智驾芯片"璇玑A3"，用"电池+芯片+整车"全栈自研的核心技术构筑起从闪充生态到高端出海的多重护城河，在销量短暂波动后以Q2利润翻倍的强悍反弹证明，它依然是新能源烂泥中冷静吞食份额的巨型鳄鱼。</p>
-          <div class="card-footer">
-            <span class="card-path">/sudoku/financial/byd_2026_h1.html</span>
-            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          <h3 class="card-title serif" data-page-node-id="0uHqSjNOfEtl8366kBOxRx">以技术构筑垂直整合的巨鳄。</h3>
+          <p class="card-desc" data-page-node-id="Vtlwe8CdsEtBy9UE4ZSJfw">2026年凭借第二代刀片电池实现"充电像加油一样快"的补能革命，并量产中国首款4nm车规级智驾芯片"璇玑A3"，用"电池+芯片+整车"全栈自研的核心技术构筑起从闪充生态到高端出海的多重护城河，在销量短暂波动后以Q2利润翻倍的强悍反弹证明，它依然是新能源烂泥中冷静吞食份额的巨型鳄鱼。</p>
+          <div class="card-footer" data-page-node-id="i2xOX6CwReFp2bYEOBMrks">
+            <span class="card-path" data-page-node-id="ZoWajMFFuaUlFIfU7ShX28">/sudoku/financial/byd_2026_h1.html</span>
+            <span class="card-arrow" data-page-node-id="DjE2CC4GlH5pI8gz4vVyBp"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="KLxh2JP4XGKLGqvcIhO0P0"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="R1uqGwraKHZeMi5whLqYSw"/></svg></span>
           </div>
         </a>
 		
@@ -617,24 +714,24 @@
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <span class="footer-brand-name serif">数据图志</span>
-          <span class="footer-brand-latin">Data Atlas</span>
+  <footer data-page-node-id="kOvMo6h7g2nSzzf8WW8jBL">
+    <div class="container" data-page-node-id="6lAQM3qbgeqreehL8xykJA">
+      <div class="footer-top" data-page-node-id="dooZ932ras5vU5MugtpAtG">
+        <div class="footer-brand" data-page-node-id="kBIpGcvAQ3SD4HbGVMRXg5">
+          <span class="footer-brand-name serif" data-page-node-id="fS07SYDTeMoATUoPKLUGzo">数据图志</span>
+          <span class="footer-brand-latin" data-page-node-id="HY4XyOdtEhi3FwMkwvNqIv">Data Atlas</span>
         </div>
-        <div class="footer-meta">
-          <span>共 7 个页面</span>
-          <span>托管于 GitHub Pages</span>
-          <a href="https://github.com/dingyufeng" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;stroke:currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <div class="footer-meta" data-page-node-id="ah4kjaV3wEYPAKtWHcLeDN">
+          <span data-page-node-id="Xtj68jZEwRUu0BVxoYcixE">共 10 个页面</span>
+          <span data-page-node-id="RD5RjsIQdROoSfjVcyYmCE">托管于 GitHub Pages</span>
+          <a href="https://github.com/dingyufeng" target="_blank" rel="noopener" data-page-node-id="OFOKt4bwf3lzN8ACQyAEdt">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;stroke:currentColor" data-page-node-id="IDGstNKGw0nUN5IszNuqgS"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-page-node-id="QQ0ouVCpgcHKz1Y1BMzvuO"/></svg>
             dingyufeng
           </a>
         </div>
       </div>
-      <div class="footer-divider"></div>
-      <div class="footer-bottom">2026 数据图志 · 所有数据均来自公开报告，仅供研究与讨论</div>
+      <div class="footer-divider" data-page-node-id="7GLeswvmw5K2TCGZ218hWt"></div>
+      <div class="footer-bottom" data-page-node-id="2hvq8hBJXJNbhEjPCtxVOW">2026 数据图志 · 所有数据均来自公开报告，仅供研究与讨论</div>
     </div>
   </footer>
 
