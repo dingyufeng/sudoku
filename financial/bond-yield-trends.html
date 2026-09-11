@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="lqxsp5enX6hRmUSwxk51ev">
+<head data-page-node-id="uApph2NHjbN3NMzJ03Wzxs">
+<meta charset="UTF-8" data-page-node-id="zPrZIOwz4tKZMU545Gv44q">
+<meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="21ZVSLA9HUxWsfXmlJvJ9g">
+<title>三条曲线的六年 · 中日美10年期国债收益率走势与解读</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{
+    --ink:#1c1c1e; --ink2:#55555a; --ink3:#8a8a90;
+    --line:#e3e4e8; --bg:#f4f5f7; --card:#ffffff;
+    --us:#A32D2D; --jp:#BA7517; --cn:#185FA5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:32px 20px 56px;
+    background:var(--bg); color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px; margin:0 auto;}
+  header{margin-bottom:22px;}
+  .eyebrow{font-size:12px; letter-spacing:.12em; color:var(--ink3); text-transform:uppercase; margin:0 0 10px;}
+  h1{font-size:28px; line-height:1.35; font-weight:500; margin:0 0 10px;}
+  .lede{font-size:15px; line-height:1.8; color:var(--ink2); margin:0;}
+  .meta{font-size:12px; color:var(--ink3); margin-top:12px;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:22px 26px; margin-bottom:18px;}
+
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:18px;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px;}
+  .stat .k{font-size:12px; color:var(--ink3); margin-bottom:4px;}
+  .stat .v{font-size:24px; font-weight:500; line-height:1.2;}
+  .stat .r{font-size:12px; color:var(--ink2); margin-top:4px;}
+
+  .chart-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .chart-title{font-size:16px; font-weight:500; margin:0;}
+  .chart-cap{font-size:12px; color:var(--ink3); margin:0;}
+  .legend{display:flex; flex-wrap:wrap; gap:18px; font-size:13px; color:var(--ink2); margin:10px 0 4px;}
+  .legend i{display:inline-block; width:16px; height:3px; border-radius:2px; margin-right:6px; vertical-align:middle;}
+
+  .note{font-size:12px; color:var(--ink3); line-height:1.7; margin:12px 0 0;}
+
+  article p{font-size:15px; line-height:1.95; margin:0 0 16px; text-align:justify;}
+  article h2{font-size:16px; font-weight:500; margin:26px 0 10px; padding-left:10px; border-left:3px solid var(--line);}
+  article h2.us{border-left-color:var(--us);}
+  article h2.jp{border-left-color:var(--jp);}
+  article h2.cn{border-left-color:var(--cn);}
+  .hl{font-weight:500;}
+  .hl-us{color:var(--us);} .hl-jp{color:var(--jp);} .hl-cn{color:var(--cn);}
+  .divider{height:1px; background:var(--line); margin:26px 0;}
+  footer{font-size:12px; color:var(--ink3); line-height:1.8; text-align:center; padding-top:6px;}
+  @media print{
+    body{background:#fff; padding:0;}
+    .card{break-inside:avoid;}
+  }
+  @media (max-width:640px){
+    h1{font-size:22px;} article p{font-size:14.5px;}
+  }
+</style>
+</head>
+<body data-page-node-id="K20k5o1aCBWdvazNrFCn6D">
+<div class="wrap" data-page-node-id="tDaKEpN6LWTFmNTdPk3411">
+
+  <header data-page-node-id="iVVkSGoyZb4oeqr1Ijnjw6">
+    <p class="eyebrow" data-page-node-id="w7uhEKmv6ukEIi8rvmJsmf">Macro Note · 长期利率观察</p>
+    <h1 data-page-node-id="L84Vqf3MHQAQP9xwPt5vMF">三条曲线的六年：中日美 10 年期国债收益率的分化与启示</h1>
+    <p class="lede" data-page-node-id="n501GPfxXV3cyKC58MqIYi">同样是长期无风险利率，2020 年 7 月至 2026 年 8 月，美国、日本与中国的 10 年期国债收益率走出了三条方向截然不同的曲线——六年之后，三者的相对位置几乎完全调转。</p>
+    <p class="meta" data-page-node-id="sPGAfknCEfBHbsOnLn04eF">数据区间 2020-07 至 2026-08 · 月度 · 数据来源：FRED、中债收益率曲线、Tradeweb 及公开财经报道</p>
+  </header>
+
+  <div class="stats" data-page-node-id="GMvM3IBk9P4Li0ezsovOpo">
+    <div class="stat" data-page-node-id="iZwuGhGBu3uCkF8QqS8hAt">
+      <div class="k" data-page-node-id="CS3TNUsOANCPQ81AvmpnTw">美国 10Y（2026-08）</div>
+      <div class="v" style="color:var(--us)" data-page-node-id="ecSv9ehD1oTLRf0Zf8uqkW">4.68%</div>
+      <div class="r" data-page-node-id="zMlIFRk5VPK0PO1h0DAT8b">起于 0.66% · 期间最高逼近 5%</div>
+    </div>
+    <div class="stat" data-page-node-id="xsOhh49bQRNtKdbUnEjN9J">
+      <div class="k" data-page-node-id="Vc06IApKEnJQ3rfgx5kUoF">日本 10Y（2026-08）</div>
+      <div class="v" style="color:var(--jp)" data-page-node-id="TsZdSki8aOQPZFQGE8okn0">2.94%</div>
+      <div class="r" data-page-node-id="pkIY02HxCWgM2SqcpIHfVV">起于 0.02% · 九年动能最强的单边上行</div>
+    </div>
+    <div class="stat" data-page-node-id="CDKkIxQDEhRrVoFbFvWRRh">
+      <div class="k" data-page-node-id="WVE6dn8LRDEAYFn2hH3Zq0">中国 10Y（2026-08）</div>
+      <div class="v" style="color:var(--cn)" data-page-node-id="51TBaLeqU34wd2LdMTehih">1.69%</div>
+      <div class="r" data-page-node-id="05oouRtMHUmGh3RUQzeGkB">起于 2.98% · 六年累计下行约 129bp</div>
+    </div>
+  </div>
+
+  <section class="card" data-page-node-id="L3IVjegYyb3bIBAXSf5Zam">
+    <div class="chart-head" data-page-node-id="GFyJMBUK70BX1SWah30Cvq">
+      <h2 class="chart-title" data-page-node-id="Epf2EnntLduZnjTaXI6qp2">中日美 10 年期国债收益率长期走势对比</h2>
+      <p class="chart-cap" data-page-node-id="XqLOvvtGRDEws3LecZRl4q">2020年7月 — 2026年8月 · 月度 · 单位：%（悬停查看数值）</p>
+    </div>
+    <div class="legend" data-page-node-id="M8G2rVrP7SaUEbdWAJR1iJ">
+      <span data-page-node-id="CW0DoRWk5JBQ7FRrT2O9p8"><i style="background:var(--us)" data-page-node-id="uIeJHhoQHuGrNDd0UbJx42"></i>美国 10Y</span>
+      <span data-page-node-id="KSD1QcjzsAtsQ2E2BWETRW"><i style="background:var(--jp)" data-page-node-id="QNmS7E8MnRgMwCb8sF1cm0"></i>日本 10Y</span>
+      <span data-page-node-id="vUqhnqxznFIoU1nf5LSJhA"><i style="background:var(--cn)" data-page-node-id="q99kuLFf1PwbDSd47Ivcvz"></i>中国 10Y</span>
+    </div>
+    <div style="position:relative; height:420px;" data-page-node-id="554VOWfkLTfTGkFueMZ21u">
+      <canvas id="trend" role="img" aria-label="中日美三国10年期国债收益率2020年7月至2026年8月月度走势折线图" data-page-node-id="XpM3pwnHalTKF7ToUClqrl">浏览器不支持 canvas，请升级浏览器查看图表。</canvas>
+    </div>
+    <p class="note" data-page-node-id="E76pQnMm6ChnMqe9KvOY9A">月度取值为期末或月内代表值的近似整理，2026 年上半年部分月份系依据公开报道锚点插值估计；仅供趋势参考，不构成投资建议。</p>
+  </section>
+
+  <article class="card" data-page-node-id="7GHDwoUJq5jEYqdjIMuVyR">
+    <h2 data-page-node-id="PNwtl1KElRIpfXElrrAsTw">美国：从零利率到再通胀的完整轮回</h2>
+    <p data-page-node-id="yVkofSrscrAgw8ugN2JrQD">疫情初期，美联储把政策利率压到零附近，10 年期美债收益率一度只有 <span class="hl hl-us" data-page-node-id="J31C9ah24epFdhQU1A2ACN">0.66%</span>。2021 年通胀升温，收益率开始爬升；2022 年美联储连续激进加息，10 年期收益率从年初的 1.78% 冲至年末的 3.70%，2023 年 10 月更逼近 5%。此后随着通胀回落与降息预期升温，收益率在 2024-2025 年回落至 4% 上下。但 2026 年地缘冲突推高油价、能源价格再度点燃通胀预期，收益率重新向 5% 靠拢，9 月 10 日盘中触及 <span class="hl hl-us" data-page-node-id="TvPsfsaivw0h6qrAKrOaYG">4.97%</span>，创 2023 年 10 月以来新高。美国的曲线，是一部"放水—通胀—紧缩—再通胀"的教科书。</p>
+
+    <h2 class="jp" data-page-node-id="NMgXmz7xPnIvybXurnpWKp">日本：迟到三十年的正常化</h2>
+    <p data-page-node-id="MxnNMEp3wDs7ejoBx6FAcq">日本曲线的起点近乎贴地：2020-2022 年长期趴在 0.1% 以下，处于负利率与收益率曲线控制（YCC）框架之下。转折出现在 2022 年末，YCC 调整打开了上行空间；2024 年日本央行退出负利率、结束超宽松，收益率进入趋势性抬升通道。到 2025 年底已站上 1.9%，2026 年在通胀升温与财政扩张的双重担忧下加速上行——9 月 2 日盘中首次突破 <span class="hl hl-jp" data-page-node-id="rgEd0WtRfGngbYaUqVhwfU">3%</span>，为 1996 年以来首次。日本 2026 财年预算已按 3% 的长期利率假设编制，利率越过这条线意味着付息负担实质性加重。一个债务规模超过 GDP 260% 的经济体，正在为利率正常化支付代价。</p>
+
+    <h2 class="cn" data-page-node-id="38xEdVykFUbp8tlbKImShC">中国：低利率环境下的独立行情</h2>
+    <p data-page-node-id="yciU7EB6c5ILGBQAafMRID">中国曲线与美日几乎反向。2020-2021 年，10 年期国债收益率维持在 3.0% 以上；此后随着经济增速换挡、通胀持续温和，收益率步入长期下行通道，2024 年末一度跌破 1.7%。2025 年中虽有反弹至 1.9% 附近，但 2026 年再度回落，8 月以来围绕 <span class="hl hl-cn" data-page-node-id="w3ftEyJzv9jDBqFoNtkVZj">1.68%-1.71%</span> 窄幅震荡。支撑这一格局的是三条逻辑：基本面处于温和修复阶段、通胀压力有限、货币政策保持较强自主性，流动性维持宽松。海外债市的剧烈波动对国内债市的影响，往往只体现为单日几个基点的情绪扰动。</p>
+
+    <div class="divider" data-page-node-id="QI5TahRGnSCgMiDBBu8uD1"></div>
+
+    <h2 data-page-node-id="Jz06Mqdmoth0eBub0ObGwC">分化的本质：三个经济体处在不同的周期位置</h2>
+    <p data-page-node-id="rMrpOUXBP4RZaIIGlqg7Se">美国面对的是需求韧性叠加能源冲击的再通胀，货币政策被迫维持紧缩；日本面对的是通胀与财政的双重压力，必须推进利率正常化；中国面对的是温和修复与低通胀，需要低利率为经济托底。三种处境，对应三条方向不同的曲线。</p>
+    <p data-page-node-id="j3oxuBJgeMgqjvp8IDJyvQ">这组曲线至少提示两件事。其一，中美 10 年期利差从六年前的"中国高 2.3 个百分点"转为如今"美国高约 3 个百分点"，倒挂幅度已处历史极值区，人民币资产的相对估值与外流压力因此长期存在。其二，日本利率上行正在终结延续数十年的日元套息交易——低成本资金的消失，会通过跨市场杠杆传导至全球风险资产，这已不是日本一国的问题。</p>
+    <p data-page-node-id="BEb8EuFhgPipF20D1A0HVL">六年三条线，最终指向同一个常识：没有永恒的利率水平，只有各自的周期位置。</p>
+  </article>
+
+  <footer data-page-node-id="Y8DXGgV8DMvD94uYPvCK6i">
+    数据来源：FRED（WGS10YR）、中债国债收益率曲线（中国债券信息网）、Tradeweb Government Bond Update、日本财务省及公开财经报道。<br data-page-node-id="ZUbQBXUI66eI6BbRu4RcDY">
+    部分月度取值为近似整理，2026 年上半年部分月份为插值估计。本文仅作宏观分析，不构成任何投资建议。
+  </footer>
+
+</div>
+
+<script>
+const labels = ["2020-07","2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08"];
+new Chart(document.getElementById('trend'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: '美国 10Y',
+        data: [0.66,0.68,0.69,0.79,0.88,0.92,1.11,1.44,1.74,1.63,1.61,1.47,1.28,1.31,1.46,1.57,1.58,1.51,1.78,1.93,2.16,2.75,2.90,3.16,2.90,3.05,3.55,3.98,3.89,3.70,3.53,3.92,3.66,3.46,3.57,3.75,3.90,4.20,4.44,4.80,4.50,4.30,4.10,4.25,4.21,4.54,4.48,4.31,4.25,3.87,3.72,4.10,4.36,4.39,4.63,4.45,4.28,4.27,4.42,4.38,4.39,4.26,4.12,4.03,4.08,4.14,4.20,4.25,4.30,4.35,4.40,4.45,4.60,4.68],
+        borderColor:'#A32D2D', pointBackgroundColor:'#A32D2D', pointBorderColor:'#A32D2D',
+        borderWidth:2.2, pointRadius:0, pointHoverRadius:4, tension:0.2 },
+      { label: '日本 10Y',
+        data: [0.02,0.02,0.03,0.03,0.03,0.02,0.04,0.07,0.10,0.08,0.07,0.06,0.04,0.04,0.06,0.10,0.08,0.07,0.13,0.19,0.22,0.22,0.21,0.25,0.20,0.22,0.25,0.27,0.28,0.42,0.47,0.47,0.37,0.41,0.42,0.42,0.55,0.63,0.75,0.87,0.83,0.78,0.68,0.72,0.74,0.90,1.00,1.05,1.05,0.90,0.90,0.98,1.05,1.10,1.23,1.33,1.45,1.42,1.50,1.44,1.55,1.60,1.62,1.68,1.75,1.90,2.13,2.25,2.35,2.49,2.75,2.67,2.79,2.94],
+        borderColor:'#BA7517', pointBackgroundColor:'#BA7517', pointBorderColor:'#BA7517',
+        borderWidth:2.2, pointRadius:0, pointHoverRadius:4, tension:0.2 },
+      { label: '中国 10Y',
+        data: [2.98,3.03,3.12,3.15,3.30,3.14,3.18,3.28,3.20,3.16,3.08,3.08,2.91,2.85,2.87,2.97,2.91,2.82,2.73,2.78,2.79,2.84,2.76,2.80,2.76,2.63,2.68,2.72,2.83,2.87,2.90,2.91,2.87,2.78,2.70,2.64,2.64,2.57,2.65,2.71,2.67,2.66,2.50,2.34,2.32,2.29,2.29,2.25,2.19,2.15,2.14,2.15,2.08,1.78,1.63,1.68,1.81,1.72,1.70,1.70,1.78,1.85,1.88,1.90,1.89,1.88,1.86,1.83,1.80,1.76,1.72,1.68,1.70,1.69],
+        borderColor:'#185FA5', pointBackgroundColor:'#185FA5', pointBorderColor:'#185FA5',
+        borderWidth:2.2, pointRadius:0, pointHoverRadius:4, tension:0.2 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor:'#1c1c1e', titleColor:'#fff', bodyColor:'#e8e8ea',
+        padding:10, cornerRadius:6, displayColors:true,
+        callbacks: { label: function(c){ return c.dataset.label + '：' + c.parsed.y.toFixed(2) + '%'; } }
+      }
+    },
+    scales: {
+      y: { min: 0, max: 5.4, ticks: { callback: function(v){ return v.toFixed(1) + '%'; }, color:'#8a8a90' }, grid: { color: 'rgba(0,0,0,0.06)' } },
+      x: { grid: { display: false }, ticks: { autoSkip: true, maxTicksLimit: 14, maxRotation: 0, color:'#8a8a90' } }
+    }
+  }
+});
+</script>
+</body>
+</html>
