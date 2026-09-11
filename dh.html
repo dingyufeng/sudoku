@@ -4,7 +4,7 @@
   <meta charset="UTF-8" data-page-node-id="3CRoGvAcaKRn8X3gB7Tgbv">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="FYvGlTNeHzGMhXAjLQQkP7">
   <title>数据图志 · DATA ATLAS</title>
-  <meta name="description" content="数据图志：一个入口，直达全部页面。收录 5 篇数据研究报告、2 篇财经分析与 3 个在线工具。" data-page-node-id="DExCJWDNw9bDObwvDi8iCd">
+  <meta name="description" content="数据图志：一个入口，直达全部页面。收录 5 篇数据研究报告、3 篇财经分析与 3 个在线工具。" data-page-node-id="DExCJWDNw9bDObwvDi8iCd">
   <link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="LNhFXiZAh8wglDAhGViP6M">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="BqHYYilgRS0Ik6cjCwigOy">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet" data-page-node-id="tKDZyWLQwzO4DZMBp2IwWp">
@@ -246,36 +246,36 @@
     }
 
     .grid-row-2 {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .grid-row-3 {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       margin-top: 20px;
     }
 
-    .grid-sole {
-      grid-template-columns: repeat(3, 1fr);
+    /* 财经分析组：三张卡正好排满一行 */
+    .grid-finance {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       margin-top: 20px;
+    }
+
+    /* 精选双卡组：AI 泡沫预警 + 外部入口并排 */
+    .grid-duo {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 20px;
+    }
+
+    /* 三列过窄时回退为单列，避免内容撑破栅格 */
+    @media (max-width: 1100px) {
+      .grid-finance { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 900px) {
-      .grid-row-2, .grid-row-3, .grid-sole {
+      .grid-row-2, .grid-row-3, .grid-finance, .grid-duo {
         grid-template-columns: 1fr;
       }
-      .grid-row-3, .grid-sole { margin-top: 0; }
-      .card-featured {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 24px;
-      }
-      .feat-right {
-        flex: 1 1 auto;
-        border-left: none;
-        border-top: 1px solid #1F352E;
-        padding-left: 0;
-        padding-top: 22px;
-      }
+      .grid-row-3, .grid-finance, .grid-duo { margin-top: 0; }
     }
 
     .card {
@@ -391,43 +391,22 @@
     .tag-06 { background: #E3F0ED; color: #11554E; }
     .tag-07 { background: #E9F3EC; color: #2E6B4F; }
 
-    /* 数据报告组 · 末位特色卡（跨双列，深色呼应 Hero） */
-    .card-featured {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      align-items: center;
-      gap: 44px;
-      padding: 32px 34px;
+    /* 精选双卡组 · 深色卡（与 Hero 同底色，纵向排布） */
+    .card-dark {
       background: var(--hero-dark);
       border-color: #1F352E;
       box-shadow: 0 14px 32px rgba(12, 23, 21, 0.18);
     }
 
-    .card-featured:hover {
+    .card-dark:hover {
       box-shadow: 0 20px 46px rgba(12, 23, 21, 0.26);
     }
 
-    .feat-left {
-      flex: 1 1 auto;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .card-featured .card-title { color: #F6F4EC; }
-    .card-featured .card-desc { color: #A6B3AC; }
-    .card-featured .card-path { color: #7C8B84; }
-    .card-featured .card-arrow { background: rgba(255, 255, 255, 0.08); color: #C4CFDE; }
-    .card-featured .card-tag { background: rgba(255, 111, 94, 0.14); color: #F0A08E; }
-
-    .feat-right {
-      flex: 0 0 292px;
-      display: flex;
-      flex-direction: column;
-      border-left: 1px solid #1F352E;
-      padding-left: 34px;
-    }
+    .card-dark .card-title { color: #F6F4EC; }
+    .card-dark .card-desc { color: #A6B3AC; }
+    .card-dark .card-path { color: #7C8B84; }
+    .card-dark .card-arrow { background: rgba(255, 255, 255, 0.08); color: #C4CFDE; }
+    .card-dark .card-tag { background: rgba(255, 111, 94, 0.14); color: #F0A08E; }
 
     .feat-stat {
       padding: 11px 0;
@@ -453,7 +432,30 @@
       line-height: 1.2;
     }
 
+    /* 深色卡内的横向指标行 */
+    .dark-stats {
+      display: flex;
+      border-top: 1px solid #1F352E;
+      padding-top: 14px;
+    }
+
+    .dark-stats .feat-stat {
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 0;
+      border-bottom: none;
+    }
+
+    .dark-stats .feat-stat + .feat-stat {
+      border-left: 1px solid #16261F;
+      padding-left: 16px;
+    }
+
+    .dark-stats .feat-stat .v { font-size: 17px; }
+
     .accent-08 { color: #E8876F; }
+    .accent-09 { color: var(--accent-09); }
+    .tag-09 { background: #E3EEF3; color: #155A73; }
 
     /* Footer */
     footer {
@@ -549,12 +551,12 @@
       <div class="hero-content" data-page-node-id="61xI2IHWSOcNFqiTMbGCgS">
         <div class="eyebrow" data-page-node-id="YCK19fbqKODH4Byw1C8kQo">GITHUB PAGES · 站点入口</div>
         <h1 class="serif" data-page-node-id="xRFrRtGboknDg8EBPk1dTL">一个地址，访问全部页面</h1>
-        <p class="subheadline" data-page-node-id="lF1VHEMminwwh835YgY8lA">共收录 10 个页面入口：5 篇数据研究报告、2 篇财经分析与 3 个在线工具。书签只需保存这一个地址，其余页面随取随用。</p>
+        <p class="subheadline" data-page-node-id="lF1VHEMminwwh835YgY8lA">共收录 11 个页面入口：5 篇数据研究报告、3 篇财经分析与 3 个在线工具。书签只需保存这一个地址，其余页面随取随用。</p>
         <div class="url-pill" data-page-node-id="KJ4mGw34yDdKHuOj9QHsEv"><span data-page-node-id="7JDn9QMGTNbcRcCh9w8iMG">收藏地址</span><div class="divider" data-page-node-id="qQxpQdMAN5bvPAMkJbch9F"></div>dingyufeng.github.io/sudoku/</div>
         <div class="stats" data-page-node-id="i4BuMszAuzef4F63dEiQ7V">
-          <div class="stat" data-page-node-id="OGjCkBSFReZKGiWFifpHtC"><div class="value" data-page-node-id="sc4xoaS2UcY7ysvuJAXUNB">10</div><div class="label" data-page-node-id="HqTcFzZuzTESxSMrtJPEfF">页面总数</div></div>
+          <div class="stat" data-page-node-id="OGjCkBSFReZKGiWFifpHtC"><div class="value" data-page-node-id="sc4xoaS2UcY7ysvuJAXUNB">11</div><div class="label" data-page-node-id="HqTcFzZuzTESxSMrtJPEfF">页面总数</div></div>
           <div class="stat" data-page-node-id="LvhDfewtuOXdEVvqYxk1IF"><div class="value" data-page-node-id="4H5NqCflLGULsHum2qE2er">5</div><div class="label" data-page-node-id="gplEA2VW637gyONsClZaqj">数据报告</div></div>
-          <div class="stat" data-page-node-id="fvZMuadsXt6jtu9qXeGqWC"><div class="value" data-page-node-id="KZqSYDBFpbBCC8nyBm4lZm">2</div><div class="label" data-page-node-id="VphYGtnUhFi0DCLsRmT3vM">财经分析</div></div>
+          <div class="stat" data-page-node-id="fvZMuadsXt6jtu9qXeGqWC"><div class="value" data-page-node-id="KZqSYDBFpbBCC8nyBm4lZm">3</div><div class="label" data-page-node-id="VphYGtnUhFi0DCLsRmT3vM">财经分析</div></div>
           <div class="stat" data-page-node-id="mFnocm6StqFwLGMUUtT4Tg"><div class="value" data-page-node-id="EZ5m6Uj6De4Dz21hBrPqAo">3</div><div class="label" data-page-node-id="ygL31SCcNUmGbtcibyLEPR">在线工具</div></div>
         </div>
       </div>
@@ -565,7 +567,7 @@
     <div class="container" data-page-node-id="1I8qABzMYGIguNEjOiMPo2">
       <div class="section-head" data-page-node-id="5XApBjoueY2hsuAYQl87BI">
         <h2 class="section-title serif" data-page-node-id="Q1BVxuNlrW9R3VPkNr7KRi">页面索引</h2>
-        <span class="section-meta" data-page-node-id="PZHDGMsEWYQNnVYAgGGiCm">INDEX · 10 ENTRIES</span>
+        <span class="section-meta" data-page-node-id="PZHDGMsEWYQNnVYAgGGiCm">INDEX · 11 ENTRIES</span>
       </div>
 
       <div class="grid grid-row-2" data-page-node-id="E5hEQjBpLfHjovvJoMPWUD">
@@ -649,47 +651,49 @@
           </div>
         </a>
 
-        <a class="card card-featured" href="https://dingyufeng.github.io/sudoku/ai_bubble_2027.html" data-page-node-id="POBesoWmTjFOsPIm8SsAHY">
-          <div class="feat-left" data-page-node-id="UOGGCBK0QXowONvrLTYq1Q">
-            <div class="card-top" data-page-node-id="g6EorJcvl1ILkAjQlYLZUN">
-              <div class="card-number accent-08" data-page-node-id="HchoZ9LzVbT2gfD8wFtTuo">07</div>
-              <span class="card-tag" data-page-node-id="olMKARCzyEHLbHan3li1Fk">风险预警</span>
-            </div>
-            <h3 class="card-title serif" data-page-node-id="zsq9Ej0rqjh7iY2pLypsrB">2027，美国 AI 泡沫会破裂吗</h3>
-            <p class="card-desc" data-page-node-id="xorPLjhrhe6pEaeljeJxbb">全球化智库（CCG）副主任高志凯多次公开预判：美国 AI 泡沫将在 2027 年上半年破裂，并触发一场波及全球的金融危机。页面梳理其预警时间线、三大导火索、关键数据与多空分歧。</p>
-            <div class="card-footer" data-page-node-id="WIeoEd62kUazSxTVwdkw1K">
-              <span class="card-path" data-page-node-id="bm4uLZJ7UCc1ytGERGAY82">/sudoku/ai_bubble_2027.html</span>
-              <span class="card-arrow" data-page-node-id="IXFusG5WRdG4pNnGeSOf1n"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="MITyh19xWWJBYeSsaqesfP"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="U5eN3rSYRwSpZkE187wBGM"/></svg></span>
-            </div>
+      </div>
+
+      <div class="grid grid-duo">
+        <a class="card card-dark" href="https://dingyufeng.github.io/sudoku/ai_bubble_2027.html">
+          <div class="card-top">
+            <div class="card-number accent-08">07</div>
+            <span class="card-tag">风险预警</span>
           </div>
-          <div class="feat-right" data-page-node-id="laaSymAjwxZ8H8H95ZJVAG">
-            <div class="feat-stat" data-page-node-id="KHfMugNAMuAVGSdB3EOAxQ"><div class="k" data-page-node-id="hhzpRlHk7puEpDJOr6iU2a">投入产出比</div><div class="v" data-page-node-id="dvlDhCB6iPVMCX0ILwyAPR">16 : 1</div></div>
-            <div class="feat-stat" data-page-node-id="pnmuFjcxhfAATEQuSFGAXp"><div class="k" data-page-node-id="G76B8FGBVUqbFkhUTb15XF">美债规模</div><div class="v" data-page-node-id="Xxpj3chO2KgnTGaAbwyReh">40 万亿美元</div></div>
-            <div class="feat-stat" data-page-node-id="kpUiCeLBybUHvNdqik84Vl"><div class="k" data-page-node-id="eKMUPUZIv6qbpGoJigXjK4">预判窗口</div><div class="v" data-page-node-id="9VrzsND4cwsBp1Mg2nidMl">2027 上半年</div></div>
+          <h3 class="card-title serif">2027，美国 AI 泡沫会破裂吗</h3>
+          <p class="card-desc">全球化智库（CCG）副主任高志凯多次公开预判：美国 AI 泡沫将在 2027 年上半年破裂，并触发一场波及全球的金融危机。页面梳理其预警时间线、三大导火索、关键数据与多空分歧。</p>
+          <div class="dark-stats">
+            <div class="feat-stat"><div class="k">投入产出比</div><div class="v">16 : 1</div></div>
+            <div class="feat-stat"><div class="k">美债规模</div><div class="v">40 万亿美元</div></div>
+            <div class="feat-stat"><div class="k">预判窗口</div><div class="v">2027 上半年</div></div>
+          </div>
+          <div class="card-footer">
+            <span class="card-path">/sudoku/ai_bubble_2027.html</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          </div>
+        </a>
+
+        <a class="card" href="https://www.workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri" target="_blank" rel="noopener">
+          <div class="card-top">
+            <div class="card-number accent-06">08</div>
+            <span class="card-tag tag-06">外部入口</span>
+          </div>
+          <h3 class="card-title serif">学习目标台</h3>
+          <p class="card-desc">托管在 WorkBuddy 的学习目标管理台，跟踪学习计划与目标进度，可随时回到 WorkBuddy 继续跟进。</p>
+          <div class="card-footer">
+            <span class="card-path">workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4 11 13M18 13.5v5.5a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 19V8.5A1.5 1.5 0 0 1 5.5 7H11"/></svg></span>
           </div>
         </a>
       </div>
 
-      <div class="grid grid-sole" data-page-node-id="YkfGjN0EuGPMkCDt7VL5Tu">
-        <a class="card" href="https://www.workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri" target="_blank" rel="noopener" data-page-node-id="FbeNscjoESbJHZdltYqsKi">
-          <div class="card-top" data-page-node-id="OX7E2CGlh4mjCWYljarjdR">
-            <div class="card-number accent-06" data-page-node-id="EMAM5YQTOgaoSrvylB3hLr">08</div>
-            <span class="card-tag tag-06" data-page-node-id="CaOTZ5kEAVECyR3D0q9TAz">外部入口</span>
-          </div>
-          <h3 class="card-title serif" data-page-node-id="s8pBN79okeuisFz0cSUuMl">学习目标台</h3>
-          <p class="card-desc" data-page-node-id="NBnK7N5mUS4wKVCIvj86zb">托管在 WorkBuddy 的学习目标管理台，跟踪学习计划与目标进度，可随时回到 WorkBuddy 继续跟进。</p>
-          <div class="card-footer" data-page-node-id="EU0srXIARuc9iGTGyD7BLt">
-            <span class="card-path" data-page-node-id="IKFeW157HteXU3x0fKyWFy">workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri</span>
-            <span class="card-arrow" data-page-node-id="sb1gqNU1YtbNZXVqF4OYJ2"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="DjdcgJoijVl1wQOffUGEcg"><path d="M14 4h6v6M20 4 11 13M18 13.5v5.5a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 19V8.5A1.5 1.5 0 0 1 5.5 7H11" data-page-node-id="KaXU9lRTBMlVha9Yi6tWFk"/></svg></span>
-          </div>
-        </a>
+      <div class="grid grid-finance" data-page-node-id="YkfGjN0EuGPMkCDt7VL5Tu">
 		
 		<a class="card" href="https://dingyufeng.github.io/sudoku/financial/zksg_2026_h1.html" data-page-node-id="3hGxsBDjswqIxvNSNNOE6M">
           <div class="card-top" data-page-node-id="OFDnLfwyMnNLgPTCQSGgFd">
             <div class="card-number accent-02" data-page-node-id="WQtWraDmR1YGZuQIcfO21v">09</div>
             <span class="card-tag tag-02" data-page-node-id="gaAaxOoHCZ44a1FNqae5sg">财经分析</span>
           </div>
-          <h3 class="card-title serif" data-page-node-id="PylyGapeXchRokUoiOrVFO">首个全国产十万卡AI超集群"曙光8000"</h3>
+          <h3 class="card-title serif" data-page-node-id="PylyGapeXchRokUoiOrVFO">首个全国产十万卡 AI 超集群“曙光 8000”</h3>
           <p class="card-desc" data-page-node-id="CjVqIZWwXaTT8hrrTN2DYf">2026 年上半年中科曙光延续高增长，营收与利润增速均超 27%/33%，其中扣非净利润增速达 48.45%，说明主业盈利质量明显提升；经营现金流同比大幅收窄亏损，资产结构稳健（总资产 432.15 亿、净资产 230.53 亿，分别 +5.52% / +3.69%）。</p>
           <div class="card-footer" data-page-node-id="uJFHT2v40NkqkvoPQDu83o">
             <span class="card-path" data-page-node-id="OJYA2v9RG1bUczCTDeEsyr">/sudoku/financial/zksg_2026_h1.html</span>
@@ -702,15 +706,29 @@
             <div class="card-number accent-04" data-page-node-id="WOPnGUUS1iArSlI26IwMmJ">10</div>
             <span class="card-tag tag-04" data-page-node-id="l9ucTYYoW7lX8IE5Ghruq3">财经分析</span>
           </div>
-          <h3 class="card-title serif" data-page-node-id="0uHqSjNOfEtl8366kBOxRx">以技术构筑垂直整合的巨鳄。</h3>
-          <p class="card-desc" data-page-node-id="Vtlwe8CdsEtBy9UE4ZSJfw">2026年凭借第二代刀片电池实现"充电像加油一样快"的补能革命，并量产中国首款4nm车规级智驾芯片"璇玑A3"，用"电池+芯片+整车"全栈自研的核心技术构筑起从闪充生态到高端出海的多重护城河，在销量短暂波动后以Q2利润翻倍的强悍反弹证明，它依然是新能源烂泥中冷静吞食份额的巨型鳄鱼。</p>
+          <h3 class="card-title serif" data-page-node-id="0uHqSjNOfEtl8366kBOxRx">比亚迪 2026 上半年：垂直整合的巨鳄</h3>
+          <p class="card-desc" data-page-node-id="Vtlwe8CdsEtBy9UE4ZSJfw">2026 年凭借第二代刀片电池实现“充电像加油一样快”的补能革命，并量产中国首款 4nm 车规级智驾芯片“璇玑 A3”，用“电池 + 芯片 + 整车”全栈自研的核心技术构筑起从闪充生态到高端出海的多重护城河，在销量短暂波动后以 Q2 利润翻倍的强悍反弹证明，它依然是新能源烂泥中冷静吞食份额的巨型鳄鱼。</p>
           <div class="card-footer" data-page-node-id="i2xOX6CwReFp2bYEOBMrks">
             <span class="card-path" data-page-node-id="ZoWajMFFuaUlFIfU7ShX28">/sudoku/financial/byd_2026_h1.html</span>
             <span class="card-arrow" data-page-node-id="DjE2CC4GlH5pI8gz4vVyBp"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="KLxh2JP4XGKLGqvcIhO0P0"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5" data-page-node-id="R1uqGwraKHZeMi5whLqYSw"/></svg></span>
           </div>
         </a>
+
+        <a class="card" href="https://dingyufeng.github.io/sudoku/financial/bond-yield-trends.html">
+          <div class="card-top">
+            <div class="card-number accent-09">11</div>
+            <span class="card-tag tag-09">财经分析</span>
+          </div>
+          <h3 class="card-title serif">中日美 10 年期国债收益率</h3>
+          <p class="card-desc">三条曲线的六年：2020-07 至 2026-08，美债从 0.66% 升至 4.68%，日债从 0.02% 升至 2.94%，中债从 2.98% 降至 1.69%。六年之后，三者的相对位置几乎完全调转。</p>
+          <div class="card-footer">
+            <span class="card-path">/sudoku/financial/bond-yield-trends.html</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          </div>
+        </a>
 		
       </div>
+
     </div>
   </main>
 
@@ -722,7 +740,7 @@
           <span class="footer-brand-latin" data-page-node-id="HY4XyOdtEhi3FwMkwvNqIv">Data Atlas</span>
         </div>
         <div class="footer-meta" data-page-node-id="ah4kjaV3wEYPAKtWHcLeDN">
-          <span data-page-node-id="Xtj68jZEwRUu0BVxoYcixE">共 10 个页面</span>
+          <span data-page-node-id="Xtj68jZEwRUu0BVxoYcixE">共 11 个页面</span>
           <span data-page-node-id="RD5RjsIQdROoSfjVcyYmCE">托管于 GitHub Pages</span>
           <a href="https://github.com/dingyufeng" target="_blank" rel="noopener" data-page-node-id="OFOKt4bwf3lzN8ACQyAEdt">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;stroke:currentColor" data-page-node-id="IDGstNKGw0nUN5IszNuqgS"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-page-node-id="QQ0ouVCpgcHKz1Y1BMzvuO"/></svg>
