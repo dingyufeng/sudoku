@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="bi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Sleep Is Your Most Important Health Investment · 睡眠是最重要的健康投资</title>
+  <meta name="description" content="依据 UC Berkeley 神经科学家 Matthew Walker 的研究，用中英对照的方式讲清睡眠为什么是你最重要的健康投资：缺觉的代价、大脑在夜间的维护工作、深睡与 REM 的分工，以及四条可执行的改善策略。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06080C;
+      --bg-alt: #080B11;
+      --surface: #0C121A;
+      --surface-2: #101720;
+      --border: #1B2531;
+      --border-2: #26313F;
+      --t1: #EDF2FA;
+      --t2: #93A1B5;
+      --t3: #7B8CA3;
+      --t4: #5C6B80;
+      --acc: #8E9BFF;
+      --acc-soft: #C3CAFF;
+      --warm: #FFC98B;
+      --coral: #FF6F5E;
+      --green: #45D98A;
+      --f-en: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --f-sc: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --f-serif-sc: 'Noto Serif SC', 'Songti SC', serif;
+      --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
+      --maxw: 1180px;
+      --readw: 780px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--t1);
+      font-family: var(--f-sc);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ---------- 语言切换 ---------- */
+    html[data-lang="en"] .zh { display: none !important; }
+    html[data-lang="zh"] .en { display: none !important; }
+
+    /* ---------- 顶部阅读进度 ---------- */
+    .progress {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: transparent;
+      z-index: 60;
+      pointer-events: none;
+    }
+
+    .progress i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--acc), var(--warm));
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      transition: transform .12s linear;
+    }
+
+    /* ---------- 顶栏 ---------- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(6, 8, 12, .82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-in {
+      width: min(var(--maxw), 100% - 48px);
+      margin: 0 auto;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .tb-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .tb-brand b {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .tb-brand span {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 1.6px;
+      color: var(--t4);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .tb-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* 语言切换控件 */
+    .lang {
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      gap: 2px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+    }
+
+    .lang button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--t3);
+      font-family: var(--f-sc);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .18s, color .18s;
+    }
+
+    .lang button:hover { color: var(--t1); }
+
+    .lang button.is-on {
+      background: rgba(142, 155, 255, .16);
+      color: var(--acc-soft);
+    }
+
+    .tb-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--t2);
+      text-decoration: none;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+
+    .tb-back:hover { color: var(--t1); border-color: var(--border-2); }
+    .tb-back svg { width: 14px; height: 14px; stroke: currentColor; }
+
+    /* ---------- 页头 ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 78px 0 0;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(760px 380px at 20% -10%, rgba(142, 155, 255, .16), transparent 70%),
+        radial-gradient(560px 320px at 88% 4%, rgba(255, 201, 139, .07), transparent 72%),
+        var(--bg);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .028) 1px, transparent 1px);
+      background-size: 54px 54px;
+      -webkit-mask-image: radial-gradient(circle at 30% 0%, #000 0%, transparent 72%);
+      mask-image: radial-gradient(circle at 30% 0%, #000 0%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .wrap { width: min(var(--maxw), 100% - 48px); margin: 0 auto; position: relative; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--acc-soft);
+      border: 1px solid rgba(142, 155, 255, .3);
+      background: rgba(142, 155, 255, .08);
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--acc);
+      box-shadow: 0 0 0 3px rgba(142, 155, 255, .18);
+    }
+
+    h1 {
+      font-family: var(--f-en);
+      font-weight: 600;
+      font-size: clamp(36px, 5.1vw, 60px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 26px 0 0;
+      max-width: 960px;
+      color: #F4F7FC;
+    }
+
+    .h1-zh {
+      font-family: var(--f-serif-sc);
+      font-weight: 600;
+      font-size: clamp(20px, 2.4vw, 27px);
+      line-height: 1.5;
+      color: var(--t2);
+      margin: 20px 0 0;
+      letter-spacing: .01em;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 20px;
+      margin-top: 26px;
+      font-size: 13px;
+      color: var(--t3);
+    }
+
+    .hero-meta b {
+      font-weight: 500;
+      color: var(--t2);
+    }
+
+    .dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--border-2);
+    }
+
+    /* 关键数字条 */
+    .figures {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 54px;
+      background: var(--border);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fig {
+      background: var(--bg-alt);
+      padding: 26px 22px 28px;
+    }
+
+    .fig .v {
+      font-family: var(--f-en);
+      font-weight: 600;
+      font-size: 33px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--warm);
+    }
+
+    .fig .k {
+      margin-top: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--t2);
+    }
+
+    .fig .k .en { display: block; }
+    .fig .k .zh { display: block; margin-top: 3px; color: var(--t3); }
+
+    .fig .k em {
+      font-style: normal;
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      color: var(--t4);
+      display: block;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    /* ---------- 正文 ---------- */
+    .article {
+      padding: 78px 0 96px;
+      background: var(--bg);
+    }
+
+    .col {
+      width: min(var(--readw), 100% - 48px);
+      margin: 0 auto;
+    }
+
+    .chapter { margin-top: 76px; }
+    .chapter:first-child { margin-top: 0; }
+
+    .ch-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 26px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ch-num {
+      font-family: var(--f-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--acc);
+      padding-top: 8px;
+      flex: 0 0 auto;
+    }
+
+    .ch-head h2 {
+      margin: 0;
+      font-family: var(--f-en);
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+      color: var(--t1);
+    }
+
+    .ch-head h2 .zh {
+      display: block;
+      font-family: var(--f-serif-sc);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: var(--t3);
+      margin-top: 8px;
+      letter-spacing: .01em;
+    }
+
+    .pair + .pair { margin-top: 24px; }
+
+    p.en-body {
+      margin: 0;
+      font-family: var(--f-en);
+      font-size: 19px;
+      line-height: 1.78;
+      letter-spacing: .002em;
+      color: #E3EAF4;
+    }
+
+    p.en-body strong {
+      font-weight: 600;
+      color: #FFFFFF;
+      background: rgba(255, 201, 139, .12);
+      padding: 0 3px;
+      border-radius: 3px;
+    }
+
+    p.tr {
+      margin: 15px 0 0;
+      padding: 14px 20px;
+      background: rgba(142, 155, 255, .05);
+      border-left: 2px solid rgba(142, 155, 255, .34);
+      border-radius: 0 10px 10px 0;
+      font-size: 15px;
+      line-height: 1.95;
+      color: var(--t2);
+    }
+
+    /* 病症标签 */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 24px;
+    }
+
+    .chip {
+      font-size: 13px;
+      color: #D9C3A6;
+      background: rgba(255, 201, 139, .07);
+      border: 1px solid rgba(255, 201, 139, .22);
+      padding: 7px 15px;
+      border-radius: 999px;
+    }
+
+    /* 三宫格 */
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .mini {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 18px;
+    }
+
+    .mini .m-k {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    .mini .m-t {
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--t1);
+    }
+
+    .mini .m-t .en {
+      display: block;
+      font-family: var(--f-en);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--acc-soft);
+    }
+
+    .mini .m-t .zh { display: block; margin-top: 2px; }
+
+    .mini .m-d {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--t3);
+    }
+
+    .mini .m-d .en { display: block; font-family: var(--f-en); font-size: 13.5px; line-height: 1.7; }
+    .mini .m-d .zh { display: block; margin-top: 3px; }
+
+    /* 对比双卡 */
+    .cmp {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .cmp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .cmp-card.deep { border-top: 2px solid var(--acc); }
+    .cmp-card.rem { border-top: 2px solid var(--warm); }
+
+    .cmp-card .c-tag {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--t4);
+    }
+
+    .cmp-card h3 {
+      margin: 12px 0 0;
+      font-family: var(--f-en);
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1.3;
+      color: var(--t1);
+    }
+
+    .cmp-card h3 .zh {
+      display: block;
+      font-family: var(--f-serif-sc);
+      font-size: 14px;
+      color: var(--t3);
+      margin-top: 5px;
+    }
+
+    .cmp-card ul {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cmp-card li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 13.5px;
+      line-height: 1.85;
+      color: var(--t2);
+    }
+
+    .cmp-card li + li { margin-top: 8px; }
+
+    .cmp-card li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--border-2);
+    }
+
+    .cmp-card.deep li::before { background: rgba(142, 155, 255, .7); }
+    .cmp-card.rem li::before { background: rgba(255, 201, 139, .7); }
+
+    .cmp-card li .en { display: block; color: var(--t2); }
+    .cmp-card li .zh { display: block; color: var(--t3); font-size: 13px; }
+
+    /* 策略列表 */
+    .steps {
+      margin-top: 26px;
+      border-top: 1px solid var(--border);
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step .n {
+      font-family: var(--f-mono);
+      font-size: 12px;
+      color: var(--acc);
+      padding-top: 3px;
+      flex: 0 0 26px;
+    }
+
+    .step .body { min-width: 0; }
+
+    .step .s-t {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--t1);
+      line-height: 1.6;
+    }
+
+    .step .s-t .en {
+      display: block;
+      font-family: var(--f-en);
+      font-weight: 600;
+      font-size: 17px;
+      color: #E3EAF4;
+    }
+
+    .step .s-t .zh { display: block; margin-top: 3px; }
+
+    .step .s-d {
+      margin-top: 8px;
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--t3);
+    }
+
+    .step .s-d .en { display: block; font-family: var(--f-en); font-size: 14px; }
+    .step .s-d .zh { display: block; margin-top: 2px; }
+
+    /* 引语 */
+    .quote {
+      position: relative;
+      margin: 30px 0 0;
+      padding: 32px 34px;
+      border: 1px solid rgba(142, 155, 255, .24);
+      border-radius: 16px;
+      background:
+        radial-gradient(420px 180px at 8% 0%, rgba(142, 155, 255, .12), transparent 70%),
+        var(--surface);
+    }
+
+    .quote .q-mark {
+      font-family: var(--f-en);
+      font-size: 46px;
+      line-height: .8;
+      color: rgba(142, 155, 255, .5);
+    }
+
+    .quote p {
+      margin: 10px 0 0;
+      font-family: var(--f-en);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(21px, 2.6vw, 27px);
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      color: #F2F6FC;
+    }
+
+    .quote .q-zh {
+      margin-top: 14px;
+      font-family: var(--f-serif-sc);
+      font-style: normal;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--t2);
+    }
+
+    .quote .q-by {
+      margin-top: 18px;
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      color: var(--t4);
+      text-transform: uppercase;
+    }
+
+    /* 读法提示 */
+    .reading-note {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+      padding: 16px 20px;
+      border: 1px dashed var(--border-2);
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--t3);
+    }
+
+    .reading-note b { color: var(--t2); font-weight: 500; }
+
+    .reading-note .kbd {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      color: var(--acc-soft);
+      border: 1px solid rgba(142, 155, 255, .3);
+      background: rgba(142, 155, 255, .08);
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    /* 来源 */
+    .sources {
+      margin-top: 72px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sources h4 {
+      margin: 0 0 14px;
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--t4);
+      font-weight: 500;
+    }
+
+    .sources p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 2;
+      color: var(--t3);
+    }
+
+    /* ---------- 页脚 ---------- */
+    footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 46px 0;
+    }
+
+    .foot-in {
+      width: min(var(--maxw), 100% - 48px);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .foot-brand { display: flex; flex-direction: column; gap: 4px; }
+    .foot-brand b { font-size: 16px; font-weight: 700; color: var(--t1); }
+    .foot-brand span {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--t4);
+    }
+
+    .foot-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
+      font-size: 13px;
+      color: var(--t3);
+    }
+
+    .foot-meta a {
+      color: var(--t2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-2);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+    }
+
+    .foot-meta a:hover { color: var(--t1); border-color: var(--t2); }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 900px) {
+      .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .mini-grid { grid-template-columns: 1fr; }
+      .cmp { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-in { height: 54px; gap: 10px; }
+      .tb-brand span { display: none; }
+      .tb-back span { display: none; }
+      .tb-back { padding: 7px 11px; }
+      .lang button { padding: 5px 9px; font-size: 11.5px; }
+      .hero { padding-top: 54px; }
+      .article { padding: 56px 0 72px; }
+      .chapter { margin-top: 56px; }
+      .ch-head { gap: 12px; }
+      .ch-head h2 { font-size: 23px; }
+      .ch-head h2 .zh { font-size: 16px; }
+      p.en-body { font-size: 17px; line-height: 1.75; }
+      p.tr { padding: 13px 16px; font-size: 14.5px; }
+      .quote { padding: 24px 22px; }
+      .fig { padding: 20px 16px 22px; }
+      .fig .v { font-size: 27px; }
+      .foot-in { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+  <div class="topbar">
+    <div class="topbar-in">
+      <div class="tb-brand">
+        <b>数据图志</b>
+        <span>Sleep Science</span>
+      </div>
+      <div class="tb-right">
+        <div class="lang" role="group" aria-label="语言显示">
+          <button type="button" data-lang-set="bi" class="is-on">双语</button>
+          <button type="button" data-lang-set="en">English</button>
+          <button type="button" data-lang-set="zh">中文</button>
+        </div>
+        <a class="tb-back" href="dh.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11.5 5.5 5 12l6.5 6.5"/></svg>
+          <span>返回导航页</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">健康科普 · Sleep Science</div>
+
+      <h1 class="en">Why Sleep Is Your Most Important Health Investment</h1>
+      <p class="h1-zh zh">为什么睡眠，是你最重要的健康投资</p>
+
+      <div class="hero-meta">
+        <span>依据 <b>Matthew Walker</b>（加州大学伯克利分校神经科学家）的研究整理</span>
+        <span class="dot"></span>
+        <span>英文原文 <b>+ 中文翻译</b></span>
+        <span class="dot"></span>
+        <span>阅读约 <b>6 分钟</b></span>
+      </div>
+
+      <div class="figures">
+        <div class="fig">
+          <div class="v">1/3</div>
+          <div class="k"><em>Lifetime</em><span class="en">About one-third of your life is spent asleep.</span><span class="zh">人生约三分之一的时间在睡眠中度过。</span></div>
+        </div>
+        <div class="fig">
+          <div class="v">70%</div>
+          <div class="k"><em>Immune drop</em><span class="en">Immune function can fall by up to 70% after one bad night.</span><span class="zh">仅仅一晚没睡好，免疫功能最多下降 70%。</span></div>
+        </div>
+        <div class="fig">
+          <div class="v">7–9h</div>
+          <div class="k"><em>Adults</em><span class="en">Recommended nightly sleep for adults.</span><span class="zh">成年人建议的每晚睡眠时长。</span></div>
+        </div>
+        <div class="fig">
+          <div class="v">2</div>
+          <div class="k"><em>Stage types</em><span class="en">Deep sleep and REM cycle repeatedly through the night.</span><span class="zh">深睡与 REM 在一夜中反复交替。</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="article">
+    <div class="col">
+
+      <div class="reading-note">
+        <span>本页英文为原文主体，中文为对照翻译。</span>
+        <span>用右上角 <span class="kbd">双语 / English / 中文</span> 切换显示方式。</span>
+      </div>
+
+      <!-- 01 -->
+      <section class="chapter" id="ch1">
+        <div class="ch-head">
+          <div class="ch-num">01</div>
+          <h2>
+            <span class="en">The Most Neglected Investment</span>
+            <span class="zh">最被忽视的一笔投资</span>
+          </h2>
+        </div>
+        <div class="pair">
+          <p class="en en-body">You spend about one-third of your life sleeping, yet most people treat sleep as if it were optional. Research by Dr. Matthew Walker, a neuroscientist at UC Berkeley, shows that sleep is one of the most important investments you can make in your health—and one of the most neglected.</p>
+          <p class="zh tr">你一生中大约有三分之一的时间在睡觉，但大多数人却把睡眠当作可有可无的事。加州大学伯克利分校神经科学家 Matthew Walker 博士的研究表明：睡眠是你能为自己的健康做出的最重要投资之一，同时也是最被忽视的一项。</p>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section class="chapter" id="ch2">
+        <div class="ch-head">
+          <div class="ch-num">02</div>
+          <h2>
+            <span class="en">The Cost of Sleep Deprivation</span>
+            <span class="zh">睡眠不足的代价</span>
+          </h2>
+        </div>
+        <div class="pair">
+          <p class="en en-body">The consequences of sleep deprivation are severe. A single night of poor sleep can reduce your immune function by up to <strong>70 percent</strong>, making you more vulnerable to infections. Chronic sleep deprivation is linked to obesity, diabetes, heart disease, Alzheimer's disease, and depression.</p>
+          <p class="zh tr">睡眠不足的后果相当严重。仅仅一晚没睡好，就可能让免疫功能最多下降 <b>70%</b>，使你更容易被感染。而长期睡眠不足，则与肥胖、糖尿病、心脏病、阿尔茨海默病和抑郁症相关联。</p>
+        </div>
+        <div class="chips">
+          <span class="chip"><span class="en">Obesity</span><span class="zh">肥胖</span></span>
+          <span class="chip"><span class="en">Diabetes</span><span class="zh">糖尿病</span></span>
+          <span class="chip"><span class="en">Heart disease</span><span class="zh">心脏病</span></span>
+          <span class="chip"><span class="en">Alzheimer's disease</span><span class="zh">阿尔茨海默病</span></span>
+          <span class="chip"><span class="en">Depression</span><span class="zh">抑郁症</span></span>
+        </div>
+      </section>
+
+      <!-- 03 -->
+      <section class="chapter" id="ch3">
+        <div class="ch-head">
+          <div class="ch-num">03</div>
+          <h2>
+            <span class="en">What Your Brain Does While You Sleep</span>
+            <span class="zh">睡着之后，大脑在做什么</span>
+          </h2>
+        </div>
+        <div class="pair">
+          <p class="en en-body">During sleep, your brain performs critical maintenance tasks. It consolidates memories—transferring information from short-term memory to long-term storage. It clears out toxic waste products that accumulate during the day through a system called the glymphatic system. It also processes emotions, which is why a good night's sleep can help you feel more emotionally balanced.</p>
+          <p class="zh tr">睡眠期间，大脑在进行关键的维护工作。它会巩固记忆——把信息从短期记忆转入长期存储；它会通过被称为「类淋巴系统（glymphatic system）」的机制，清除白天累积的毒性代谢废物；它还会处理情绪，这正是睡个好觉能让你情绪更平稳的原因。</p>
+        </div>
+        <div class="mini-grid">
+          <div class="mini">
+            <div class="m-k">01 · Memory</div>
+            <div class="m-t">
+              <span class="en">Memory consolidation</span>
+              <span class="zh">记忆巩固</span>
+            </div>
+            <div class="m-d">
+              <span class="en">Transfers information from short-term to long-term storage.</span>
+              <span class="zh">把信息从短期记忆转入长期存储。</span>
+            </div>
+          </div>
+          <div class="mini">
+            <div class="m-k">02 · Glymphatic</div>
+            <div class="m-t">
+              <span class="en">Toxic waste clearance</span>
+              <span class="zh">废物清除</span>
+            </div>
+            <div class="m-d">
+              <span class="en">Clears waste products that accumulate during the day.</span>
+              <span class="zh">清除白天累积的毒性代谢废物。</span>
+            </div>
+          </div>
+          <div class="mini">
+            <div class="m-k">03 · Emotion</div>
+            <div class="m-t">
+              <span class="en">Emotional processing</span>
+              <span class="zh">情绪处理</span>
+            </div>
+            <div class="m-d">
+              <span class="en">Helps you stay emotionally balanced.</span>
+              <span class="zh">让情绪更容易回到平稳状态。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 -->
+      <section class="chapter" id="ch4">
+        <div class="ch-head">
+          <div class="ch-num">04</div>
+          <h2>
+            <span class="en">Deep Sleep and REM Sleep</span>
+            <span class="zh">深睡与 REM，各司其职</span>
+          </h2>
+        </div>
+        <div class="pair">
+          <p class="en en-body">Different stages of sleep serve different purposes. Deep sleep physically restores your body—it repairs tissues, builds bone and muscle, and strengthens the immune system. REM sleep, on the other hand, is essential for creativity, problem-solving, and emotional regulation. A full night's sleep includes multiple cycles of both deep sleep and REM sleep.</p>
+          <p class="zh tr">不同的睡眠阶段承担不同的任务。深睡负责身体的物理修复——修复组织、构建骨骼与肌肉、增强免疫系统；而 REM 睡眠则对创造力、问题解决与情绪调节至关重要。一整夜的睡眠里，深睡与 REM 会多次交替出现。</p>
+        </div>
+        <div class="cmp">
+          <div class="cmp-card deep">
+            <div class="c-tag">Stage A</div>
+            <h3><span class="en">Deep Sleep</span><span class="zh">深睡</span></h3>
+            <ul>
+              <li><span class="en">Repairs tissues</span><span class="zh">修复组织</span></li>
+              <li><span class="en">Builds bone and muscle</span><span class="zh">构建骨骼与肌肉</span></li>
+              <li><span class="en">Strengthens the immune system</span><span class="zh">增强免疫系统</span></li>
+            </ul>
+          </div>
+          <div class="cmp-card rem">
+            <div class="c-tag">Stage B</div>
+            <h3><span class="en">REM Sleep</span><span class="zh">REM 睡眠</span></h3>
+            <ul>
+              <li><span class="en">Creativity</span><span class="zh">创造力</span></li>
+              <li><span class="en">Problem-solving</span><span class="zh">问题解决</span></li>
+              <li><span class="en">Emotional regulation</span><span class="zh">情绪调节</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 -->
+      <section class="chapter" id="ch5">
+        <div class="ch-head">
+          <div class="ch-num">05</div>
+          <h2>
+            <span class="en">How Much — and When</span>
+            <span class="zh">睡多久，以及什么时候睡</span>
+          </h2>
+        </div>
+        <div class="pair">
+          <p class="en en-body">Dr. Walker recommends getting seven to nine hours of sleep per night for adults. He also recommends maintaining a consistent sleep schedule—going to bed and waking up at the same time every day, even on weekends. This helps regulate your body's internal clock, also known as the circadian rhythm.</p>
+          <p class="zh tr">Walker 博士建议成年人每晚睡 7 到 9 小时。他还建议保持规律的作息——每天在同一时间上床、同一时间起床，周末也不例外。这有助于调节你体内的生物钟，也就是昼夜节律（circadian rhythm）。</p>
+        </div>
+      </section>
+
+      <!-- 06 -->
+      <section class="chapter" id="ch6">
+        <div class="ch-head">
+          <div class="ch-num">06</div>
+          <h2>
+            <span class="en">Practical Strategies</span>
+            <span class="zh">四个可以马上执行的策略</span>
+          </h2>
+        </div>
+        <div class="pair">
+          <p class="en en-body">Several practical strategies can improve sleep quality. Avoid caffeine after 2 p.m., keep your bedroom cool and dark, limit screen time before bed, and avoid alcohol before sleep<span class="nb">—</span>alcohol may help you fall asleep faster, but it disrupts REM sleep and reduces overall sleep quality.</p>
+          <p class="zh tr">有几个实用策略可以改善睡眠质量：下午 2 点之后不再摄入咖啡因；保持卧室凉爽、昏暗；睡前限制屏幕使用；睡前避免饮酒——酒精也许能让你更快入睡，但它会打断 REM 睡眠，降低整体睡眠质量。</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="n">01</div>
+            <div class="body">
+              <div class="s-t"><span class="en">Avoid caffeine after 2 p.m.</span><span class="zh">下午 2 点后不再摄入咖啡因</span></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">02</div>
+            <div class="body">
+              <div class="s-t"><span class="en">Keep your bedroom cool and dark.</span><span class="zh">保持卧室凉爽、昏暗</span></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">03</div>
+            <div class="body">
+              <div class="s-t"><span class="en">Limit screen time before bed.</span><span class="zh">睡前限制屏幕使用</span></div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">04</div>
+            <div class="body">
+              <div class="s-t"><span class="en">Avoid alcohol before sleep.</span><span class="zh">睡前避免饮酒</span></div>
+              <div class="s-d">
+                <span class="en">Alcohol may help you fall asleep faster, but it disrupts REM sleep and reduces overall sleep quality.</span>
+                <span class="zh">酒精也许能让你更快入睡，但它会打断 REM 睡眠，降低整体睡眠质量。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 -->
+      <section class="chapter" id="ch7">
+        <div class="ch-head">
+          <div class="ch-num">07</div>
+          <h2>
+            <span class="en">Sleep Is Not a Luxury</span>
+            <span class="zh">结语：睡眠不是奢侈品</span>
+          </h2>
+        </div>
+        <div class="pair">
+          <p class="en en-body">The key insight is that sleep is not a luxury—it is a necessity.</p>
+          <p class="zh tr">最核心的一点是：睡眠不是奢侈品，而是必需品。</p>
+        </div>
+        <div class="quote">
+          <div class="q-mark">&ldquo;</div>
+          <p class="en">The shorter your sleep, the shorter your life.</p>
+          <p class="q-zh zh">睡得越少，寿命越短。</p>
+          <div class="q-by">Dr. Matthew Walker · UC Berkeley</div>
+        </div>
+      </section>
+
+      <div class="sources">
+        <h4>Sources &amp; Note</h4>
+        <p>内容依据 Matthew Walker 博士（加州大学伯克利分校神经科学教授）关于睡眠的公开研究与其著作《Why We Sleep》整理，英文为原文主体，中文为对照翻译。</p>
+        <p>本文为科普整理，不构成任何医疗建议；如有持续睡眠障碍，请咨询专业医师。</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="foot-in">
+      <div class="foot-brand">
+        <b class="serif">数据图志</b>
+        <span>Data Atlas</span>
+      </div>
+      <div class="foot-meta">
+        <span>健康科普 · 中英对照</span>
+        <a href="dh.html">返回导航页</a>
+        <a href="https://github.com/dingyufeng" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      document.querySelectorAll('[data-lang-set]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.documentElement.setAttribute('data-lang', btn.getAttribute('data-lang-set'));
+          document.querySelectorAll('[data-lang-set]').forEach(function (b) {
+            b.classList.toggle('is-on', b === btn);
+          });
+        });
+      });
+
+      var bar = document.getElementById('bar');
+      if (bar) {
+        var tick = function () {
+          var el = document.documentElement;
+          var max = el.scrollHeight - el.clientHeight;
+          var p = max > 0 ? el.scrollTop / max : 0;
+          bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, p)) + ')';
+        };
+        window.addEventListener('scroll', tick, { passive: true });
+        window.addEventListener('resize', tick);
+        tick();
+      }
+    })();
+  </script>
+
+</body>
+</html>

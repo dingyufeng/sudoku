@@ -4,7 +4,7 @@
   <meta charset="UTF-8" data-page-node-id="3CRoGvAcaKRn8X3gB7Tgbv">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="FYvGlTNeHzGMhXAjLQQkP7">
   <title>数据图志 · DATA ATLAS</title>
-  <meta name="description" content="数据图志：一个入口，直达全部页面。收录 5 篇数据研究报告、3 篇财经分析与 3 个在线工具。" data-page-node-id="DExCJWDNw9bDObwvDi8iCd">
+  <meta name="description" content="数据图志：一个入口，直达全部页面。收录 5 篇数据研究报告、1 篇健康科普、3 篇财经分析与 3 个在线工具。" data-page-node-id="DExCJWDNw9bDObwvDi8iCd">
   <link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="LNhFXiZAh8wglDAhGViP6M">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="BqHYYilgRS0Ik6cjCwigOy">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet" data-page-node-id="tKDZyWLQwzO4DZMBp2IwWp">
@@ -25,6 +25,9 @@
       --accent-05: #A3463A;
       --accent-06: #176E67;
       --accent-07: #3D8B5F;
+      --accent-08: #E8876F;
+      --accent-09: #1E6F8C;
+      --accent-10: #5A63C8;
     }
 
     * { box-sizing: border-box; }
@@ -260,9 +263,9 @@
       margin-top: 20px;
     }
 
-    /* 精选双卡组：AI 泡沫预警 + 外部入口并排 */
-    .grid-duo {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* 精选三卡组：AI 泡沫预警 + 睡眠科普 + 外部入口，正好排满一行 */
+    .grid-trio {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       margin-top: 20px;
     }
 
@@ -272,10 +275,10 @@
     }
 
     @media (max-width: 900px) {
-      .grid-row-2, .grid-row-3, .grid-finance, .grid-duo {
+      .grid-row-2, .grid-row-3, .grid-finance, .grid-trio {
         grid-template-columns: 1fr;
       }
-      .grid-row-3, .grid-finance, .grid-duo { margin-top: 0; }
+      .grid-row-3, .grid-finance, .grid-trio { margin-top: 0; }
     }
 
     .card {
@@ -432,30 +435,34 @@
       line-height: 1.2;
     }
 
-    /* 深色卡内的横向指标行 */
+    /* 深色卡内的关键指标：键值行式布局，窄卡下也不会折行错位 */
     .dark-stats {
       display: flex;
+      flex-direction: column;
       border-top: 1px solid #1F352E;
-      padding-top: 14px;
+      padding-top: 4px;
     }
 
     .dark-stats .feat-stat {
-      flex: 1 1 0;
-      min-width: 0;
-      padding: 0;
-      border-bottom: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 9px 0;
     }
 
-    .dark-stats .feat-stat + .feat-stat {
-      border-left: 1px solid #16261F;
-      padding-left: 16px;
+    .dark-stats .feat-stat .v {
+      font-size: 16px;
+      margin-top: 0;
+      text-align: right;
+      white-space: nowrap;
     }
 
-    .dark-stats .feat-stat .v { font-size: 17px; }
-
-    .accent-08 { color: #E8876F; }
+    .accent-08 { color: var(--accent-08); }
     .accent-09 { color: var(--accent-09); }
+    .accent-10 { color: var(--accent-10); }
     .tag-09 { background: #E3EEF3; color: #155A73; }
+    .tag-10 { background: #E7E8FB; color: #383C8F; }
 
     /* Footer */
     footer {
@@ -551,10 +558,10 @@
       <div class="hero-content" data-page-node-id="61xI2IHWSOcNFqiTMbGCgS">
         <div class="eyebrow" data-page-node-id="YCK19fbqKODH4Byw1C8kQo">GITHUB PAGES · 站点入口</div>
         <h1 class="serif" data-page-node-id="xRFrRtGboknDg8EBPk1dTL">一个地址，访问全部页面</h1>
-        <p class="subheadline" data-page-node-id="lF1VHEMminwwh835YgY8lA">共收录 11 个页面入口：5 篇数据研究报告、3 篇财经分析与 3 个在线工具。书签只需保存这一个地址，其余页面随取随用。</p>
+        <p class="subheadline" data-page-node-id="lF1VHEMminwwh835YgY8lA">共收录 12 个页面入口：5 篇数据研究报告、1 篇健康科普、3 篇财经分析与 3 个在线工具。书签只需保存这一个地址，其余页面随取随用。</p>
         <div class="url-pill" data-page-node-id="KJ4mGw34yDdKHuOj9QHsEv"><span data-page-node-id="7JDn9QMGTNbcRcCh9w8iMG">收藏地址</span><div class="divider" data-page-node-id="qQxpQdMAN5bvPAMkJbch9F"></div>dingyufeng.github.io/sudoku/</div>
         <div class="stats" data-page-node-id="i4BuMszAuzef4F63dEiQ7V">
-          <div class="stat" data-page-node-id="OGjCkBSFReZKGiWFifpHtC"><div class="value" data-page-node-id="sc4xoaS2UcY7ysvuJAXUNB">11</div><div class="label" data-page-node-id="HqTcFzZuzTESxSMrtJPEfF">页面总数</div></div>
+          <div class="stat" data-page-node-id="OGjCkBSFReZKGiWFifpHtC"><div class="value" data-page-node-id="sc4xoaS2UcY7ysvuJAXUNB">12</div><div class="label" data-page-node-id="HqTcFzZuzTESxSMrtJPEfF">页面总数</div></div>
           <div class="stat" data-page-node-id="LvhDfewtuOXdEVvqYxk1IF"><div class="value" data-page-node-id="4H5NqCflLGULsHum2qE2er">5</div><div class="label" data-page-node-id="gplEA2VW637gyONsClZaqj">数据报告</div></div>
           <div class="stat" data-page-node-id="fvZMuadsXt6jtu9qXeGqWC"><div class="value" data-page-node-id="KZqSYDBFpbBCC8nyBm4lZm">3</div><div class="label" data-page-node-id="VphYGtnUhFi0DCLsRmT3vM">财经分析</div></div>
           <div class="stat" data-page-node-id="mFnocm6StqFwLGMUUtT4Tg"><div class="value" data-page-node-id="EZ5m6Uj6De4Dz21hBrPqAo">3</div><div class="label" data-page-node-id="ygL31SCcNUmGbtcibyLEPR">在线工具</div></div>
@@ -567,7 +574,7 @@
     <div class="container" data-page-node-id="1I8qABzMYGIguNEjOiMPo2">
       <div class="section-head" data-page-node-id="5XApBjoueY2hsuAYQl87BI">
         <h2 class="section-title serif" data-page-node-id="Q1BVxuNlrW9R3VPkNr7KRi">页面索引</h2>
-        <span class="section-meta" data-page-node-id="PZHDGMsEWYQNnVYAgGGiCm">INDEX · 11 ENTRIES</span>
+        <span class="section-meta" data-page-node-id="PZHDGMsEWYQNnVYAgGGiCm">INDEX · 12 ENTRIES</span>
       </div>
 
       <div class="grid grid-row-2" data-page-node-id="E5hEQjBpLfHjovvJoMPWUD">
@@ -653,7 +660,7 @@
 
       </div>
 
-      <div class="grid grid-duo">
+      <div class="grid grid-trio">
         <a class="card card-dark" href="https://dingyufeng.github.io/sudoku/ai_bubble_2027.html">
           <div class="card-top">
             <div class="card-number accent-08">07</div>
@@ -672,9 +679,22 @@
           </div>
         </a>
 
+        <a class="card" href="https://dingyufeng.github.io/sudoku/sleep_health.html">
+          <div class="card-top">
+            <div class="card-number accent-10">08</div>
+            <span class="card-tag tag-10">健康科普</span>
+          </div>
+          <h3 class="card-title serif">睡眠：最重要的健康投资</h3>
+          <p class="card-desc">依据 UC Berkeley 神经科学家 Matthew Walker 的研究整理：一晚缺觉，免疫功能最多下降 70%；深睡负责身体修复，REM 负责创造力与情绪。全文中英对照，并附四条可执行的改善策略。</p>
+          <div class="card-footer">
+            <span class="card-path">/sudoku/sleep_health.html</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg></span>
+          </div>
+        </a>
+
         <a class="card" href="https://www.workbuddy.link/p/WKAjrcAfX7LDupjBW7SGri" target="_blank" rel="noopener">
           <div class="card-top">
-            <div class="card-number accent-06">08</div>
+            <div class="card-number accent-06">09</div>
             <span class="card-tag tag-06">外部入口</span>
           </div>
           <h3 class="card-title serif">学习目标台</h3>
@@ -690,7 +710,7 @@
 		
 		<a class="card" href="https://dingyufeng.github.io/sudoku/financial/zksg_2026_h1.html" data-page-node-id="3hGxsBDjswqIxvNSNNOE6M">
           <div class="card-top" data-page-node-id="OFDnLfwyMnNLgPTCQSGgFd">
-            <div class="card-number accent-02" data-page-node-id="WQtWraDmR1YGZuQIcfO21v">09</div>
+            <div class="card-number accent-02" data-page-node-id="WQtWraDmR1YGZuQIcfO21v">10</div>
             <span class="card-tag tag-02" data-page-node-id="gaAaxOoHCZ44a1FNqae5sg">财经分析</span>
           </div>
           <h3 class="card-title serif" data-page-node-id="PylyGapeXchRokUoiOrVFO">首个全国产十万卡 AI 超集群“曙光 8000”</h3>
@@ -703,7 +723,7 @@
 		
 		<a class="card" href="https://dingyufeng.github.io/sudoku/financial/byd_2026_h1.html" data-page-node-id="Gb40r8tnTS1WGBatgp7GYM">
           <div class="card-top" data-page-node-id="2mM7uKjBHSHbTdLHTZBXA3">
-            <div class="card-number accent-04" data-page-node-id="WOPnGUUS1iArSlI26IwMmJ">10</div>
+            <div class="card-number accent-04" data-page-node-id="WOPnGUUS1iArSlI26IwMmJ">11</div>
             <span class="card-tag tag-04" data-page-node-id="l9ucTYYoW7lX8IE5Ghruq3">财经分析</span>
           </div>
           <h3 class="card-title serif" data-page-node-id="0uHqSjNOfEtl8366kBOxRx">比亚迪 2026 上半年：垂直整合的巨鳄</h3>
@@ -716,7 +736,7 @@
 
         <a class="card" href="https://dingyufeng.github.io/sudoku/financial/bond-yield-trends.html">
           <div class="card-top">
-            <div class="card-number accent-09">11</div>
+            <div class="card-number accent-09">12</div>
             <span class="card-tag tag-09">财经分析</span>
           </div>
           <h3 class="card-title serif">中日美 10 年期国债收益率</h3>
@@ -740,7 +760,7 @@
           <span class="footer-brand-latin" data-page-node-id="HY4XyOdtEhi3FwMkwvNqIv">Data Atlas</span>
         </div>
         <div class="footer-meta" data-page-node-id="ah4kjaV3wEYPAKtWHcLeDN">
-          <span data-page-node-id="Xtj68jZEwRUu0BVxoYcixE">共 11 个页面</span>
+          <span data-page-node-id="Xtj68jZEwRUu0BVxoYcixE">共 12 个页面</span>
           <span data-page-node-id="RD5RjsIQdROoSfjVcyYmCE">托管于 GitHub Pages</span>
           <a href="https://github.com/dingyufeng" target="_blank" rel="noopener" data-page-node-id="OFOKt4bwf3lzN8ACQyAEdt">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;stroke:currentColor" data-page-node-id="IDGstNKGw0nUN5IszNuqgS"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-page-node-id="QQ0ouVCpgcHKz1Y1BMzvuO"/></svg>
