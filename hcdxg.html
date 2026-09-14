@@ -2,139 +2,191 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#16213e">
 <title>合成大西瓜 · HTML5 休闲小游戏</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html, body {
-    height: 100%;
+  html, body { height: 100%; }
+  body {
     font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
     background: linear-gradient(160deg, #1a2a4f 0%, #16213e 45%, #0f3460 100%);
-    display: flex; flex-direction: column; align-items: center;
-    color: #fff; overflow-x: hidden; padding: 12px 8px;
+    background-attachment: fixed;
+    color: #fff; overflow: hidden; overscroll-behavior: none;
+    touch-action: manipulation;
   }
+  /* ===== 整页按视口布局：画布永远完整可见 ===== */
+  #app {
+    height: 100vh; height: 100dvh;
+    width: 100%; max-width: 560px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 10px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+  header { flex: 0 0 auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 4px; }
   h1 {
-    font-size: 26px; letter-spacing: 2px; margin-bottom: 4px;
+    font-size: clamp(18px, 5.2vw, 26px); letter-spacing: 2px; line-height: 1.25;
     text-shadow: 0 2px 8px rgba(0,0,0,.45);
     background: linear-gradient(90deg, #ffd166, #ff6b6b, #c084fc);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .sub { font-size: 12px; color: #9db4d8; margin-bottom: 10px; }
-  .hud {
-    display: flex; gap: 10px; align-items: center; margin-bottom: 10px;
-  }
+  .sub { font-size: 12px; color: #9db4d8; text-align: center; }
+  .hud { display: flex; gap: 8px; align-items: center; }
   .card {
     background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
-    border-radius: 12px; padding: 6px 16px; text-align: center;
+    border-radius: 12px; padding: 5px 15px; text-align: center;
     backdrop-filter: blur(4px);
   }
   .card .label { font-size: 11px; color: #9db4d8; }
-  .card .val { font-size: 20px; font-weight: 700; color: #ffd166; }
+  .card .val { font-size: 19px; font-weight: 700; color: #ffd166; line-height: 1.2; }
+
+  /* 画布容器：占满剩余空间，居中，绝不溢出 */
+  #stageWrap {
+    flex: 1 1 auto; min-height: 0; align-self: stretch;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
   #stage {
-    position: relative;
-    border-radius: 16px; overflow: hidden;
+    position: relative; border-radius: 16px; overflow: hidden; touch-action: none;
     box-shadow: 0 12px 40px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.08);
-    touch-action: none;
   }
   canvas { display: block; }
+
   #overlay {
     position: absolute; inset: 0; display: none;
     background: rgba(10, 16, 32, .82); backdrop-filter: blur(3px);
-    flex-direction: column; align-items: center; justify-content: center; gap: 14px;
-    z-index: 10;
+    flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    z-index: 10; padding: 12px;
   }
   #overlay.show { display: flex; }
-  #overlay h2 { font-size: 30px; color: #ff6b6b; letter-spacing: 4px; }
-  #overlay .final { font-size: 16px; color: #cfe0ff; }
-  #overlay .final b { color: #ffd166; font-size: 26px; }
+  #overlay h2 { font-size: clamp(20px, 7vw, 30px); color: #ff6b6b; letter-spacing: 4px; }
+  #overlay .final { font-size: clamp(12px, 3.6vw, 16px); color: #cfe0ff; text-align: center; }
+  #overlay .final b { color: #ffd166; font-size: clamp(18px, 6vw, 26px); }
   #overlay button {
-    margin-top: 6px; padding: 12px 42px; font-size: 17px; font-weight: 700;
+    margin-top: 4px; padding: clamp(9px, 2.6vw, 12px) clamp(26px, 10vw, 42px);
+    font-size: clamp(14px, 4vw, 17px); font-weight: 700;
     color: #fff; border: none; border-radius: 999px; cursor: pointer; letter-spacing: 2px;
     background: linear-gradient(135deg, #ff6b6b, #ff8e53);
     box-shadow: 0 6px 18px rgba(255,107,107,.4);
     transition: transform .15s;
   }
   #overlay button:hover { transform: scale(1.06); }
+
+  footer { flex: 0 0 auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  /* 进化链：单行不换行，窄屏可横向滑动，不占额外高度 */
   .chain {
-    margin-top: 12px; max-width: 430px; display: flex; flex-wrap: wrap;
-    gap: 6px; justify-content: center;
+    width: 100%; display: flex; flex-wrap: nowrap; align-items: center;
+    gap: 5px; justify-content: center;
+    overflow-x: auto; overflow-y: hidden; padding: 2px 4px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
   }
+  .chain::-webkit-scrollbar { display: none; }
   .chain .step {
-    display: flex; flex-direction: column; align-items: center; gap: 1px;
-    background: rgba(255,255,255,.06); border-radius: 10px; padding: 5px 7px;
-    min-width: 52px; border: 1px solid rgba(255,255,255,.08);
+    flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1px;
+    background: rgba(255,255,255,.06); border-radius: 10px; padding: 4px 9px;
+    min-width: 46px; border: 1px solid rgba(255,255,255,.08);
   }
-  .chain .step .e { font-size: 19px; line-height: 1.15; }
-  .chain .step .n { font-size: 10px; color: #9db4d8; }
-  .chain .arrow { align-self: center; color: #5f7ab0; font-size: 13px; }
-  .tips { margin-top: 8px; font-size: 11px; color: #7d92b8; text-align: center; line-height: 1.7; }
+  .chain .step .e { font-size: 18px; line-height: 1.15; }
+  .chain .step .n { font-size: 10px; color: #9db4d8; white-space: nowrap; }
+  .chain .arrow { flex: 0 0 auto; color: #5f7ab0; font-size: 12px; }
+  .tips { font-size: 11px; color: #7d92b8; text-align: center; line-height: 1.6; }
+
+  /* ===== 高度不足时逐级收起次要信息，优先保证游戏区 ===== */
+  @media (max-height: 660px) { .tips { display: none; } }
+  @media (max-height: 600px) { .sub  { display: none; } }
+  @media (max-height: 540px) { .chain { display: none; } }
+  @media (max-width: 620px) { .chain { justify-content: flex-start; } }
 </style>
 </head>
 <body>
 
-<h1>🍉 合成大西瓜</h1>
-<div class="sub">两个相同的水果碰撞 → 合成更大的水果</div>
+<div id="app">
+  <header>
+    <h1>🍉 合成大西瓜</h1>
+    <div class="sub">两个相同的水果碰撞 → 合成更大的水果</div>
+    <div class="hud">
+      <div class="card"><div class="label">分数</div><div class="val" id="score">0</div></div>
+      <div class="card"><div class="label">最高分</div><div class="val" id="best">0</div></div>
+      <div class="card"><div class="label">下一个</div><div class="val" id="next" style="font-size:21px">🍇</div></div>
+    </div>
+  </header>
 
-<div class="hud">
-  <div class="card"><div class="label">分数</div><div class="val" id="score">0</div></div>
-  <div class="card"><div class="label">最高分</div><div class="val" id="best">0</div></div>
-  <div class="card"><div class="label">下一个</div><div class="val" id="next" style="font-size:22px">🍇</div></div>
-</div>
-
-<div id="stage">
-  <canvas id="game"></canvas>
-  <div id="overlay">
-    <h2>游戏结束</h2>
-    <div class="final">本局得分 <b id="finalScore">0</b></div>
-    <div class="final" id="finalFruit" style="font-size:14px"></div>
-    <button id="restart">再来一局</button>
+  <div id="stageWrap">
+    <div id="stage">
+      <canvas id="game"></canvas>
+      <div id="overlay">
+        <h2>游戏结束</h2>
+        <div class="final">本局得分 <b id="finalScore">0</b></div>
+        <div class="final" id="finalFruit"></div>
+        <button id="restart">再来一局</button>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="chain" id="chain"></div>
-<div class="tips">
-  🖱️ 移动鼠标/手指瞄准 · 点击/松开投放 · ⌨️ ←→ 移动 · 空格投下<br>
-  水果堆过红色警戒线即告失败 · 合成两个 🍉 大西瓜即达成终极目标！
+  <footer>
+    <div class="chain" id="chain"></div>
+    <div class="tips">
+      🖱️ 移动鼠标/手指瞄准 · 点击/松开投放 · ⌨️ ←→ 移动 · 空格投下<br>
+      水果堆过红色警戒线即告失败 · 合成两个 🍉 大西瓜即达成终极目标！
+    </div>
+  </footer>
 </div>
 
 <script>
 (() => {
 'use strict';
 
-/* ==================== 水果进化链 ==================== */
+/* ==================== 水果进化链（精简为 8 级） ==================== */
 const FRUITS = [
-  { name:'葡萄',   emoji:'🍇', r:14,  score:1  },
-  { name:'樱桃',   emoji:'🍒', r:20,  score:3  },
-  { name:'橘子',   emoji:'🍊', r:27,  score:6  },
-  { name:'柠檬',   emoji:'🍋', r:34,  score:10 },
-  { name:'猕猴桃', emoji:'🥝', r:42,  score:15 },
-  { name:'番茄',   emoji:'🍅', r:50,  score:21 },
-  { name:'桃子',   emoji:'🍑', r:58,  score:28 },
-  { name:'菠萝',   emoji:'🍍', r:67,  score:36 },
-  { name:'椰子',   emoji:'🥥', r:77,  score:45 },
-  { name:'半西瓜', emoji:'🍉', r:88,  score:55 },
-  { name:'大西瓜', emoji:'🍉', r:100, score:66 },
+  { name:'葡萄',   emoji:'🍇', r:15, score:1  },
+  { name:'樱桃',   emoji:'🍒', r:21, score:3  },
+  { name:'橘子',   emoji:'🍊', r:28, score:6  },
+  { name:'柠檬',   emoji:'🍋', r:36, score:10 },
+  { name:'猕猴桃', emoji:'🥝', r:46, score:16 },
+  { name:'菠萝',   emoji:'🍍', r:58, score:24 },
+  { name:'椰子',   emoji:'🥥', r:73, score:36 },
+  { name:'大西瓜', emoji:'🍉', r:95, score:55 },
 ];
 const MAX_LEVEL = FRUITS.length - 1;
-const SPAWNABLE = 5;          // 只投放前 5 级（葡萄~猕猴桃）
-const COLORS = ['#a78bfa','#f87171','#fb923c','#facc15','#84cc16',
-                '#ef4444','#fb7185','#f59e0b','#a3e635','#22c55e','#16a34a'];
+const COLORS = ['#a78bfa','#f87171','#fb923c','#facc15','#84cc16','#f59e0b','#a3e635','#22c55e'];
+const SPAWN_W = [34, 30, 22, 14];      // 只投放前 4 级（葡萄~柠檬）
 
-/* ==================== 画布与尺寸 ==================== */
+/* ==================== 画布与自适应尺寸 ==================== */
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
-const W = 400, H = 640;
-const DPR = Math.min(window.devicePixelRatio || 1, 2);
-canvas.width = W * DPR; canvas.height = H * DPR;
-canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
-ctx.scale(DPR, DPR);
+const W = 400, H = 640;                // 逻辑坐标系：游戏逻辑永远按这套算
+const stageEl = document.getElementById('stage');
+const stageWrap = document.getElementById('stageWrap');
+let cssW = W, cssH = H;
+
+function fitCanvas() {
+  let availW = stageWrap.clientWidth;
+  let availH = stageWrap.clientHeight;
+  if (!(availW > 40) || !(availH > 40)) {          // 布局还没就绪时的兜底
+    availW = Math.max(220, Math.min(window.innerWidth - 20, W));
+    availH = Math.max(320, window.innerHeight * 0.62);
+  }
+  let w = availW, h = w * H / W;
+  if (h > availH) { h = availH; w = h * W / H; }    // 等比缩放，保证完整可见
+  cssW = Math.max(140, Math.floor(w));
+  cssH = Math.floor(cssW * H / W);
+
+  stageEl.style.width  = cssW + 'px';
+  stageEl.style.height = cssH + 'px';
+  canvas.style.width   = cssW + 'px';
+  canvas.style.height  = cssH + 'px';
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+  canvas.width  = Math.round(cssW * dpr);
+  canvas.height = Math.round(cssH * dpr);
+  ctx.setTransform(canvas.width / W, 0, 0, canvas.height / H, 0, 0);
+}
 
 const WALL_L = 0, WALL_R = W, FLOOR = H - 8;
-const DANGER_Y = 120;          // 警戒线
-const SPAWN_Y = 62;            // 投放高度
+const DANGER_Y = 120;            // 警戒线
+const SPAWN_Y = 62;              // 投放高度
 
 /* ==================== 游戏状态 ==================== */
-let fruits = [];               // {x,y,vx,vy,r,level,id,age,overT,spawnT}
+let fruits = [];                 // {x,y,vx,vy,r,level,id,age,overT,pop}
 let score = 0;
 let best = +(localStorage.getItem('dw_best') || 0);
 let currentLevel = 0, nextLevel = 0;
@@ -171,12 +223,13 @@ let audioCtx = null;
 function playPop(level) {
   try {
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
     const t = audioCtx.currentTime;
     const o = audioCtx.createOscillator();
     const g = audioCtx.createGain();
     o.type = 'sine';
-    o.frequency.setValueAtTime(300 + level * 55, t);
-    o.frequency.exponentialRampToValueAtTime(600 + level * 80, t + 0.08);
+    o.frequency.setValueAtTime(300 + level * 65, t);
+    o.frequency.exponentialRampToValueAtTime(600 + level * 95, t + 0.08);
     g.gain.setValueAtTime(0.22, t);
     g.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
     o.connect(g); g.connect(audioCtx.destination);
@@ -187,21 +240,20 @@ function playPop(level) {
 /* ==================== 工具 ==================== */
 const rand = (a, b) => a + Math.random() * (b - a);
 function randSpawnLevel() {
-  // 前几级概率更高，保持平衡
-  const w = [30, 26, 20, 14, 10];
-  let s = Math.random() * 100, acc = 0;
-  for (let i = 0; i < w.length; i++) { acc += w[i]; if (s < acc) return i; }
+  const total = SPAWN_W.reduce((a, b) => a + b, 0);
+  let s = Math.random() * total, acc = 0;
+  for (let i = 0; i < SPAWN_W.length; i++) { acc += SPAWN_W[i]; if (s < acc) return i; }
   return 0;
 }
-
 function makeFruit(level, x, y, vx = 0, vy = 0) {
   return { x, y, vx, vy, r: FRUITS[level].r, level, id: ++uid, age: 0, overT: 0, pop: 0 };
 }
 
-/* ==================== 输入 ==================== */
+/* ==================== 输入（坐标换算已兼容画布缩放） ==================== */
 function pointerX(e) {
   const rect = canvas.getBoundingClientRect();
-  const cx = (e.touches ? e.touches[0].clientX : e.clientX);
+  const t = e.touches && e.touches.length ? e.touches[0] : null;
+  const cx = t ? t.clientX : e.clientX;
   return (cx - rect.left) / rect.width * W;
 }
 function clampAim() {
@@ -212,7 +264,8 @@ canvas.addEventListener('mousemove', e => { if (gameOver) return; aimX = pointer
 canvas.addEventListener('touchmove', e => { if (gameOver) return; e.preventDefault(); aimX = pointerX(e); clampAim(); }, { passive: false });
 canvas.addEventListener('mousedown', e => { if (gameOver) return; aimX = pointerX(e); clampAim(); dropFruit(); });
 canvas.addEventListener('touchstart', e => { if (gameOver) return; e.preventDefault(); aimX = pointerX(e); clampAim(); }, { passive: false });
-canvas.addEventListener('touchend', e => { if (gameOver) return; e.preventDefault(); dropFruit(); });
+canvas.addEventListener('touchend', e => { if (gameOver) return; e.preventDefault(); dropFruit(); }, { passive: false });
+canvas.addEventListener('touchcancel', () => {}, { passive: true });
 
 window.addEventListener('keydown', e => {
   if (gameOver) { if (e.code === 'Space' || e.code === 'Enter') restart(); return; }
@@ -241,7 +294,7 @@ function merge(a, b) {
   const f = makeFruit(nl, x, y,
     (a.vx * m1 + b.vx * m2) / tm * 0.5,
     (a.vy * m1 + b.vy * m2) / tm * 0.5 - 1.2);
-  f.pop = 1;                    // 出生缩放动画
+  f.pop = 1;
   fruits.push(f);
 
   const pts = FRUITS[nl].score;
@@ -249,7 +302,6 @@ function merge(a, b) {
   $score.textContent = score;
   if (score > best) { best = score; $best.textContent = best; localStorage.setItem('dw_best', best); }
 
-  // 粒子特效
   const col = COLORS[nl];
   for (let i = 0; i < 14; i++) {
     const ang = rand(0, Math.PI * 2), sp = rand(1.5, 5);
@@ -259,7 +311,7 @@ function merge(a, b) {
   popups.push({ x, y: y - FRUITS[nl].r * 0.4, txt: '+' + pts, life: 1 });
   playPop(nl);
 
-  if (nl === MAX_LEVEL) {       // 合成大西瓜！
+  if (nl === MAX_LEVEL) {
     winFlash = 40;
     popups.push({ x: W / 2, y: H / 2 - 60, txt: '🍉 合成大西瓜！', life: 1.6, big: true });
   }
@@ -270,7 +322,6 @@ const GRAVITY = 0.42, REST = 0.18, AIR = 0.996, FLOOR_FRICTION = 0.94;
 const ITER = 6, MAX_V = 16;
 
 function physics() {
-  // 积分
   for (const f of fruits) {
     f.age++;
     f.vy += GRAVITY;
@@ -281,7 +332,6 @@ function physics() {
     if (f.pop > 0) f.pop = Math.max(0, f.pop - 0.06);
   }
 
-  // 墙壁 / 地板
   for (const f of fruits) {
     if (f.x - f.r < WALL_L) { f.x = WALL_L + f.r; if (f.vx < 0) f.vx *= -0.4; }
     if (f.x + f.r > WALL_R) { f.x = WALL_R - f.r; if (f.vx > 0) f.vx *= -0.4; }
@@ -293,7 +343,6 @@ function physics() {
     }
   }
 
-  // 碰撞求解（多轮迭代，先处理合成）
   for (let it = 0; it < ITER; it++) {
     const n = fruits.length;
     for (let i = 0; i < n; i++) {
@@ -306,31 +355,27 @@ function physics() {
         const minD = a.r + b.r;
         if (d >= minD) continue;
 
-        // —— 同级 → 合成（每帧每个水果最多一次） ——
         if (it === 0 && a.level === b.level && a.level < MAX_LEVEL && d < minD) {
           const idxA = fruits.indexOf(a), idxB = fruits.indexOf(b);
           fruits.splice(Math.max(idxA, idxB), 1);
           fruits.splice(Math.min(idxA, idxB), 1);
           merge(a, b);
-          j = n;                 // 跳出内层，下一轮迭代继续
+          j = n;
           continue;
         }
 
-        // —— 不同级 → 弹性分离 ——
         const nx = dx / d, ny = dy / d;
         const m1 = a.r * a.r, m2 = b.r * b.r, tm = m1 + m2;
         const overlap = minD - d;
         const corr = overlap * 0.55;
         a.x -= nx * corr * (m2 / tm); a.y -= ny * corr * (m2 / tm);
         b.x += nx * corr * (m1 / tm); b.y += ny * corr * (m1 / tm);
-        // 冲量
         const rvx = b.vx - a.vx, rvy = b.vy - a.vy;
         const vn = rvx * nx + rvy * ny;
         if (vn < 0) {
           const jj = -(1 + REST) * vn / (1 / m1 + 1 / m2);
           a.vx -= jj / m1 * nx; a.vy -= jj / m1 * ny;
           b.vx += jj / m2 * nx; b.vy += jj / m2 * ny;
-          // 切向摩擦
           const tx = -ny, ty = nx;
           const vt = rvx * tx + rvy * ty;
           const jt = -vt * 0.08 / (1 / m1 + 1 / m2);
@@ -341,14 +386,13 @@ function physics() {
     }
   }
 
-  // 警戒线判定
   if (!gameOver) {
     for (const f of fruits) {
-      if (f.age < 50) continue;                    // 刚投放的忽略
+      if (f.age < 50) continue;
       if (f.y - f.r < DANGER_Y && Math.abs(f.vy) < 3 && f.y < FLOOR - f.r - 1) {
         f.overT++;
         if (f.overT > 80) { endGame(); return; }
-      } else if (f.y - f.r < DANGER_Y - 40) {      // 严重超高，快速判负
+      } else if (f.y - f.r < DANGER_Y - 40) {
         f.overT += 3;
         if (f.overT > 90) { endGame(); return; }
       } else {
@@ -378,16 +422,21 @@ function restart() {
 document.getElementById('restart').addEventListener('click', restart);
 
 /* ==================== 渲染 ==================== */
+function shade(hex, amt) {
+  const n = parseInt(hex.slice(1), 16);
+  let r = (n >> 16) + amt, g = ((n >> 8) & 255) + amt, b = (n & 255) + amt;
+  r = Math.max(0, Math.min(255, r)); g = Math.max(0, Math.min(255, g)); b = Math.max(0, Math.min(255, b));
+  return `rgb(${r},${g},${b})`;
+}
+
 function drawFruitBody(x, y, r, level, pop) {
   const scale = pop > 0 ? 1 + pop * 0.35 : 1;
   const rr = r * scale;
   ctx.save();
-  // 阴影
   ctx.beginPath();
   ctx.arc(x + 2, y + 4, rr, 0, Math.PI * 2);
   ctx.fillStyle = 'rgba(0,0,0,.22)';
   ctx.fill();
-  // 主体
   const g = ctx.createRadialGradient(x - rr * 0.35, y - rr * 0.4, rr * 0.1, x, y, rr);
   g.addColorStop(0, '#ffffff');
   g.addColorStop(0.18, COLORS[level]);
@@ -396,38 +445,26 @@ function drawFruitBody(x, y, r, level, pop) {
   ctx.arc(x, y, rr, 0, Math.PI * 2);
   ctx.fillStyle = g;
   ctx.fill();
-  // 描边
   ctx.lineWidth = 2;
   ctx.strokeStyle = shade(COLORS[level], -55);
   ctx.stroke();
-  // 高光
   ctx.beginPath();
   ctx.ellipse(x - rr * 0.35, y - rr * 0.42, rr * 0.22, rr * 0.13, -0.6, 0, Math.PI * 2);
   ctx.fillStyle = 'rgba(255,255,255,.55)';
   ctx.fill();
-  // 表情符号
   ctx.font = `${Math.round(rr * 1.25)}px sans-serif`;
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillText(FRUITS[level].emoji, x, y + rr * 0.06);
   ctx.restore();
 }
 
-function shade(hex, amt) {
-  const n = parseInt(hex.slice(1), 16);
-  let r = (n >> 16) + amt, g = ((n >> 8) & 255) + amt, b = (n & 255) + amt;
-  r = Math.max(0, Math.min(255, r)); g = Math.max(0, Math.min(255, g)); b = Math.max(0, Math.min(255, b));
-  return `rgb(${r},${g},${b})`;
-}
-
 function render() {
-  // 背景
   const bg = ctx.createLinearGradient(0, 0, 0, H);
   bg.addColorStop(0, '#20416e');
   bg.addColorStop(1, '#152744');
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, W, H);
 
-  // 装饰圆点
   ctx.fillStyle = 'rgba(255,255,255,.03)';
   for (let i = 0; i < 6; i++) {
     ctx.beginPath();
@@ -441,7 +478,6 @@ function render() {
     winFlash--;
   }
 
-  // 警戒线
   ctx.save();
   ctx.setLineDash([10, 8]);
   ctx.strokeStyle = 'rgba(255,90,90,.75)';
@@ -454,7 +490,6 @@ function render() {
   ctx.fillText('⚠ 警戒线', W - 8, DANGER_Y - 4);
   ctx.restore();
 
-  // 瞄准线
   if (!gameOver && canDrop) {
     const r = FRUITS[currentLevel].r;
     ctx.save();
@@ -466,10 +501,8 @@ function render() {
     drawFruitBody(aimX, SPAWN_Y, r, currentLevel, 0);
   }
 
-  // 水果
   for (const f of fruits) drawFruitBody(f.x, f.y, f.r, f.level, f.pop);
 
-  // 粒子
   for (const p of particles) {
     ctx.globalAlpha = p.life;
     ctx.beginPath();
@@ -479,7 +512,6 @@ function render() {
   }
   ctx.globalAlpha = 1;
 
-  // 分数飘字
   for (const p of popups) {
     ctx.globalAlpha = Math.min(1, p.life);
     ctx.font = (p.big ? 'bold 30px' : 'bold 18px') + ' sans-serif';
@@ -501,7 +533,6 @@ function update() {
     }
     physics();
   }
-  // 粒子更新
   for (const p of particles) {
     p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.life -= 0.03;
   }
@@ -512,6 +543,13 @@ function update() {
   render();
   requestAnimationFrame(update);
 }
+
+/* ==================== 自适应尺寸监听 ==================== */
+fitCanvas();
+window.addEventListener('resize', fitCanvas, { passive: true });
+window.addEventListener('orientationchange', () => setTimeout(fitCanvas, 180));
+if (window.visualViewport) window.visualViewport.addEventListener('resize', fitCanvas, { passive: true });
+if (window.ResizeObserver) new ResizeObserver(() => fitCanvas()).observe(stageWrap);
 
 /* ==================== 启动 ==================== */
 $best.textContent = best;
